@@ -1,0 +1,179 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+}
+
+/* Org Chart Specific Styles */
+.org-capture-area {
+  background-color: #ffffff;
+  background-image: radial-gradient(#e2e8f0 0.8px, transparent 0.8px);
+  background-size: 24px 24px;
+  width: 100%;
+  max-width: 1400px;
+  padding: 80px 40px;
+  border: 1px solid #cbd5e1;
+  position: relative;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.org-row {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 50px;
+  gap: 24px;
+  padding: 10px;
+  position: relative;
+}
+
+.org-row-title {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 12px;
+  font-weight: 800;
+  color: #64748b;
+  background: #f8fafc;
+  padding: 4px 20px;
+  border-radius: 9999px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  z-index: 10;
+}
+
+.org-card {
+  width: 120px;
+  text-align: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: white;
+  border-radius: 16px;
+  padding: 12px;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  border: 1px solid #f1f5f9;
+}
+
+.org-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+}
+
+/* Level Indicators */
+.level-1 .org-card { border-top: 5px solid #1e3a8a; width: 180px; }
+.level-2 .org-card { border-top: 5px solid #2563eb; width: 150px; }
+.level-3 .org-card { border-top: 5px solid #0891b2; width: 130px; }
+.level-4 .org-card { border-top: 5px solid #10b981; width: 120px; }
+
+.org-photo-box {
+  width: 100%;
+  aspect-ratio: 1 / 1.2;
+  border: 1px solid #f1f5f9;
+  margin: 0 auto 12px;
+  background-color: #f8fafc;
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+  border-radius: 8px;
+}
+
+.org-photo-box:hover .overlay {
+  opacity: 1;
+}
+
+.org-photo-box .overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 10px;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.org-input-name {
+  font-size: 12px;
+  font-weight: 900;
+  width: 100%;
+  text-align: center;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid transparent;
+  outline: none;
+  color: #0f172a;
+}
+
+.org-input-title {
+  font-size: 10px;
+  color: #64748b;
+  text-transform: uppercase;
+  width: 100%;
+  text-align: center;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-weight: 600;
+}
+
+@media print {
+  nav, .no-print {
+    display: none !important;
+  }
+  body {
+    background: white !important;
+  }
+  .org-capture-area {
+    box-shadow: none !important;
+    border: 1px solid #000 !important;
+  }
+}
+
+/* Responsive Adjustments for Org Chart */
+@media (max-width: 768px) {
+  .org-capture-area {
+    padding: 20px; /* Reduce overall padding for smaller screens */
+  }
+
+  .org-row {
+    gap: 8px; /* Reduce gap between cards */
+    padding: 15px; /* Adjust row padding */
+    margin-bottom: 20px; /* Adjust row margin */
+  }
+
+  .org-card {
+    width: 90px; /* Reduce card width */
+  }
+
+  .org-photo-box {
+    width: 80px; /* Reduce photo box width */
+    height: 100px; /* Reduce photo box height */
+  }
+
+  .org-input-name {
+    font-size: 10px; /* Smaller font for names */
+  }
+
+  .org-input-title {
+    font-size: 8px; /* Smaller font for titles */
+  }
+}
