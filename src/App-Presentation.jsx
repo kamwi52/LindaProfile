@@ -899,7 +899,7 @@ const SchoolOverview = () => {
                 </div>
               )}
               <p className="text-gray-700 text-sm leading-relaxed mb-6">{selectedFacility.fullDescription}</p>
-              <button onClick={() => setSelectedFacility(null)} className="px-6 py-2 bg-blue-900 hover:bg-blue-800 text-white rounded-lg font-medium text-sm">Close</button>
+              <button onClick={() => setSelectedFacility(null)} className="px-6 py-2 bg-blue-900 hover:bg-primary-600 text-white rounded-lg font-medium text-sm">Close</button>
             </div>
           </div>
         </div>

@@ -199,7 +199,7 @@ const SportsPortal = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex items-center justify-between mb-6">
             <div>
-              <h1 className="text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-cyan-400 to-blue-400">
+              <h1 className="text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-cyan-400 to-accent-400">
                 LINDA SECONDARY
               </h1>
               <p className="text-slate-400 text-sm tracking-widest uppercase mt-1">Sports Legacy & Excellence</p>
@@ -258,9 +258,9 @@ const SportsPortal = () => {
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-slate-400 text-sm font-medium">Sports</p>
-                  <p className="text-3xl font-bold text-blue-400">{stats.totalSports}</p>
+                  <p className="text-3xl font-bold text-accent-400">{stats.totalSports}</p>
                 </div>
-                <Trophy className="w-8 h-8 text-blue-400/50" />
+                <Trophy className="w-8 h-8 text-accent-400/50" />
               </div>
             </div>
             <div className="bg-slate-800 border border-slate-700 rounded-xl p-4">
@@ -303,7 +303,7 @@ const SportsPortal = () => {
             onClick={() => setActiveTab('stats')}
             className={`px-6 py-3 font-semibold text-sm uppercase tracking-wide transition-all flex items-center gap-2 border-b-2 -mb-4 ${
               activeTab === 'stats'
-                ? 'text-blue-400 border-blue-400'
+                ? 'text-accent-400 border-accent-400'
                 : 'text-slate-400 border-transparent hover:text-slate-300'
             }`}
           >
@@ -579,3 +579,5 @@ const SportsPortal = () => {
 };
 
 export default SportsPortal;
+
+

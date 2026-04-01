@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  /* Presentation Mode Spacing System (consistent scale) */
+  /* Signature Event Palette */
   --spacing-xs: 0.25rem;  /* 4px */
   --spacing-sm: 0.5rem;   /* 8px */
   --spacing-base: 1rem;   /* 16px */
@@ -12,11 +12,12 @@
   --spacing-xl: 2.5rem;   /* 40px */
   --spacing-2xl: 3rem;    /* 48px */
 
-  /* Presentation Colors (preserve brand) */
-  --color-primary: #001f3f;    /* blue-900 */
-  --color-primary-light: #0066cc; /* blue-600 */
-  --color-accent: #ffc107;     /* yellow-500 */
-  --color-text: #1a202c;       /* gray-900 */
+  /* New Color Palette */
+  --color-primary: #1B3022;      /* Expo Green */
+  --color-primary-light: #2E6F40; /* Lighter green */
+  --color-accent: #E69D25;       /* Musanza Gold */
+  --color-danger: #D71921;       /* Marathon Red */
+  --color-text: #1a202c;         /* gray-900 */
   --color-text-secondary: #4a5568; /* gray-700 */
 }
 

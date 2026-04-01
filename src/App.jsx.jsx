@@ -423,31 +423,31 @@ const SchoolOverview = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-white via-blue-50 to-white flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-white via-primary-50 to-white flex items-center justify-center">
         <div className="text-center">
-          <div className="w-16 h-16 border-4 border-blue-900 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-          <p className="text-blue-900 text-lg font-medium">Loading school overview...</p>
+          <div className="w-16 h-16 border-4 border-primary-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <p className="text-primary-500 text-lg font-medium">Loading school overview...</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-white via-blue-50 to-white text-gray-900">
+    <div className="min-h-screen bg-gradient-to-br from-white via-primary-50 to-white text-gray-900">
       {/* Navigation Bar */}
-      <nav className="border-b-2 border-blue-900 backdrop-blur-sm sticky top-0 z-50 bg-white">
+      <nav className="border-b-2 border-primary-500 backdrop-blur-sm sticky top-0 z-50 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             {/* Logo */}
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-blue-900 rounded-lg flex items-center justify-center font-bold text-white">
+              <div className="w-10 h-10 bg-primary-500 rounded-lg flex items-center justify-center font-bold text-white">
                 LS
               </div>
               <div>
-                <h1 className="text-xl font-black text-blue-900">
+                <h1 className="text-xl font-black text-primary-500">
                   Linda Secondary
                 </h1>
-                <p className="text-xs text-blue-700">School Overview</p>
+                <p className="text-xs text-primary-700">School Overview</p>
               </div>
             </div>
 
@@ -468,8 +468,8 @@ const SchoolOverview = () => {
                   onClick={() => setActiveSection(item.id)}
                   className={`px-4 py-2 rounded-lg font-medium text-sm transition-all ${
                     activeSection === item.id
-                      ? 'bg-blue-900 text-white'
-                      : 'text-gray-700 hover:bg-blue-100'
+                      ? 'bg-primary-500 text-white'
+                      : 'text-gray-700 hover:bg-primary-50'
                   }`}
                 >
                   {item.label}
@@ -480,7 +480,7 @@ const SchoolOverview = () => {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2 hover:bg-blue-100 rounded-lg text-blue-900"
+              className="md:hidden p-2 hover:bg-accent-50 rounded-lg text-primary-500"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -488,7 +488,7 @@ const SchoolOverview = () => {
 
           {/* Mobile Menu */}
           {mobileMenuOpen && (
-            <div className="md:hidden pb-4 border-t-2 border-blue-200 pt-4">
+            <div className="md:hidden pb-4 border-t-2 border-primary-100 pt-4">
               {[
                 { id: 'overview', label: 'Overview' },
                 { id: 'about', label: 'About' },
@@ -507,8 +507,8 @@ const SchoolOverview = () => {
                   }}
                   className={`block w-full text-left px-4 py-2 rounded-lg font-medium text-sm transition-all ${
                     activeSection === item.id
-                      ? 'bg-blue-900 text-white'
-                      : 'text-gray-700 hover:bg-blue-100'
+                      ? 'bg-primary-500 text-white'
+                      : 'text-gray-700 hover:bg-primary-50'
                   }`}
                 >
                   {item.label}
@@ -521,7 +521,7 @@ const SchoolOverview = () => {
 
       {/* Hero Section */}
       {activeSection === 'overview' && (
-        <div className="relative h-96 bg-gradient-to-r from-blue-900 to-blue-800 overflow-hidden">
+        <div className="relative h-96 bg-gradient-to-r from-primary-500 to-primary-600 overflow-hidden">
           <div className="absolute inset-0 opacity-10">
             <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(68,68,68,.2)_25%,rgba(68,68,68,.2)_50%,transparent_50%,transparent_75%,rgba(68,68,68,.2)_75%,rgba(68,68,68,.2))] bg-[length:40px_40px]"></div>
           </div>
@@ -530,10 +530,10 @@ const SchoolOverview = () => {
               <h1 className="text-5xl font-black mb-4 text-white drop-shadow-lg">{schoolData.name}</h1>
               <div className="max-w-2xl mx-auto space-y-4">
                 <div className="bg-black/20 backdrop-blur-md p-4 rounded-xl border border-white/10">
-                  <p className="text-blue-50 text-lg italic">"{dailyQuote.text}"</p>
-                  <p className="text-blue-200 text-sm font-bold mt-2">— {dailyQuote.author}</p>
+                  <p className="text-accent-50 text-lg italic">"{dailyQuote.text}"</p>
+                  <p className="text-accent-300 text-sm font-bold mt-2">— {dailyQuote.author}</p>
                 </div>
-                <p className="text-xl text-blue-100 flex items-center justify-center gap-2 drop-shadow-lg">
+                <p className="text-xl text-accent-50 flex items-center justify-center gap-2 drop-shadow-lg">
                   <MapPin className="w-5 h-5" />
                   {schoolData.location}
                 </p>
@@ -548,17 +548,17 @@ const SchoolOverview = () => {
         {activeSection === 'overview' && (
           <div className="space-y-12">
             {/* About Intro */}
-            <div className="bg-white border-2 border-blue-900 rounded-xl p-8 shadow-lg">
-              <h2 className="text-3xl font-bold text-blue-900 mb-4">Welcome to Linda Secondary School</h2>
-              <p className="text-blue-700 font-bold italic mb-4">"{schoolData.motto}"</p>
+            <div className="bg-white border-2 border-primary-500 rounded-xl p-8 shadow-lg">
+              <h2 className="text-3xl font-bold text-primary-500 mb-4">Welcome to Linda Secondary School</h2>
+              <p className="text-primary-700 font-bold italic mb-4">"{schoolData.motto}"</p>
               <p className="text-gray-700 text-lg leading-relaxed mb-6">
                 {schoolData.overview}
               </p>
               <div className="flex gap-4">
-                <button className="px-6 py-2 bg-blue-900 hover:bg-blue-800 text-white rounded-lg font-medium transition-colors">
+                <button className="px-6 py-2 bg-primary-500 hover:bg-primary-600 text-white rounded-lg font-medium transition-colors">
                   Learn More
                 </button>
-                <button className="px-6 py-2 bg-blue-200 hover:bg-blue-300 text-blue-900 rounded-lg font-medium transition-colors">
+                <button className="px-6 py-2 bg-primary-100 hover:bg-primary-200 text-primary-500 rounded-lg font-medium transition-colors">
                   Contact Us
                 </button>
               </div>
@@ -566,17 +566,17 @@ const SchoolOverview = () => {
 
             {/* Quick Stats */}
             <div>
-              <h2 className="text-3xl font-bold text-blue-900 mb-6">By The Numbers</h2>
+              <h2 className="text-3xl font-bold text-primary-500 mb-6">By The Numbers</h2>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                 {schoolData.stats.map((stat, idx) => {
                   const Icon = stat.icon;
                   return (
                     <div
                       key={idx}
-                      className="bg-white border-2 border-blue-900 rounded-xl p-6 text-center hover:shadow-lg transition-all"
+                      className="bg-white border-2 border-primary-500 rounded-xl p-6 text-center hover:shadow-lg transition-all"
                     >
-                      <Icon className="w-8 h-8 text-blue-900 mx-auto mb-3" />
-                      <div className="text-3xl font-bold text-blue-900 mb-2">{stat.value}</div>
+                      <Icon className="w-8 h-8 text-primary-500 mx-auto mb-3" />
+                      <div className="text-3xl font-bold text-primary-500 mb-2">{stat.value}</div>
                       <div className="text-gray-700 text-sm">{stat.label}</div>
                     </div>
                   );
@@ -586,11 +586,11 @@ const SchoolOverview = () => {
 
             {/* Highlights */}
             <div>
-              <h2 className="text-3xl font-bold text-blue-900 mb-6">Why Choose Us?</h2>
+              <h2 className="text-3xl font-bold text-primary-500 mb-6">Why Choose Us?</h2>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {schoolData.highlights.map((highlight, idx) => (
-                  <div key={idx} className="bg-white border-2 border-blue-900 rounded-xl p-6 flex items-center gap-4">
-                    <Star className="w-6 h-6 text-blue-900 flex-shrink-0" />
+                  <div key={idx} className="bg-white border-2 border-primary-500 rounded-xl p-6 flex items-center gap-4">
+                    <Star className="w-6 h-6 text-primary-500 flex-shrink-0" />
                     <p className="text-gray-800">{highlight}</p>
                   </div>
                 ))}
@@ -602,31 +602,31 @@ const SchoolOverview = () => {
         {/* About Section */}
         {activeSection === 'about' && (
           <div className="space-y-8">
-            <div className="bg-white border-2 border-blue-900 rounded-xl p-8 shadow-lg">
-              <h2 className="text-3xl font-bold text-blue-900 mb-6">Our Vision & Mission</h2>
+            <div className="bg-white border-2 border-primary-500 rounded-xl p-8 shadow-lg">
+              <h2 className="text-3xl font-bold text-primary-500 mb-6">Our Vision & Mission</h2>
               
               <div className="grid md:grid-cols-2 gap-8 mb-8">
                 <div>
-                  <h3 className="text-2xl font-bold text-blue-900 mb-4">Vision</h3>
+                  <h3 className="text-2xl font-bold text-primary-500 mb-4">Vision</h3>
                   <p className="text-gray-700 text-lg leading-relaxed">
                     {schoolData.vision}
                   </p>
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold text-blue-900 mb-4">Mission</h3>
+                  <h3 className="text-2xl font-bold text-primary-500 mb-4">Mission</h3>
                   <p className="text-gray-700 text-lg leading-relaxed">
                     {schoolData.mission}
                   </p>
                 </div>
               </div>
 
-              <div className="border-t-2 border-blue-200 pt-8">
-                <h3 className="text-2xl font-bold text-blue-900 mb-6">School Management Committee</h3>
+              <div className="border-t-2 border-primary-100 pt-8">
+                <h3 className="text-2xl font-bold text-primary-500 mb-6">School Management Committee</h3>
                 <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
                   {schoolData.management.map((leader, idx) => (
-                    <div key={idx} className="bg-blue-50 p-4 rounded-lg border border-blue-100">
-                      <p className="text-blue-900 font-bold">{leader.name}</p>
-                      <p className="text-blue-700 text-sm">{leader.role}</p>
+                    <div key={idx} className="bg-primary-50 p-4 rounded-lg border border-primary-100">
+                      <p className="text-primary-500 font-bold">{leader.name}</p>
+                      <p className="text-primary-700 text-sm">{leader.role}</p>
                     </div>
                   ))}
                 </div>
@@ -639,7 +639,7 @@ const SchoolOverview = () => {
         {activeSection === 'facilities' && (
           <div className="space-y-8">
             <div>
-              <h2 className="text-3xl font-bold text-blue-900 mb-6">Our Facilities</h2>
+              <h2 className="text-3xl font-bold text-primary-500 mb-6">Our Facilities</h2>
               <p className="text-gray-700 text-lg mb-8">
                 Click on any facility to learn more about it
               </p>
@@ -652,12 +652,12 @@ const SchoolOverview = () => {
                       if (facility.name === 'Sports Grounds') setActiveSection('sports');
                       else setSelectedFacility(facility);
                     }}
-                    className="bg-white border-2 border-blue-900 rounded-xl p-6 hover:shadow-xl hover:bg-blue-50 transition-all text-left cursor-pointer active:scale-95"
+                    className="bg-white border-2 border-primary-500 rounded-xl p-6 hover:shadow-xl hover:bg-primary-50 transition-all text-left cursor-pointer active:scale-95"
                   >
                     <div className="text-4xl mb-4">{facility.icon}</div>
-                    <h3 className="text-xl font-bold text-blue-900 mb-2">{facility.name}</h3>
+                    <h3 className="text-xl font-bold text-primary-500 mb-2">{facility.name}</h3>
                     <p className="text-gray-700 mb-4">{facility.description}</p>
-                    <div className="flex items-center gap-2 text-blue-900 font-semibold">
+                    <div className="flex items-center gap-2 text-primary-500 font-semibold">
                       Learn More <ArrowRight className="w-4 h-4" />
                     </div>
                   </button>
@@ -673,7 +673,7 @@ const SchoolOverview = () => {
             <div>
               <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
                 <div>
-                  <h2 className="text-3xl font-bold text-blue-900">Staff Directory</h2>
+                  <h2 className="text-3xl font-bold text-primary-500">Staff Directory</h2>
                   <p className="text-gray-700">Educators and administrators specializing in diverse fields.</p>
                 </div>
                 <div className="relative">
@@ -681,29 +681,29 @@ const SchoolOverview = () => {
                   <input 
                     type="text"
                     placeholder="Search by name or subject..."
-                    className="pl-10 pr-4 py-2 border-2 border-blue-100 rounded-xl focus:border-blue-900 outline-none w-full md:w-80"
+                    className="pl-10 pr-4 py-2 border-2 border-primary-100 rounded-xl focus:border-primary-500 outline-none w-full md:w-80"
                     value={staffSearchTerm}
                     onChange={(e) => setStaffSearchTerm(e.target.value)}
                   />
                 </div>
               </div>
 
-              <div className="overflow-x-auto bg-white border-2 border-blue-900 rounded-xl shadow-lg">
+              <div className="overflow-x-auto bg-white border-2 border-primary-500 rounded-xl shadow-lg">
                 <table className="w-full text-left">
-                  <thead className="bg-blue-900 text-white">
+                  <thead className="bg-primary-500 text-white">
                     <tr>
                       <th className="p-4">Full Name</th>
                       <th className="p-4">Substantive Position</th>
                       <th className="p-4">Subject Specialization</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-blue-100">
+                  <tbody className="divide-y divide-primary-100">
                     {schoolData.staff.filter(m => 
                       m.name.toLowerCase().includes(staffSearchTerm.toLowerCase()) || 
                       m.spec.toLowerCase().includes(staffSearchTerm.toLowerCase())
                     ).map((member, idx) => (
-                      <tr key={idx} className="hover:bg-blue-50 transition-colors">
-                        <td className="p-4 font-bold text-blue-900">{member.name}</td>
+                      <tr key={idx} className="hover:bg-primary-50 transition-colors">
+                        <td className="p-4 font-bold text-primary-500">{member.name}</td>
                         <td className="p-4 text-gray-700">{member.pos}</td>
                         <td className="p-4 text-gray-700">{member.spec}</td>
                       </tr>
@@ -745,7 +745,7 @@ const SchoolOverview = () => {
             <div className="no-print flex justify-end -mb-6 relative z-50">
               <button 
                 onClick={() => setShowOrgControls(!showOrgControls)}
-                className="p-1 text-gray-300 hover:text-blue-900 transition-colors"
+                className="p-1 text-gray-300 hover:text-primary-500 transition-colors"
                 title={showOrgControls ? "Hide Admin Controls" : "Show Admin Controls"}
               >
                 <ChevronDown className={`w-4 h-4 transition-transform ${showOrgControls ? 'rotate-180' : ''}`} />
@@ -753,9 +753,9 @@ const SchoolOverview = () => {
             </div>
 
             {showOrgControls && (
-              <div className="no-print bg-white border-2 border-blue-900 rounded-xl p-4 shadow-lg flex flex-wrap gap-4 items-center justify-between">
+              <div className="no-print bg-white border-2 border-primary-500 rounded-xl p-4 shadow-lg flex flex-wrap gap-4 items-center justify-between">
                 <div className="flex gap-2">
-                  <button onClick={handleAddTeacherRow} className="px-4 py-2 bg-blue-900 text-white rounded-lg text-sm flex items-center gap-2">
+                  <button onClick={handleAddTeacherRow} className="px-4 py-2 bg-primary-500 text-white rounded-lg text-sm flex items-center gap-2">
                     <Plus className="w-4 h-4" /> Add Row
                   </button>
                   <button onClick={exportOrgData} className="px-4 py-2 bg-gray-600 text-white rounded-lg text-sm flex items-center gap-2">
@@ -764,7 +764,7 @@ const SchoolOverview = () => {
                   <button onClick={() => setImportModalOpen(true)} className="px-4 py-2 bg-gray-600 text-white rounded-lg text-sm flex items-center gap-2">
                     <Upload className="w-4 h-4" /> Load
                   </button>
-                  <button onClick={() => window.print()} className="px-4 py-2 bg-blue-600 text-white rounded-lg text-sm flex items-center gap-2">
+                  <button onClick={() => window.print()} className="px-4 py-2 bg-primary-700 text-white rounded-lg text-sm flex items-center gap-2">
                     <Printer className="w-4 h-4" /> Print A4
                   </button>
                   <button onClick={() => { if(confirm('⚠️ Reset chart to default data?')) initializeOrgChart(); }} className="px-4 py-2 bg-red-600 text-white rounded-lg text-sm flex items-center gap-2">
@@ -778,7 +778,7 @@ const SchoolOverview = () => {
               </div>
             )}
 
-            <div className="org-capture-area shadow-2xl rounded-xl border-blue-900 overflow-x-auto">
+            <div className="org-capture-area shadow-2xl rounded-xl border-primary-500 overflow-x-auto">
               <div className="chart-header mb-8 border-b-2 border-gray-800 pb-4">
                 <div className="absolute top-4 left-4 w-16 h-16 bg-gray-100 border flex items-center justify-center text-[10px] text-gray-400">LOGO</div>
                 <div className="absolute top-4 right-4 w-16 h-16 bg-gray-100 border flex items-center justify-center text-[10px] text-gray-400">ARMS</div>
@@ -821,9 +821,9 @@ const SchoolOverview = () => {
                           <div className="flex flex-col items-center w-full mt-1">
                             <div className="w-px h-4 bg-gray-300"></div>
                             <div className="bg-white border border-gray-200 rounded-md p-2 text-[9px] w-full min-w-[140px] shadow-sm">
-                              <div className="font-bold text-blue-900 border-b border-gray-100 mb-1 pb-1 flex items-center justify-between">
+                              <div className="font-bold text-primary-500 border-b border-gray-100 mb-1 pb-1 flex items-center justify-between">
                                 <span>STAFF</span>
-                                <Users className="w-2 h-2 text-blue-400" />
+                                <Users className="w-2 h-2 text-primary-300" />
                               </div>
                               <div className="space-y-0.5">
                                 {card.subordinates.map((name, i) => (
@@ -859,7 +859,7 @@ const SchoolOverview = () => {
               />
               <div className="flex justify-end gap-2">
                 <button onClick={() => setImportModalOpen(false)} className="px-4 py-2 text-gray-600">Cancel</button>
-                <button onClick={doImport} className="px-4 py-2 bg-blue-900 text-white rounded-lg">Import</button>
+                <button onClick={doImport} className="px-4 py-2 bg-primary-500 text-white rounded-lg">Import</button>
               </div>
             </div>
           </div>
@@ -869,21 +869,21 @@ const SchoolOverview = () => {
         {activeSection === 'programs' && (
           <div className="space-y-8">
             <div>
-              <h2 className="text-3xl font-bold text-blue-900 mb-2">Form 1 - 4 Subject Pathways</h2>
+              <h2 className="text-3xl font-bold text-primary-500 mb-2">Form 1 - 4 Subject Pathways</h2>
               <p className="text-gray-700 text-lg mb-8">
                 Linda Secondary School: Specialized academic pathways optimized for student success and career readiness.
               </p>
               
               <div className="space-y-6">
                 {schoolData.programs.map((program, idx) => (
-                  <div key={idx} className="bg-white border-2 border-blue-900 rounded-xl p-8 shadow-lg">
-                    <h3 className="text-2xl font-bold text-blue-900 mb-2">{program.title}</h3>
+                  <div key={idx} className="bg-white border-2 border-primary-500 rounded-xl p-8 shadow-lg">
+                    <h3 className="text-2xl font-bold text-primary-500 mb-2">{program.title}</h3>
                     <p className="text-gray-700 mb-4">{program.description}</p>
                     <div className="flex flex-wrap gap-2">
                       {program.subjects.map((subject, sidx) => (
                         <span
                           key={sidx}
-                          className="px-3 py-1 bg-blue-900 text-white rounded-full text-sm font-medium"
+                          className="px-3 py-1 bg-primary-500 text-white rounded-full text-sm font-medium"
                         >
                           {subject}
                         </span>
@@ -899,7 +899,7 @@ const SchoolOverview = () => {
         {/* Sports Section */}
         {activeSection === 'sports' && (
           <div className="space-y-12">
-            <div className="bg-blue-900 text-white rounded-2xl p-8 shadow-xl relative overflow-hidden">
+            <div className="bg-primary-500 text-white rounded-2xl p-8 shadow-xl relative overflow-hidden">
               <div className="absolute top-0 right-0 p-8 opacity-10">
                 <Trophy className="w-64 h-64 rotate-12" />
               </div>
@@ -908,7 +908,7 @@ const SchoolOverview = () => {
                   <Trophy className="w-10 h-10 text-yellow-400" />
                   Sports & Athletics
                 </h2>
-                <p className="text-xl text-blue-100 max-w-2xl leading-relaxed">
+                <p className="text-xl text-accent-50 max-w-2xl leading-relaxed">
                   {schoolData.sports.history}
                 </p>
               </div>
@@ -917,20 +917,20 @@ const SchoolOverview = () => {
             <div className="grid md:grid-cols-2 gap-8">
               {/* Victory Cabinet */}
               <div className="space-y-6">
-                <h3 className="text-2xl font-bold text-blue-900 flex items-center gap-2">
+                <h3 className="text-2xl font-bold text-primary-500 flex items-center gap-2">
                   <Award className="w-6 h-6" /> Victory Cabinet
                 </h3>
                 <div className="grid gap-4">
                   {schoolData.sports.trophies.map((t, i) => (
-                    <div key={i} className="bg-white border-2 border-blue-900 rounded-xl p-4 flex items-center justify-between shadow-sm hover:translate-x-2 transition-transform">
+                    <div key={i} className="bg-white border-2 border-primary-500 rounded-xl p-4 flex items-center justify-between shadow-sm hover:translate-x-2 transition-transform">
                       <div className="flex items-center gap-4">
                         <span className="text-3xl">{t.icon}</span>
                         <div>
-                          <div className="font-black text-blue-900 uppercase">{t.title}</div>
+                          <div className="font-black text-primary-500 uppercase">{t.title}</div>
                           <div className="text-sm text-gray-500">{t.level} Level</div>
                         </div>
                       </div>
-                      <div className="text-xl font-bold text-blue-800 bg-blue-50 px-3 py-1 rounded-lg">{t.year}</div>
+                      <div className="text-xl font-bold text-primary-600 bg-primary-50 px-3 py-1 rounded-lg">{t.year}</div>
                     </div>
                   ))}
                 </div>
@@ -938,23 +938,23 @@ const SchoolOverview = () => {
 
               {/* Hall of Fame / Records */}
               <div className="space-y-6">
-                <h3 className="text-2xl font-bold text-blue-900 flex items-center gap-2">
+                <h3 className="text-2xl font-bold text-primary-500 flex items-center gap-2">
                   <Star className="w-6 h-6" /> School Records
                 </h3>
-                <div className="bg-white border-2 border-blue-900 rounded-xl overflow-hidden shadow-lg">
+                <div className="bg-white border-2 border-primary-500 rounded-xl overflow-hidden shadow-lg">
                   <table className="w-full">
-                    <thead className="bg-blue-900 text-white">
+                    <thead className="bg-primary-500 text-white">
                       <tr>
                         <th className="p-3 text-left">Event</th>
                         <th className="p-3 text-left">Record</th>
                         <th className="p-3 text-left">Holder</th>
                       </tr>
                     </thead>
-                    <tbody className="divide-y divide-blue-100">
+                    <tbody className="divide-y divide-primary-100">
                       {schoolData.sports.records.map((r, i) => (
-                        <tr key={i} className="hover:bg-blue-50">
-                          <td className="p-3 font-bold text-blue-900">{r.event}</td>
-                          <td className="p-3 text-blue-700 font-black">{r.record}</td>
+                        <tr key={i} className="hover:bg-primary-50">
+                          <td className="p-3 font-bold text-primary-500">{r.event}</td>
+                          <td className="p-3 text-primary-700 font-black">{r.record}</td>
                           <td className="p-3 text-gray-600">{r.holder} ({r.year})</td>
                         </tr>
                       ))}
@@ -967,7 +967,7 @@ const SchoolOverview = () => {
             {/* Photo Gallery */}
             <div className="space-y-6">
               <div className="flex items-center justify-between">
-                <h3 className="text-2xl font-bold text-blue-900 flex items-center gap-2">
+                <h3 className="text-2xl font-bold text-primary-500 flex items-center gap-2">
                   <ImageIcon className="w-6 h-6" /> Sports Gallery
                 </h3>
                 <button 
@@ -978,7 +978,7 @@ const SchoolOverview = () => {
                     input.onchange = handleSportsImageUpload;
                     input.click();
                   }}
-                  className="no-print flex items-center gap-2 px-4 py-2 bg-blue-900 text-white rounded-lg text-sm font-bold hover:bg-blue-800 transition-colors"
+                  className="no-print flex items-center gap-2 px-4 py-2 bg-primary-500 text-white rounded-lg text-sm font-bold hover:bg-primary-600 transition-colors"
                 >
                   <Plus className="w-4 h-4" /> Add Moment
                 </button>
@@ -986,7 +986,7 @@ const SchoolOverview = () => {
               
               <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
                 {sportsGallery.map((img) => (
-                  <div key={img.id} className="group relative aspect-square bg-gray-100 rounded-xl overflow-hidden border-2 border-blue-100 hover:border-blue-900 transition-all">
+                  <div key={img.id} className="group relative aspect-square bg-gray-100 rounded-xl overflow-hidden border-2 border-primary-100 hover:border-primary-500 transition-all">
                     <img src={img.url} className="w-full h-full object-cover" alt={img.caption} />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-3">
                       <p className="text-white text-[10px] font-medium leading-tight">{img.caption}</p>
@@ -1010,65 +1010,65 @@ const SchoolOverview = () => {
             <div className="grid md:grid-cols-2 gap-8">
               {/* Contact Info */}
               <div className="space-y-6">
-                <h2 className="text-3xl font-bold text-blue-900 mb-8">Get In Touch</h2>
+                <h2 className="text-3xl font-bold text-primary-500 mb-8">Get In Touch</h2>
                 
                 {schoolData.keyContacts.map((contact, idx) => (
-                  <div key={idx} className="bg-white border-2 border-blue-900 rounded-xl p-6 shadow-lg hover:bg-blue-50 transition-colors">
+                  <div key={idx} className="bg-white border-2 border-primary-500 rounded-xl p-6 shadow-lg hover:bg-primary-50 transition-colors">
                     <div className="flex items-center gap-4">
-                      <div className="w-12 h-12 bg-blue-900 rounded-full flex items-center justify-center text-white">
+                      <div className="w-12 h-12 bg-primary-500 rounded-full flex items-center justify-center text-white">
                         <Phone className="w-6 h-6" />
                       </div>
                       <div>
-                        <p className="font-bold text-blue-900">{contact.name}</p>
-                        <p className="text-sm text-blue-700">{contact.role}</p>
-                        <p className="text-lg font-black text-blue-900">{contact.phone}</p>
+                        <p className="font-bold text-primary-500">{contact.name}</p>
+                        <p className="text-sm text-primary-700">{contact.role}</p>
+                        <p className="text-lg font-black text-primary-500">{contact.phone}</p>
                       </div>
                     </div>
                   </div>
                 ))}
 
-                <div className="bg-white border-2 border-blue-900 rounded-xl p-6 shadow-lg">
+                <div className="bg-white border-2 border-primary-500 rounded-xl p-6 shadow-lg">
                   <div className="flex items-center gap-4 mb-4">
-                    <Clock className="w-6 h-6 text-blue-900" />
+                    <Clock className="w-6 h-6 text-primary-500" />
                     <div>
                       <p className="text-gray-600 text-sm">Office Hours</p>
-                      <p className="text-blue-900 font-medium">Monday - Friday: 7:30 AM - 4:30 PM</p>
+                      <p className="text-primary-500 font-medium">Monday - Friday: 7:30 AM - 4:30 PM</p>
                     </div>
                   </div>
                 </div>
               </div>
 
               {/* Contact Form */}
-              <div className="bg-white border-2 border-blue-900 rounded-xl p-8 shadow-lg">
-                <h3 className="text-2xl font-bold text-blue-900 mb-6">Send us a Message</h3>
+              <div className="bg-white border-2 border-primary-500 rounded-xl p-8 shadow-lg">
+                <h3 className="text-2xl font-bold text-primary-500 mb-6">Send us a Message</h3>
                 <form className="space-y-4">
                   <div>
-                    <label className="block text-sm font-medium text-blue-900 mb-2">Name</label>
+                    <label className="block text-sm font-medium text-primary-500 mb-2">Name</label>
                     <input
                       type="text"
                       placeholder="Your name"
-                      className="w-full px-4 py-2 bg-blue-50 border-2 border-blue-200 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:border-blue-900"
+                      className="w-full px-4 py-2 bg-primary-50 border-2 border-primary-100 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:border-primary-500"
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-blue-900 mb-2">Email</label>
+                    <label className="block text-sm font-medium text-primary-500 mb-2">Email</label>
                     <input
                       type="email"
                       placeholder="your@email.com"
-                      className="w-full px-4 py-2 bg-blue-50 border-2 border-blue-200 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:border-blue-900"
+                      className="w-full px-4 py-2 bg-primary-50 border-2 border-primary-100 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:border-primary-500"
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-blue-900 mb-2">Message</label>
+                    <label className="block text-sm font-medium text-primary-500 mb-2">Message</label>
                     <textarea
                       placeholder="Your message"
                       rows="4"
-                      className="w-full px-4 py-2 bg-blue-50 border-2 border-blue-200 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:border-blue-900"
+                      className="w-full px-4 py-2 bg-primary-50 border-2 border-primary-100 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:border-primary-500"
                     ></textarea>
                   </div>
                   <button
                     type="submit"
-                    className="w-full px-4 py-2 bg-blue-900 hover:bg-blue-800 text-white rounded-lg font-medium transition-colors"
+                    className="w-full px-4 py-2 bg-primary-500 hover:bg-primary-600 text-white rounded-lg font-medium transition-colors"
                   >
                     Send Message
                   </button>
@@ -1086,7 +1086,7 @@ const SchoolOverview = () => {
           onClick={() => setSelectedFacility(null)}
         >
           <div
-            className="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto border-2 border-blue-900 shadow-2xl"
+            className="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto border-2 border-primary-500 shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="p-8">
@@ -1094,19 +1094,19 @@ const SchoolOverview = () => {
                 <div className="flex items-center gap-4">
                   <div className="text-5xl">{selectedFacility.icon}</div>
                   <div>
-                    <h2 className="text-3xl font-bold text-blue-900">{selectedFacility.name}</h2>
+                    <h2 className="text-3xl font-bold text-primary-500">{selectedFacility.name}</h2>
                   </div>
                 </div>
                 <button
                   onClick={() => setSelectedFacility(null)}
-                  className="text-gray-500 hover:text-blue-900 text-2xl font-bold"
+                  className="text-gray-500 hover:text-primary-500 text-2xl font-bold"
                 >
                   ✕
                 </button>
               </div>
 
               {selectedFacility.image && (
-                <div className="mb-6 rounded-xl overflow-hidden border-2 border-blue-100 shadow-inner h-64">
+                <div className="mb-6 rounded-xl overflow-hidden border-2 border-primary-100 shadow-inner h-64">
                   <img src={selectedFacility.image} alt={selectedFacility.name} className="w-full h-full object-cover" />
                 </div>
               )}
@@ -1115,10 +1115,10 @@ const SchoolOverview = () => {
                 {selectedFacility.fullDescription}
               </p>
 
-              <div className="border-t-2 border-blue-200 pt-6">
+              <div className="border-t-2 border-primary-100 pt-6">
                 <button
                   onClick={() => setSelectedFacility(null)}
-                  className="px-6 py-2 bg-blue-900 hover:bg-blue-800 text-white rounded-lg font-medium transition-colors"
+                  className="px-6 py-2 bg-primary-500 hover:bg-primary-600 text-white rounded-lg font-medium transition-colors"
                 >
                   Close
                 </button>
@@ -1129,7 +1129,7 @@ const SchoolOverview = () => {
       )}
 
       {/* Footer */}
-      <footer className="border-t-2 border-blue-900 bg-blue-900 text-white mt-20">
+      <footer className="border-t-2 border-primary-500 bg-primary-500 text-white mt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="text-center">
             <p className="mb-2">&copy; 2024 Linda Secondary School. All rights reserved.</p>
@@ -1142,3 +1142,4 @@ const SchoolOverview = () => {
 };
 
 export default SchoolOverview;
+
