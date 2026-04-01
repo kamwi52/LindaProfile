@@ -244,7 +244,7 @@ const SchoolOverview = () => {
       { name: 'Multipurpose Hall', description: '01 Hall for assemblies and events.', fullDescription: 'A large multipurpose hall used for school assemblies, expressive arts performances, and community events.', icon: '🎭', image: 'https://images.unsplash.com/photo-1505373633562-2371707d412e?q=80&w=800' },
       { name: 'Practical Rooms', description: '04 Rooms for vocational and skills training.', fullDescription: 'Specialized rooms for practical subjects, ensuring students develop hands-on lifelong skills.', icon: '🛠️', image: 'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?q=80&w=800' },
       { name: 'Sports Grounds', description: 'Football ground and Netball court.', fullDescription: 'Extensive grounds featuring one full-sized football field and one netball court for extra-curricular development.', icon: '⚽', image: 'https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=800' },
-      { name: 'Sanitation', description: '45 Student and 4 Staff toilets.', fullDescription: 'Well-maintained sanitation facilities including 20 toilets for boys, 25 for girls, and 4 dedicated staff toilets.', icon: '🚻', image: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=800' },
+      { name: 'SHN : SCHOOL FEEDING PROGRAM', description: 'Nutrition and wellbeing for all students.', fullDescription: 'Comprehensive school health and nutrition program providing meals and wellness support.', icon: '🍛', image: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?q=80&w=800', clickable: true, action: 'shn' },
     ],
     
     performance: {
@@ -278,6 +278,23 @@ const SchoolOverview = () => {
       records: [
         { event: '100m Dash', record: '10.45s', holder: 'M. Phiri', year: '2024' },
         { event: 'Long Jump', record: '6.82m', holder: 'L. Banda', year: '2023' },
+      ]
+    },
+
+    shn: {
+      title: 'SHN : SCHOOL FEEDING PROGRAM',
+      description: 'School Health and Nutrition Program',
+      overview: 'Linda Secondary School\'s comprehensive School Health and Nutrition (SHN) program ensures every student receives proper nutrition and health support to enable optimal learning and development.',
+      benefits: [
+        { icon: '🥗', title: 'Balanced Meals', description: 'Nutritionally balanced meals meeting dietary requirements for growing students' },
+        { icon: '💪', title: 'Health Screenings', description: 'Regular health checks and vaccinations for all students' },
+        { icon: '📚', title: 'Nutrition Education', description: 'Health and nutrition literacy integrated into curriculum' },
+        { icon: '❤️', title: 'Wellness Support', description: 'Mental and physical health support services' },
+      ],
+      statistics: [
+        { label: 'Daily Meals Served', value: '450+' },
+        { label: 'Nutrition Programs', value: '5' },
+        { label: 'Student Coverage', value: '100%' },
       ]
     },
 
@@ -459,6 +476,7 @@ const SchoolOverview = () => {
                 { id: 'facilities', label: 'Facilities' },
                 { id: 'programs', label: 'Programs' },
                 { id: 'sports', label: 'Sports' },
+                { id: 'shn', label: 'SHN' },
                 { id: 'staff', label: 'Staff' },
                 { id: 'orgchart', label: 'Org Chart' },
                 { id: 'contact', label: 'Contact' },
@@ -495,6 +513,7 @@ const SchoolOverview = () => {
                 { id: 'facilities', label: 'Facilities' },
                 { id: 'programs', label: 'Programs' },
                 { id: 'sports', label: 'Sports' },
+                { id: 'shn', label: 'SHN' },
                 { id: 'staff', label: 'Staff' },
                 { id: 'orgchart', label: 'Org Chart' },
                 { id: 'contact', label: 'Contact' },
@@ -650,6 +669,7 @@ const SchoolOverview = () => {
                     key={idx}
                     onClick={() => {
                       if (facility.name === 'Sports Grounds') setActiveSection('sports');
+                      else if (facility.name === 'SHN : SCHOOL FEEDING PROGRAM') setActiveSection('shn');
                       else setSelectedFacility(facility);
                     }}
                     className="bg-white border-2 border-primary-500 rounded-xl p-6 hover:shadow-xl hover:bg-primary-50 transition-all text-left cursor-pointer active:scale-95"
@@ -663,6 +683,61 @@ const SchoolOverview = () => {
                   </button>
                 ))}
               </div>
+            </div>
+          </div>
+        )}
+
+        {/* SHN Section */}
+        {activeSection === 'shn' && (
+          <div className="space-y-12">
+            <div className="bg-primary-500 text-white rounded-2xl p-8 shadow-xl relative overflow-hidden">
+              <div className="absolute top-0 right-0 p-8 opacity-10">
+                <FlaskConical className="w-64 h-64 rotate-12" />
+              </div>
+              <div className="relative z-10">
+                <h2 className="text-4xl font-black mb-4 flex items-center gap-4">
+                  <span className="text-5xl">🍛</span>
+                  {schoolData.shn.title}
+                </h2>
+                <p className="text-xl text-accent-50 max-w-2xl leading-relaxed">
+                  {schoolData.shn.overview}
+                </p>
+              </div>
+            </div>
+
+            {/* Statistics */}
+            <div className="grid md:grid-cols-3 gap-6">
+              {schoolData.shn.statistics.map((stat, i) => (
+                <div key={i} className="bg-white border-2 border-primary-500 rounded-xl p-8 text-center shadow-lg hover:shadow-xl transition-shadow">
+                  <div className="text-4xl font-black text-primary-500 mb-2">{stat.value}</div>
+                  <div className="text-gray-700 font-semibold">{stat.label}</div>
+                </div>
+              ))}
+            </div>
+
+            {/* Benefits */}
+            <div>
+              <h3 className="text-3xl font-bold text-primary-500 mb-8">Program Benefits</h3>
+              <div className="grid md:grid-cols-2 gap-6">
+                {schoolData.shn.benefits.map((benefit, i) => (
+                  <div key={i} className="bg-white border-2 border-primary-500 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow flex gap-4">
+                    <div className="text-4xl">{benefit.icon}</div>
+                    <div>
+                      <h4 className="text-xl font-bold text-primary-500 mb-2">{benefit.title}</h4>
+                      <p className="text-gray-700">{benefit.description}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Call to Action */}
+            <div className="bg-gradient-to-r from-primary-500 to-primary-600 text-white rounded-2xl p-12 text-center shadow-xl">
+              <h3 className="text-3xl font-black mb-4">Healthy Students, Bright Futures</h3>
+              <p className="text-xl mb-6 opacity-90">Our comprehensive SHN program supports holistic student development</p>
+              <button className="px-8 py-3 bg-white text-primary-500 rounded-lg font-bold text-lg hover:bg-accent-50 transition-colors">
+                Learn More
+              </button>
             </div>
           </div>
         )}
