@@ -846,6 +846,18 @@ const SchoolOverview = () => {
           </div>
         )}
 
+        {/* Facility Navigation Helper */}
+        {['classrooms', 'science_labs', 'computer_lab', 'multipurpose_hall', 'practical_rooms'].includes(activeSection) && (
+          <div className="mb-6 flex items-center justify-between">
+            <button
+              onClick={() => setActiveSection('facilities')}
+              className="flex items-center gap-2 px-4 py-2 bg-primary-500 text-white rounded-lg font-medium hover:bg-primary-600 transition-colors"
+            >
+              <ArrowRight className="w-4 h-4 rotate-180" /> Back to Facilities
+            </button>
+          </div>
+        )}
+
         {/* Classrooms Section */}
         {activeSection === 'classrooms' && (
           <div className="space-y-12">
@@ -885,6 +897,30 @@ const SchoolOverview = () => {
                     </div>
                   </div>
                 ))}
+              </div>
+            </div>
+
+            {/* Facility Navigation */}
+            <div className="flex items-center justify-between pt-8 border-t-2 border-primary-100 mt-8">
+              <button
+                onClick={() => setActiveSection('facilities')}
+                className="flex items-center gap-2 px-4 py-2 bg-gray-200 text-gray-700 rounded-lg font-medium hover:bg-gray-300 transition-colors"
+              >
+                <ArrowRight className="w-4 h-4 rotate-180" /> Back
+              </button>
+              <div className="flex gap-2">
+                <button
+                  onClick={() => setActiveSection('facilities')}
+                  className="px-4 py-2 bg-accent-400 text-white rounded-lg font-medium hover:bg-accent-500 transition-colors"
+                >
+                  All Facilities
+                </button>
+                <button
+                  onClick={() => setActiveSection('science_labs')}
+                  className="flex items-center gap-2 px-4 py-2 bg-primary-500 text-white rounded-lg font-medium hover:bg-primary-600 transition-colors"
+                >
+                  Next <ArrowRight className="w-4 h-4" />
+                </button>
               </div>
             </div>
           </div>
@@ -931,6 +967,30 @@ const SchoolOverview = () => {
                 ))}
               </div>
             </div>
+
+            {/* Facility Navigation */}
+            <div className="flex items-center justify-between pt-8 border-t-2 border-primary-100 mt-8">
+              <button
+                onClick={() => setActiveSection('classrooms')}
+                className="flex items-center gap-2 px-4 py-2 bg-primary-500 text-white rounded-lg font-medium hover:bg-primary-600 transition-colors"
+              >
+                <ArrowRight className="w-4 h-4 rotate-180" /> Previous
+              </button>
+              <div className="flex gap-2">
+                <button
+                  onClick={() => setActiveSection('facilities')}
+                  className="px-4 py-2 bg-accent-400 text-white rounded-lg font-medium hover:bg-accent-500 transition-colors"
+                >
+                  All Facilities
+                </button>
+                <button
+                  onClick={() => setActiveSection('computer_lab')}
+                  className="flex items-center gap-2 px-4 py-2 bg-primary-500 text-white rounded-lg font-medium hover:bg-primary-600 transition-colors"
+                >
+                  Next <ArrowRight className="w-4 h-4" />
+                </button>
+              </div>
+            </div>
           </div>
         )}
 
@@ -973,6 +1033,30 @@ const SchoolOverview = () => {
                     </div>
                   </div>
                 ))}
+              </div>
+            </div>
+
+            {/* Facility Navigation */}
+            <div className="flex items-center justify-between pt-8 border-t-2 border-primary-100 mt-8">
+              <button
+                onClick={() => setActiveSection('science_labs')}
+                className="flex items-center gap-2 px-4 py-2 bg-primary-500 text-white rounded-lg font-medium hover:bg-primary-600 transition-colors"
+              >
+                <ArrowRight className="w-4 h-4 rotate-180" /> Previous
+              </button>
+              <div className="flex gap-2">
+                <button
+                  onClick={() => setActiveSection('facilities')}
+                  className="px-4 py-2 bg-accent-400 text-white rounded-lg font-medium hover:bg-accent-500 transition-colors"
+                >
+                  All Facilities
+                </button>
+                <button
+                  onClick={() => setActiveSection('multipurpose_hall')}
+                  className="flex items-center gap-2 px-4 py-2 bg-primary-500 text-white rounded-lg font-medium hover:bg-primary-600 transition-colors"
+                >
+                  Next <ArrowRight className="w-4 h-4" />
+                </button>
               </div>
             </div>
           </div>
@@ -1019,6 +1103,30 @@ const SchoolOverview = () => {
                 ))}
               </div>
             </div>
+
+            {/* Facility Navigation */}
+            <div className="flex items-center justify-between pt-8 border-t-2 border-primary-100 mt-8">
+              <button
+                onClick={() => setActiveSection('computer_lab')}
+                className="flex items-center gap-2 px-4 py-2 bg-primary-500 text-white rounded-lg font-medium hover:bg-primary-600 transition-colors"
+              >
+                <ArrowRight className="w-4 h-4 rotate-180" /> Previous
+              </button>
+              <div className="flex gap-2">
+                <button
+                  onClick={() => setActiveSection('facilities')}
+                  className="px-4 py-2 bg-accent-400 text-white rounded-lg font-medium hover:bg-accent-500 transition-colors"
+                >
+                  All Facilities
+                </button>
+                <button
+                  onClick={() => setActiveSection('practical_rooms')}
+                  className="flex items-center gap-2 px-4 py-2 bg-primary-500 text-white rounded-lg font-medium hover:bg-primary-600 transition-colors"
+                >
+                  Next <ArrowRight className="w-4 h-4" />
+                </button>
+              </div>
+            </div>
           </div>
         )}
 
@@ -1061,6 +1169,24 @@ const SchoolOverview = () => {
                     </div>
                   </div>
                 ))}
+              </div>
+            </div>
+
+            {/* Facility Navigation */}
+            <div className="flex items-center justify-between pt-8 border-t-2 border-primary-100 mt-8">
+              <button
+                onClick={() => setActiveSection('multipurpose_hall')}
+                className="flex items-center gap-2 px-4 py-2 bg-primary-500 text-white rounded-lg font-medium hover:bg-primary-600 transition-colors"
+              >
+                <ArrowRight className="w-4 h-4 rotate-180" /> Previous
+              </button>
+              <div className="flex gap-2">
+                <button
+                  onClick={() => setActiveSection('facilities')}
+                  className="px-4 py-2 bg-accent-400 text-white rounded-lg font-medium hover:bg-accent-500 transition-colors"
+                >
+                  All Facilities
+                </button>
               </div>
             </div>
           </div>
