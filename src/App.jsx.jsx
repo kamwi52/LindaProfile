@@ -288,16 +288,26 @@ const SchoolOverview = () => {
       icon: '🏫',
       count: '32',
       overview: 'Linda Secondary School features 32 dedicated, well-equipped classrooms designed to provide a conducive environment for both teaching and learning.',
-      features: [
-        { icon: '📚', title: 'Technology-Enabled', description: 'Equipped with whiteboards, projectors, and internet connectivity' },
-        { icon: '👥', title: 'Optimal Class Size', description: 'Average 35-40 students per class for effective learning' },
-        { icon: '💡', title: 'Well-Lit & Ventilated', description: 'Natural light and proper ventilation for comfortable learning' },
-        { icon: '🎨', title: 'Learning-Centered Design', description: 'Flexible furniture arrangement supporting various teaching methods' },
-      ],
       statistics: [
         { label: 'Total Classrooms', value: '32' },
         { label: 'Student Capacity', value: '1200+' },
         { label: 'Teacher:Student Ratio', value: '1:35' },
+      ],
+      positives: [
+        { icon: '✅', title: 'Technology-Enabled', description: 'Whiteboards, projectors, and internet connectivity support modern teaching' },
+        { icon: '✅', title: 'Optimal Class Size', description: 'Average 35-40 students enables personalized attention' },
+        { icon: '✅', title: 'Well-Lit & Ventilated', description: 'Natural light and proper ventilation enhance learning focus' },
+        { icon: '✅', title: 'Flexible Design', description: 'Furniture arrangement supports varied teaching methodologies' },
+      ],
+      challenges: [
+        { icon: '⚠️', title: 'Maintenance Cycles', description: 'Regular upkeep needed for projectors and technology' },
+        { icon: '⚠️', title: 'Population Growth', description: 'Enrollment increases may strain existing capacity' },
+        { icon: '⚠️', title: 'Technology Cost', description: 'Ongoing software licenses and hardware upgrades required' },
+      ],
+      recommendations: [
+        { icon: '💡', title: 'Smart Classrooms', description: 'Transition to interactive smart boards for enhanced engagement' },
+        { icon: '💡', title: 'Additional Rooms', description: 'Plan expansion to accommodate growing student enrollment' },
+        { icon: '💡', title: 'Teacher Training', description: 'Regular workshops on technology integration and pedagogy' },
       ]
     },
 
@@ -307,16 +317,26 @@ const SchoolOverview = () => {
       icon: '🔬',
       count: '2',
       overview: 'Two fully-equipped science laboratories supporting hands-on learning in Physics, Chemistry, and Biology with modern scientific instruments.',
-      features: [
-        { icon: '🧪', title: 'Chemistry Lab', description: 'Complete chemistry apparatus, reagents, and safety equipment' },
-        { icon: '⚛️', title: 'Physics Lab', description: 'Mechanics, electricity, optics, and thermodynamics equipment' },
-        { icon: '🔍', title: 'Biology Lab', description: 'Microscopes, dissection kits, and sample collections' },
-        { icon: '🛡️', title: 'Safety First', description: 'Full safety gear, first aid kits, and safety protocols' },
-      ],
       statistics: [
         { label: 'Laboratory Spaces', value: '2' },
         { label: 'Student Practicals/Term', value: '40+' },
         { label: 'Safety Compliance', value: '100%' },
+      ],
+      positives: [
+        { icon: '✅', title: 'Chemistry Lab', description: 'Complete apparatus and reagents for comprehensive practicals' },
+        { icon: '✅', title: 'Quality Equipment', description: 'Modern microscopes and precision instruments for accurate readings' },
+        { icon: '✅', title: 'Safety Protocols', description: 'Full safety gear and trained personnel ensure student protection' },
+        { icon: '✅', title: 'Regular Practicals', description: '40+ practicals per term integrate theory with hands-on learning' },
+      ],
+      challenges: [
+        { icon: '⚠️', title: 'Equipment Maintenance', description: 'Complex instruments require specialized servicing' },
+        { icon: '⚠️', title: 'Chemical Storage', description: 'Strict safety protocols needed for chemical management' },
+        { icon: '⚠️', title: 'Space Constraints', description: 'Limited to 2 labs for a large student population' },
+      ],
+      recommendations: [
+        { icon: '💡', title: 'Additional Lab', description: 'Establish third laboratory to reduce waiting times' },
+        { icon: '💡', title: 'Equipment Audit', description: 'Comprehensive inventory and maintenance schedule' },
+        { icon: '💡', title: 'Virtual Simulations', description: 'Supplement with virtual labs for pre-practical preparation' },
       ]
     },
 
@@ -326,16 +346,26 @@ const SchoolOverview = () => {
       icon: '💻',
       count: '1',
       overview: 'State-of-the-art computer laboratory providing ICT training, coding education, and digital literacy for all students.',
-      features: [
-        { icon: '🖥️', title: '30+ Computers', description: 'Modern workstations with latest processors and components' },
-        { icon: '📡', title: 'High-Speed Internet', description: 'Fiber optic connection ensuring reliable online access' },
-        { icon: '💾', title: 'Software Suite', description: 'Microsoft Office, Adobe Suite, Programming tools, and Learning Management System' },
-        { icon: '👨‍🏫', title: 'Expert Instruction', description: 'ICT specialists guiding students through digital skills' },
-      ],
       statistics: [
         { label: 'Computer Workstations', value: '30+' },
         { label: 'Students/Year', value: '400+' },
         { label: 'Online Platforms', value: '5+' },
+      ],
+      positives: [
+        { icon: '✅', title: 'Modern Equipment', description: 'Latest processors and high-performance workstations' },
+        { icon: '✅', title: 'High-Speed Internet', description: 'Fiber optic connection ensures reliable connectivity' },
+        { icon: '✅', title: 'Diverse Software', description: 'Microsoft Office, Adobe Suite, and programming tools' },
+        { icon: '✅', title: 'Expert Instruction', description: 'ICT specialists guide students through digital skills' },
+      ],
+      challenges: [
+        { icon: '⚠️', title: 'High Usage', description: '400+ students vie for limited access time slots' },
+        { icon: '⚠️', title: 'Technical Support', description: 'Hardware repairs and troubleshooting demand expertise' },
+        { icon: '⚠️', title: 'Software Licensing', description: 'Annual renewal costs for professional applications' },
+      ],
+      recommendations: [
+        { icon: '💡', title: 'Mobile Lab', description: 'Acquire tablets/laptops for classroom-based lessons' },
+        { icon: '💡', title: 'Evening Sessions', description: 'Extend lab hours for additional access opportunities' },
+        { icon: '💡', title: 'Open-Source Alternatives', description: 'Reduce costs with GIMP, LibreOffice alternatives' },
       ]
     },
 
@@ -345,16 +375,26 @@ const SchoolOverview = () => {
       icon: '🎭',
       capacity: '800+',
       overview: 'A spacious multipurpose hall accommodating school assemblies, expressive arts performances, conferences, and community events.',
-      features: [
-        { icon: '🎤', title: 'Sound System', description: 'Professional-grade audio and microphone setup' },
-        { icon: '💡', title: 'Lighting & Projection', description: 'LED lighting, projectors, and screen for multimedia presentations' },
-        { icon: '🪑', title: 'Flexible Seating', description: 'Modular seating arrangement for 800+ people' },
-        { icon: '🎪', title: 'Event-Ready', description: 'Stage, backstage facilities, and green room' },
-      ],
       statistics: [
         { label: 'Seating Capacity', value: '800+' },
         { label: 'Events/Year', value: '50+' },
         { label: 'Hall Dimension', value: '40m x 30m' },
+      ],
+      positives: [
+        { icon: '✅', title: 'Professional Sound System', description: 'High-quality audio and microphone setup for clear communication' },
+        { icon: '✅', title: 'Advanced Lighting', description: 'LED lighting and projection systems for multimedia presentations' },
+        { icon: '✅', title: 'Flexible Seating', description: 'Modular arrangement accommodates 800+ attendees' },
+        { icon: '✅', title: 'Event Infrastructure', description: 'Stage, backstage facilities, and green room for productions' },
+      ],
+      challenges: [
+        { icon: '⚠️', title: 'Acoustic Issues', description: 'Large space can create echo in certain configurations' },
+        { icon: '⚠️', title: 'Temperature Control', description: 'Climate management challenging during peak usage' },
+        { icon: '⚠️', title: 'Limited Parking', description: 'Insufficient space for large community events' },
+      ],
+      recommendations: [
+        { icon: '💡', title: 'Acoustic Panels', description: 'Install sound-dampening treatment for event clarity' },
+        { icon: '💡', title: 'HVAC Upgrade', description: 'Implement central climate control system' },
+        { icon: '💡', title: 'Parking Expansion', description: 'Develop additional parking area for major events' },
       ]
     },
 
@@ -364,16 +404,26 @@ const SchoolOverview = () => {
       icon: '🛠️',
       count: '4',
       overview: 'Four specialized rooms dedicated to vocational and skills training, enabling students to develop hands-on lifelong competencies.',
-      features: [
-        { icon: '🍳', title: 'Food Science Room', description: 'Kitchen facilities for nutrition and hospitality training' },
-        { icon: '🛠️', title: 'D&T Workshop', description: 'Design and technology tools and equipment for practical projects' },
-        { icon: '👗', title: 'Craft Studio', description: 'Textile and design workspace for creative arts' },
-        { icon: '🎯', title: 'Skills Mastery', description: 'Industry-standard equipment and expert coordination' },
-      ],
       statistics: [
         { label: 'Practical Rooms', value: '4' },
         { label: 'Subjects Offered', value: '6+' },
         { label: 'Students Trained/Year', value: '300+' },
+      ],
+      positives: [
+        { icon: '✅', title: 'Food Science Room', description: '🍳 Kitchen facilities for nutrition and hospitality training' },
+        { icon: '✅', title: 'D&T Workshop', description: '🛠️ Design and technology tools for practical projects' },
+        { icon: '✅', title: 'Craft Studio', description: '👗 Textile workspace for creative arts development' },
+        { icon: '✅', title: 'Skills Mastery', description: '🎯 Industry-standard equipment and expert coordination' },
+      ],
+      challenges: [
+        { icon: '⚠️', title: 'Equipment Wear', description: 'Regular use causes deterioration requiring frequent replacement' },
+        { icon: '⚠️', title: 'Safety Training', description: 'Students need continuous monitoring to prevent accidents' },
+        { icon: '⚠️', title: 'Material Costs', description: 'High expense for quality raw materials and consumables' },
+      ],
+      recommendations: [
+        { icon: '💡', title: 'Preventive Maintenance', description: 'Schedule regular maintenance to extend equipment life' },
+        { icon: '💡', title: 'Safety Protocols', description: 'Develop comprehensive safety manual and certification program' },
+        { icon: '💡', title: 'Budget Allocation', description: 'Secure dedicated funding for materials and equipment' },
       ]
     },
 
@@ -886,18 +936,59 @@ const SchoolOverview = () => {
               ))}
             </div>
 
-            <div>
-              <h3 className="text-3xl font-bold text-primary-500 mb-8">Classroom Features</h3>
-              <div className="grid md:grid-cols-2 gap-6">
-                {schoolData.classrooms.features.map((feature, i) => (
-                  <div key={i} className="bg-white border-2 border-primary-500 rounded-xl p-6 shadow-lg flex gap-4">
-                    <div className="text-4xl">{feature.icon}</div>
-                    <div>
-                      <h4 className="text-xl font-bold text-primary-500 mb-2">{feature.title}</h4>
-                      <p className="text-gray-700">{feature.description}</p>
+            <div className="grid md:grid-cols-3 gap-8 mt-12">
+              {/* Positives */}
+              <div>
+                <h3 className="text-2xl font-bold text-green-600 mb-6 flex items-center gap-2"><span className="text-3xl">✅</span> Positives</h3>
+                <div className="space-y-4">
+                  {schoolData.classrooms.positives.map((item, i) => (
+                    <div key={i} className="bg-green-50 border-2 border-green-300 rounded-xl p-4 shadow-md">
+                      <div className="flex items-start gap-3">
+                        <div className="text-2xl flex-shrink-0 mt-1">{item.icon}</div>
+                        <div>
+                          <h4 className="font-bold text-green-700 mb-1">{item.title}</h4>
+                          <p className="text-sm text-gray-700">{item.description}</p>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
+              </div>
+
+              {/* Challenges */}
+              <div>
+                <h3 className="text-2xl font-bold text-orange-600 mb-6 flex items-center gap-2"><span className="text-3xl">⚠️</span> Challenges</h3>
+                <div className="space-y-4">
+                  {schoolData.classrooms.challenges.map((item, i) => (
+                    <div key={i} className="bg-orange-50 border-2 border-orange-300 rounded-xl p-4 shadow-md">
+                      <div className="flex items-start gap-3">
+                        <div className="text-2xl flex-shrink-0 mt-1">{item.icon}</div>
+                        <div>
+                          <h4 className="font-bold text-orange-700 mb-1">{item.title}</h4>
+                          <p className="text-sm text-gray-700">{item.description}</p>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Recommendations */}
+              <div>
+                <h3 className="text-2xl font-bold text-blue-600 mb-6 flex items-center gap-2"><span className="text-3xl">💡</span> Recommendations</h3>
+                <div className="space-y-4">
+                  {schoolData.classrooms.recommendations.map((item, i) => (
+                    <div key={i} className="bg-blue-50 border-2 border-blue-300 rounded-xl p-4 shadow-md">
+                      <div className="flex items-start gap-3">
+                        <div className="text-2xl flex-shrink-0 mt-1">{item.icon}</div>
+                        <div>
+                          <h4 className="font-bold text-blue-700 mb-1">{item.title}</h4>
+                          <p className="text-sm text-gray-700">{item.description}</p>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
 
@@ -954,18 +1045,59 @@ const SchoolOverview = () => {
               ))}
             </div>
 
-            <div>
-              <h3 className="text-3xl font-bold text-primary-500 mb-8">Laboratory Facilities</h3>
-              <div className="grid md:grid-cols-2 gap-6">
-                {schoolData.science_labs.features.map((feature, i) => (
-                  <div key={i} className="bg-white border-2 border-primary-500 rounded-xl p-6 shadow-lg flex gap-4">
-                    <div className="text-4xl">{feature.icon}</div>
-                    <div>
-                      <h4 className="text-xl font-bold text-primary-500 mb-2">{feature.title}</h4>
-                      <p className="text-gray-700">{feature.description}</p>
+            <div className="grid md:grid-cols-3 gap-8 mt-12">
+              {/* Positives */}
+              <div>
+                <h3 className="text-2xl font-bold text-green-600 mb-6 flex items-center gap-2"><span className="text-3xl">✅</span> Positives</h3>
+                <div className="space-y-4">
+                  {schoolData.science_labs.positives.map((item, i) => (
+                    <div key={i} className="bg-green-50 border-2 border-green-300 rounded-xl p-4 shadow-md">
+                      <div className="flex items-start gap-3">
+                        <div className="text-2xl flex-shrink-0 mt-1">{item.icon}</div>
+                        <div>
+                          <h4 className="font-bold text-green-700 mb-1">{item.title}</h4>
+                          <p className="text-sm text-gray-700">{item.description}</p>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
+              </div>
+
+              {/* Challenges */}
+              <div>
+                <h3 className="text-2xl font-bold text-orange-600 mb-6 flex items-center gap-2"><span className="text-3xl">⚠️</span> Challenges</h3>
+                <div className="space-y-4">
+                  {schoolData.science_labs.challenges.map((item, i) => (
+                    <div key={i} className="bg-orange-50 border-2 border-orange-300 rounded-xl p-4 shadow-md">
+                      <div className="flex items-start gap-3">
+                        <div className="text-2xl flex-shrink-0 mt-1">{item.icon}</div>
+                        <div>
+                          <h4 className="font-bold text-orange-700 mb-1">{item.title}</h4>
+                          <p className="text-sm text-gray-700">{item.description}</p>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Recommendations */}
+              <div>
+                <h3 className="text-2xl font-bold text-blue-600 mb-6 flex items-center gap-2"><span className="text-3xl">💡</span> Recommendations</h3>
+                <div className="space-y-4">
+                  {schoolData.science_labs.recommendations.map((item, i) => (
+                    <div key={i} className="bg-blue-50 border-2 border-blue-300 rounded-xl p-4 shadow-md">
+                      <div className="flex items-start gap-3">
+                        <div className="text-2xl flex-shrink-0 mt-1">{item.icon}</div>
+                        <div>
+                          <h4 className="font-bold text-blue-700 mb-1">{item.title}</h4>
+                          <p className="text-sm text-gray-700">{item.description}</p>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
 
@@ -1022,18 +1154,59 @@ const SchoolOverview = () => {
               ))}
             </div>
 
-            <div>
-              <h3 className="text-3xl font-bold text-primary-500 mb-8">Digital Learning Hub</h3>
-              <div className="grid md:grid-cols-2 gap-6">
-                {schoolData.computer_lab.features.map((feature, i) => (
-                  <div key={i} className="bg-white border-2 border-primary-500 rounded-xl p-6 shadow-lg flex gap-4">
-                    <div className="text-4xl">{feature.icon}</div>
-                    <div>
-                      <h4 className="text-xl font-bold text-primary-500 mb-2">{feature.title}</h4>
-                      <p className="text-gray-700">{feature.description}</p>
+            <div className="grid md:grid-cols-3 gap-8 mt-12">
+              {/* Positives */}
+              <div>
+                <h3 className="text-2xl font-bold text-green-600 mb-6 flex items-center gap-2"><span className="text-3xl">✅</span> Positives</h3>
+                <div className="space-y-4">
+                  {schoolData.computer_lab.positives.map((item, i) => (
+                    <div key={i} className="bg-green-50 border-2 border-green-300 rounded-xl p-4 shadow-md">
+                      <div className="flex items-start gap-3">
+                        <div className="text-2xl flex-shrink-0 mt-1">{item.icon}</div>
+                        <div>
+                          <h4 className="font-bold text-green-700 mb-1">{item.title}</h4>
+                          <p className="text-sm text-gray-700">{item.description}</p>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
+              </div>
+
+              {/* Challenges */}
+              <div>
+                <h3 className="text-2xl font-bold text-orange-600 mb-6 flex items-center gap-2"><span className="text-3xl">⚠️</span> Challenges</h3>
+                <div className="space-y-4">
+                  {schoolData.computer_lab.challenges.map((item, i) => (
+                    <div key={i} className="bg-orange-50 border-2 border-orange-300 rounded-xl p-4 shadow-md">
+                      <div className="flex items-start gap-3">
+                        <div className="text-2xl flex-shrink-0 mt-1">{item.icon}</div>
+                        <div>
+                          <h4 className="font-bold text-orange-700 mb-1">{item.title}</h4>
+                          <p className="text-sm text-gray-700">{item.description}</p>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Recommendations */}
+              <div>
+                <h3 className="text-2xl font-bold text-blue-600 mb-6 flex items-center gap-2"><span className="text-3xl">💡</span> Recommendations</h3>
+                <div className="space-y-4">
+                  {schoolData.computer_lab.recommendations.map((item, i) => (
+                    <div key={i} className="bg-blue-50 border-2 border-blue-300 rounded-xl p-4 shadow-md">
+                      <div className="flex items-start gap-3">
+                        <div className="text-2xl flex-shrink-0 mt-1">{item.icon}</div>
+                        <div>
+                          <h4 className="font-bold text-blue-700 mb-1">{item.title}</h4>
+                          <p className="text-sm text-gray-700">{item.description}</p>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
 
@@ -1090,18 +1263,59 @@ const SchoolOverview = () => {
               ))}
             </div>
 
-            <div>
-              <h3 className="text-3xl font-bold text-primary-500 mb-8">Venue Capabilities</h3>
-              <div className="grid md:grid-cols-2 gap-6">
-                {schoolData.multipurpose_hall.features.map((feature, i) => (
-                  <div key={i} className="bg-white border-2 border-primary-500 rounded-xl p-6 shadow-lg flex gap-4">
-                    <div className="text-4xl">{feature.icon}</div>
-                    <div>
-                      <h4 className="text-xl font-bold text-primary-500 mb-2">{feature.title}</h4>
-                      <p className="text-gray-700">{feature.description}</p>
+            <div className="grid md:grid-cols-3 gap-8 mt-12">
+              {/* Positives */}
+              <div>
+                <h3 className="text-2xl font-bold text-green-600 mb-6 flex items-center gap-2"><span className="text-3xl">✅</span> Positives</h3>
+                <div className="space-y-4">
+                  {schoolData.multipurpose_hall.positives.map((item, i) => (
+                    <div key={i} className="bg-green-50 border-2 border-green-300 rounded-xl p-4 shadow-md">
+                      <div className="flex items-start gap-3">
+                        <div className="text-2xl flex-shrink-0 mt-1">{item.icon}</div>
+                        <div>
+                          <h4 className="font-bold text-green-700 mb-1">{item.title}</h4>
+                          <p className="text-sm text-gray-700">{item.description}</p>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
+              </div>
+
+              {/* Challenges */}
+              <div>
+                <h3 className="text-2xl font-bold text-orange-600 mb-6 flex items-center gap-2"><span className="text-3xl">⚠️</span> Challenges</h3>
+                <div className="space-y-4">
+                  {schoolData.multipurpose_hall.challenges.map((item, i) => (
+                    <div key={i} className="bg-orange-50 border-2 border-orange-300 rounded-xl p-4 shadow-md">
+                      <div className="flex items-start gap-3">
+                        <div className="text-2xl flex-shrink-0 mt-1">{item.icon}</div>
+                        <div>
+                          <h4 className="font-bold text-orange-700 mb-1">{item.title}</h4>
+                          <p className="text-sm text-gray-700">{item.description}</p>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Recommendations */}
+              <div>
+                <h3 className="text-2xl font-bold text-blue-600 mb-6 flex items-center gap-2"><span className="text-3xl">💡</span> Recommendations</h3>
+                <div className="space-y-4">
+                  {schoolData.multipurpose_hall.recommendations.map((item, i) => (
+                    <div key={i} className="bg-blue-50 border-2 border-blue-300 rounded-xl p-4 shadow-md">
+                      <div className="flex items-start gap-3">
+                        <div className="text-2xl flex-shrink-0 mt-1">{item.icon}</div>
+                        <div>
+                          <h4 className="font-bold text-blue-700 mb-1">{item.title}</h4>
+                          <p className="text-sm text-gray-700">{item.description}</p>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
 
@@ -1158,18 +1372,59 @@ const SchoolOverview = () => {
               ))}
             </div>
 
-            <div>
-              <h3 className="text-3xl font-bold text-primary-500 mb-8">Vocational Spaces</h3>
-              <div className="grid md:grid-cols-2 gap-6">
-                {schoolData.practical_rooms.features.map((feature, i) => (
-                  <div key={i} className="bg-white border-2 border-primary-500 rounded-xl p-6 shadow-lg flex gap-4">
-                    <div className="text-4xl">{feature.icon}</div>
-                    <div>
-                      <h4 className="text-xl font-bold text-primary-500 mb-2">{feature.title}</h4>
-                      <p className="text-gray-700">{feature.description}</p>
+            <div className="grid md:grid-cols-3 gap-8 mt-12">
+              {/* Positives */}
+              <div>
+                <h3 className="text-2xl font-bold text-green-600 mb-6 flex items-center gap-2"><span className="text-3xl">✅</span> Positives</h3>
+                <div className="space-y-4">
+                  {schoolData.practical_rooms.positives.map((item, i) => (
+                    <div key={i} className="bg-green-50 border-2 border-green-300 rounded-xl p-4 shadow-md">
+                      <div className="flex items-start gap-3">
+                        <div className="text-2xl flex-shrink-0 mt-1">{item.icon}</div>
+                        <div>
+                          <h4 className="font-bold text-green-700 mb-1">{item.title}</h4>
+                          <p className="text-sm text-gray-700">{item.description}</p>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
+              </div>
+
+              {/* Challenges */}
+              <div>
+                <h3 className="text-2xl font-bold text-orange-600 mb-6 flex items-center gap-2"><span className="text-3xl">⚠️</span> Challenges</h3>
+                <div className="space-y-4">
+                  {schoolData.practical_rooms.challenges.map((item, i) => (
+                    <div key={i} className="bg-orange-50 border-2 border-orange-300 rounded-xl p-4 shadow-md">
+                      <div className="flex items-start gap-3">
+                        <div className="text-2xl flex-shrink-0 mt-1">{item.icon}</div>
+                        <div>
+                          <h4 className="font-bold text-orange-700 mb-1">{item.title}</h4>
+                          <p className="text-sm text-gray-700">{item.description}</p>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Recommendations */}
+              <div>
+                <h3 className="text-2xl font-bold text-blue-600 mb-6 flex items-center gap-2"><span className="text-3xl">💡</span> Recommendations</h3>
+                <div className="space-y-4">
+                  {schoolData.practical_rooms.recommendations.map((item, i) => (
+                    <div key={i} className="bg-blue-50 border-2 border-blue-300 rounded-xl p-4 shadow-md">
+                      <div className="flex items-start gap-3">
+                        <div className="text-2xl flex-shrink-0 mt-1">{item.icon}</div>
+                        <div>
+                          <h4 className="font-bold text-blue-700 mb-1">{item.title}</h4>
+                          <p className="text-sm text-gray-700">{item.description}</p>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
 
