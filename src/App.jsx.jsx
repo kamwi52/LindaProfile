@@ -90,6 +90,16 @@ const SchoolOverview = () => {
     { id: 2, url: 'https://images.unsplash.com/photo-1526676023131-d352423b0694?q=80&w=800', caption: 'Inter-School Athletics' }
   ]);
 
+  // Facility Photos State
+  const [facilityPhotos, setFacilityPhotos] = useState({
+    classrooms: [],
+    science_labs: [],
+    computer_lab: [],
+    multipurpose_hall: [],
+    practical_rooms: []
+  });
+  const [showFacilityPhotoControls, setShowFacilityPhotoControls] = useState(false);
+
   const getDepartmentForSubject = (subject) => {
     const s = subject.toUpperCase();
     if (['MATHEMATICS', 'ICT'].includes(s)) return 'MATHEMATICS & ICT';
@@ -566,6 +576,21 @@ const SchoolOverview = () => {
     }
   };
 
+  const handleFacilityPhotoUpload = (e, facilityName) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        const newPhoto = { id: Math.random(), url: event.target.result, caption: 'New Facility Photo' };
+        setFacilityPhotos(prev => ({
+          ...prev,
+          [facilityName]: [...(prev[facilityName] || []), newPhoto]
+        }));
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
   const exportOrgData = () => {
     const dataStr = JSON.stringify(orgData, null, 2);
     const blob = new Blob([dataStr], { type: 'application/json' });
@@ -992,6 +1017,223 @@ const SchoolOverview = () => {
               </div>
             </div>
 
+            {/* Facility Photo Gallery */}
+            <div className="bg-white border-2 border-primary-200 rounded-2xl p-8 shadow-lg">
+              <div className="flex items-center justify-between mb-6">
+                <h3 className="text-2xl font-bold text-primary-500 flex items-center gap-2">
+                  <ImageIcon className="w-6 h-6" /> Facility Photos
+                </h3>
+                <button 
+                  onClick={() => setShowFacilityPhotoControls(!showFacilityPhotoControls)}
+                  className="px-4 py-2 bg-primary-500 text-white rounded-lg text-sm font-bold hover:bg-primary-600 transition-colors"
+                >
+                  {showFacilityPhotoControls ? 'Hide' : 'Show'} Upload
+                </button>
+              </div>
+
+              {showFacilityPhotoControls && (
+                <div className="mb-6 pb-6 border-b-2 border-gray-200">
+                  <button 
+                    onClick={() => {
+                      const input = document.createElement('input');
+                      input.type = 'file';
+                      input.accept = 'image/*';
+                      input.onchange = (e) => handleFacilityPhotoUpload(e, 'classrooms');
+                      input.click();
+                    }}
+                    className="flex items-center gap-2 px-4 py-2 bg-green-600 text-white rounded-lg text-sm font-bold hover:bg-green-700 transition-colors"
+                  >
+                    <Plus className="w-4 h-4" /> Add Photo
+                  </button>
+                  <p className="text-sm text-gray-600 mt-2">📸 Photos are stored locally. Google Drive integration coming soon!</p>
+                </div>
+              )}
+
+              <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
+                {facilityPhotos.classrooms.map((img) => (
+                  <div key={img.id} className="group relative aspect-square bg-gray-100 rounded-xl overflow-hidden border-2 border-primary-100 hover:border-primary-500 transition-all">
+                    <img src={img.url} className="w-full h-full object-cover" alt={img.caption} />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-3">
+                      <p className="text-white text-[10px] font-medium leading-tight">{img.caption}</p>
+                      <button 
+                        onClick={() => setFacilityPhotos(prev => ({ ...prev, classrooms: prev.classrooms.filter(i => i.id !== img.id) }))}
+                        className="mt-2 p-1 bg-red-600 text-white rounded self-end"
+                      >
+                        <Trash2 className="w-3 h-3" />
+                      </button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {facilityPhotos.classrooms.length === 0 && !showFacilityPhotoControls && (
+                <p className="text-center text-gray-500 text-sm py-8">No photos yet. Click "Show Upload" to add photos.</p>
+              )}
+            </div>
+
+            {/* Facility Navigation */}
+            <div className="flex items-center justify-between pt-8 border-t-2 border-primary-100 mt-8">
+              <button
+                onClick={() => setActiveSection('facilities')}
+                className="flex items-center gap-2 px-4 py-2 bg-gray-200 text-gray-700 rounded-lg font-medium hover:bg-gray-300 transition-colors"
+              >
+                <ArrowRight className="w-4 h-4 rotate-180" /> Back
+              </button>
+              <div className="flex gap-2">
+                <button
+                  onClick={() => setActiveSection('facilities')}
+                  className="px-4 py-2 bg-accent-400 text-white rounded-lg font-medium hover:bg-accent-500 transition-colors"
+                >
+                  All Facilities
+                </button>
+                <button
+                  onClick={() => setActiveSection('science_labs')}
+                  className="flex items-center gap-2 px-4 py-2 bg-primary-500 text-white rounded-lg font-medium hover:bg-primary-600 transition-colors"
+                >
+                  Next <ArrowRight className="w-4 h-4" />
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Science Laboratories Section */}
+        {activeSection === 'science_labs' && (
+          <div className="space-y-12">
+            <div className="bg-primary-500 text-white rounded-2xl p-8 shadow-xl relative overflow-hidden">
+              <div className="absolute top-0 right-0 p-8 opacity-10">
+                <FlaskConical className="w-64 h-64 rotate-12" />
+              </div>
+              <div className="relative z-10">
+                <h2 className="text-4xl font-black mb-4 flex items-center gap-4">
+                  <span className="text-5xl">🔬</span>
+                  {schoolData.science_labs.title}
+                </h2>
+                <p className="text-xl text-accent-50 max-w-2xl leading-relaxed">
+                  {schoolData.science_labs.overview}
+                </p>
+              </div>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-6">
+              {schoolData.science_labs.statistics.map((stat, i) => (
+                <div key={i} className="bg-white border-2 border-primary-500 rounded-xl p-8 text-center shadow-lg">
+                  <div className="text-4xl font-black text-primary-500 mb-2">{stat.value}</div>
+                  <div className="text-gray-700 font-semibold">{stat.label}</div>
+                </div>
+              ))}
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-8 mt-12">
+              {/* Positives */}
+              <div>
+                <h3 className="text-2xl font-bold text-green-600 mb-6 flex items-center gap-2"><span className="text-3xl">✅</span> Positives</h3>
+                <div className="space-y-4">
+                  {schoolData.science_labs.positives.map((item, i) => (
+                    <div key={i} className="bg-green-50 border-2 border-green-300 rounded-xl p-4 shadow-md">
+                      <div className="flex items-start gap-3">
+                        <div className="text-2xl flex-shrink-0 mt-1">{item.icon}</div>
+                        <div>
+                          <h4 className="font-bold text-green-700 mb-1">{item.title}</h4>
+                          <p className="text-sm text-gray-700">{item.description}</p>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Challenges */}
+              <div>
+                <h3 className="text-2xl font-bold text-orange-600 mb-6 flex items-center gap-2"><span className="text-3xl">⚠️</span> Challenges</h3>
+                <div className="space-y-4">
+                  {schoolData.science_labs.challenges.map((item, i) => (
+                    <div key={i} className="bg-orange-50 border-2 border-orange-300 rounded-xl p-4 shadow-md">
+                      <div className="flex items-start gap-3">
+                        <div className="text-2xl flex-shrink-0 mt-1">{item.icon}</div>
+                        <div>
+                          <h4 className="font-bold text-orange-700 mb-1">{item.title}</h4>
+                          <p className="text-sm text-gray-700">{item.description}</p>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Recommendations */}
+              <div>
+                <h3 className="text-2xl font-bold text-blue-600 mb-6 flex items-center gap-2"><span className="text-3xl">💡</span> Recommendations</h3>
+                <div className="space-y-4">
+                  {schoolData.science_labs.recommendations.map((item, i) => (
+                    <div key={i} className="bg-blue-50 border-2 border-blue-300 rounded-xl p-4 shadow-md">
+                      <div className="flex items-start gap-3">
+                        <div className="text-2xl flex-shrink-0 mt-1">{item.icon}</div>
+                        <div>
+                          <h4 className="font-bold text-blue-700 mb-1">{item.title}</h4>
+                          <p className="text-sm text-gray-700">{item.description}</p>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Facility Photo Gallery */}
+            <div className="bg-white border-2 border-primary-200 rounded-2xl p-8 shadow-lg">
+              <div className="flex items-center justify-between mb-6">
+                <h3 className="text-2xl font-bold text-primary-500 flex items-center gap-2">
+                  <ImageIcon className="w-6 h-6" /> Facility Photos
+                </h3>
+                <button 
+                  onClick={() => setShowFacilityPhotoControls(!showFacilityPhotoControls)}
+                  className="px-4 py-2 bg-primary-500 text-white rounded-lg text-sm font-bold hover:bg-primary-600 transition-colors"
+                >
+                  {showFacilityPhotoControls ? 'Hide' : 'Show'} Upload
+                </button>
+              </div>
+
+              {showFacilityPhotoControls && (
+                <div className="mb-6 pb-6 border-b-2 border-gray-200">
+                  <button 
+                    onClick={() => {
+                      const input = document.createElement('input');
+                      input.type = 'file';
+                      input.accept = 'image/*';
+                      input.onchange = (e) => handleFacilityPhotoUpload(e, 'science_labs');
+                      input.click();
+                    }}
+                    className="flex items-center gap-2 px-4 py-2 bg-green-600 text-white rounded-lg text-sm font-bold hover:bg-green-700 transition-colors"
+                  >
+                    <Plus className="w-4 h-4" /> Add Photo
+                  </button>
+                  <p className="text-sm text-gray-600 mt-2">📸 Photos are stored locally. Google Drive integration coming soon!</p>
+                </div>
+              )}
+
+              <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
+                {facilityPhotos.science_labs.map((img) => (
+                  <div key={img.id} className="group relative aspect-square bg-gray-100 rounded-xl overflow-hidden border-2 border-primary-100 hover:border-primary-500 transition-all">
+                    <img src={img.url} className="w-full h-full object-cover" alt={img.caption} />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-3">
+                      <p className="text-white text-[10px] font-medium leading-tight">{img.caption}</p>
+                      <button 
+                        onClick={() => setFacilityPhotos(prev => ({ ...prev, science_labs: prev.science_labs.filter(i => i.id !== img.id) }))}
+                        className="mt-2 p-1 bg-red-600 text-white rounded self-end"
+                      >
+                        <Trash2 className="w-3 h-3" />
+                      </button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {facilityPhotos.science_labs.length === 0 && !showFacilityPhotoControls && (
+                <p className="text-center text-gray-500 text-sm py-8">No photos yet. Click "Show Upload" to add photos.</p>
+              )}
+            </div>
+
             {/* Facility Navigation */}
             <div className="flex items-center justify-between pt-8 border-t-2 border-primary-100 mt-8">
               <button
@@ -1210,6 +1452,60 @@ const SchoolOverview = () => {
               </div>
             </div>
 
+            {/* Facility Photo Gallery */}
+            <div className="bg-white border-2 border-primary-200 rounded-2xl p-8 shadow-lg">
+              <div className="flex items-center justify-between mb-6">
+                <h3 className="text-2xl font-bold text-primary-500 flex items-center gap-2">
+                  <ImageIcon className="w-6 h-6" /> Facility Photos
+                </h3>
+                <button 
+                  onClick={() => setShowFacilityPhotoControls(!showFacilityPhotoControls)}
+                  className="px-4 py-2 bg-primary-500 text-white rounded-lg text-sm font-bold hover:bg-primary-600 transition-colors"
+                >
+                  {showFacilityPhotoControls ? 'Hide' : 'Show'} Upload
+                </button>
+              </div>
+
+              {showFacilityPhotoControls && (
+                <div className="mb-6 pb-6 border-b-2 border-gray-200">
+                  <button 
+                    onClick={() => {
+                      const input = document.createElement('input');
+                      input.type = 'file';
+                      input.accept = 'image/*';
+                      input.onchange = (e) => handleFacilityPhotoUpload(e, 'computer_lab');
+                      input.click();
+                    }}
+                    className="flex items-center gap-2 px-4 py-2 bg-green-600 text-white rounded-lg text-sm font-bold hover:bg-green-700 transition-colors"
+                  >
+                    <Plus className="w-4 h-4" /> Add Photo
+                  </button>
+                  <p className="text-sm text-gray-600 mt-2">📸 Photos are stored locally. Google Drive integration coming soon!</p>
+                </div>
+              )}
+
+              <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
+                {facilityPhotos.computer_lab.map((img) => (
+                  <div key={img.id} className="group relative aspect-square bg-gray-100 rounded-xl overflow-hidden border-2 border-primary-100 hover:border-primary-500 transition-all">
+                    <img src={img.url} className="w-full h-full object-cover" alt={img.caption} />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-3">
+                      <p className="text-white text-[10px] font-medium leading-tight">{img.caption}</p>
+                      <button 
+                        onClick={() => setFacilityPhotos(prev => ({ ...prev, computer_lab: prev.computer_lab.filter(i => i.id !== img.id) }))}
+                        className="mt-2 p-1 bg-red-600 text-white rounded self-end"
+                      >
+                        <Trash2 className="w-3 h-3" />
+                      </button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {facilityPhotos.computer_lab.length === 0 && !showFacilityPhotoControls && (
+                <p className="text-center text-gray-500 text-sm py-8">No photos yet. Click "Show Upload" to add photos.</p>
+              )}
+            </div>
+
             {/* Facility Navigation */}
             <div className="flex items-center justify-between pt-8 border-t-2 border-primary-100 mt-8">
               <button
@@ -1319,6 +1615,60 @@ const SchoolOverview = () => {
               </div>
             </div>
 
+            {/* Facility Photo Gallery */}
+            <div className="bg-white border-2 border-primary-200 rounded-2xl p-8 shadow-lg">
+              <div className="flex items-center justify-between mb-6">
+                <h3 className="text-2xl font-bold text-primary-500 flex items-center gap-2">
+                  <ImageIcon className="w-6 h-6" /> Facility Photos
+                </h3>
+                <button 
+                  onClick={() => setShowFacilityPhotoControls(!showFacilityPhotoControls)}
+                  className="px-4 py-2 bg-primary-500 text-white rounded-lg text-sm font-bold hover:bg-primary-600 transition-colors"
+                >
+                  {showFacilityPhotoControls ? 'Hide' : 'Show'} Upload
+                </button>
+              </div>
+
+              {showFacilityPhotoControls && (
+                <div className="mb-6 pb-6 border-b-2 border-gray-200">
+                  <button 
+                    onClick={() => {
+                      const input = document.createElement('input');
+                      input.type = 'file';
+                      input.accept = 'image/*';
+                      input.onchange = (e) => handleFacilityPhotoUpload(e, 'multipurpose_hall');
+                      input.click();
+                    }}
+                    className="flex items-center gap-2 px-4 py-2 bg-green-600 text-white rounded-lg text-sm font-bold hover:bg-green-700 transition-colors"
+                  >
+                    <Plus className="w-4 h-4" /> Add Photo
+                  </button>
+                  <p className="text-sm text-gray-600 mt-2">📸 Photos are stored locally. Google Drive integration coming soon!</p>
+                </div>
+              )}
+
+              <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
+                {facilityPhotos.multipurpose_hall.map((img) => (
+                  <div key={img.id} className="group relative aspect-square bg-gray-100 rounded-xl overflow-hidden border-2 border-primary-100 hover:border-primary-500 transition-all">
+                    <img src={img.url} className="w-full h-full object-cover" alt={img.caption} />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-3">
+                      <p className="text-white text-[10px] font-medium leading-tight">{img.caption}</p>
+                      <button 
+                        onClick={() => setFacilityPhotos(prev => ({ ...prev, multipurpose_hall: prev.multipurpose_hall.filter(i => i.id !== img.id) }))}
+                        className="mt-2 p-1 bg-red-600 text-white rounded self-end"
+                      >
+                        <Trash2 className="w-3 h-3" />
+                      </button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {facilityPhotos.multipurpose_hall.length === 0 && !showFacilityPhotoControls && (
+                <p className="text-center text-gray-500 text-sm py-8">No photos yet. Click "Show Upload" to add photos.</p>
+              )}
+            </div>
+
             {/* Facility Navigation */}
             <div className="flex items-center justify-between pt-8 border-t-2 border-primary-100 mt-8">
               <button
@@ -1426,6 +1776,60 @@ const SchoolOverview = () => {
                   ))}
                 </div>
               </div>
+            </div>
+
+            {/* Facility Photo Gallery */}
+            <div className="bg-white border-2 border-primary-200 rounded-2xl p-8 shadow-lg">
+              <div className="flex items-center justify-between mb-6">
+                <h3 className="text-2xl font-bold text-primary-500 flex items-center gap-2">
+                  <ImageIcon className="w-6 h-6" /> Facility Photos
+                </h3>
+                <button 
+                  onClick={() => setShowFacilityPhotoControls(!showFacilityPhotoControls)}
+                  className="px-4 py-2 bg-primary-500 text-white rounded-lg text-sm font-bold hover:bg-primary-600 transition-colors"
+                >
+                  {showFacilityPhotoControls ? 'Hide' : 'Show'} Upload
+                </button>
+              </div>
+
+              {showFacilityPhotoControls && (
+                <div className="mb-6 pb-6 border-b-2 border-gray-200">
+                  <button 
+                    onClick={() => {
+                      const input = document.createElement('input');
+                      input.type = 'file';
+                      input.accept = 'image/*';
+                      input.onchange = (e) => handleFacilityPhotoUpload(e, 'practical_rooms');
+                      input.click();
+                    }}
+                    className="flex items-center gap-2 px-4 py-2 bg-green-600 text-white rounded-lg text-sm font-bold hover:bg-green-700 transition-colors"
+                  >
+                    <Plus className="w-4 h-4" /> Add Photo
+                  </button>
+                  <p className="text-sm text-gray-600 mt-2">📸 Photos are stored locally. Google Drive integration coming soon!</p>
+                </div>
+              )}
+
+              <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
+                {facilityPhotos.practical_rooms.map((img) => (
+                  <div key={img.id} className="group relative aspect-square bg-gray-100 rounded-xl overflow-hidden border-2 border-primary-100 hover:border-primary-500 transition-all">
+                    <img src={img.url} className="w-full h-full object-cover" alt={img.caption} />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-3">
+                      <p className="text-white text-[10px] font-medium leading-tight">{img.caption}</p>
+                      <button 
+                        onClick={() => setFacilityPhotos(prev => ({ ...prev, practical_rooms: prev.practical_rooms.filter(i => i.id !== img.id) }))}
+                        className="mt-2 p-1 bg-red-600 text-white rounded self-end"
+                      >
+                        <Trash2 className="w-3 h-3" />
+                      </button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {facilityPhotos.practical_rooms.length === 0 && !showFacilityPhotoControls && (
+                <p className="text-center text-gray-500 text-sm py-8">No photos yet. Click "Show Upload" to add photos.</p>
+              )}
             </div>
 
             {/* Facility Navigation */}
