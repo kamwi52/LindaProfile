@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Menu, X, ChevronDown, MapPin, Users, BookOpen, Trophy, Star, Clock, Phone, Mail, Building2, AlertCircle, RefreshCw, ArrowRight, FlaskConical, GraduationCap, Award, Camera, Plus, Trash2, Copy, Download, Upload, Printer, Search, Image as ImageIcon, Code, Hammer } from 'lucide-react';
+import { sportsImages } from './imageConfig';
 
 const PLACEHOLDER_IMG = 'https://placehold.co/90x110/e8e8e8/666666?text=Staff+Photo';
 
@@ -85,10 +86,7 @@ const SchoolOverview = () => {
   const [orgData, setOrgData] = useState({ rows: [] });
   const [activePhotoUpload, setActivePhotoUpload] = useState(null);
   const [showOrgControls, setShowOrgControls] = useState(false);
-  const [sportsGallery, setSportsGallery] = useState([
-    { id: 1, url: 'https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=800', caption: 'Football Finals 2024' },
-    { id: 2, url: 'https://images.unsplash.com/photo-1526676023131-d352423b0694?q=80&w=800', caption: 'Inter-School Athletics' }
-  ]);
+  const [sportsGallery, setSportsGallery] = useState(sportsImages);
 
   // Facility Photos State
   const [facilityPhotos, setFacilityPhotos] = useState({
