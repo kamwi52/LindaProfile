@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Menu, X, ChevronDown, MapPin, Users, BookOpen, Trophy, Star, Clock, Phone, Mail, Building2, AlertCircle, RefreshCw, ArrowRight, FlaskConical, GraduationCap, Award, Camera, Plus, Trash2, Copy, Download, Upload, Printer, Search, Image as ImageIcon } from 'lucide-react';
+import { Menu, X, ChevronDown, MapPin, Users, BookOpen, Trophy, Star, Clock, Phone, Mail, Building2, AlertCircle, RefreshCw, ArrowRight, FlaskConical, GraduationCap, Award, Camera, Plus, Trash2, Copy, Download, Upload, Printer, Search, Image as ImageIcon, Code, Hammer } from 'lucide-react';
 
 const PLACEHOLDER_IMG = 'https://placehold.co/90x110/e8e8e8/666666?text=Staff+Photo';
 
@@ -278,6 +278,101 @@ const SchoolOverview = () => {
       records: [
         { event: '100m Dash', record: '10.45s', holder: 'M. Phiri', year: '2024' },
         { event: 'Long Jump', record: '6.82m', holder: 'L. Banda', year: '2023' },
+      ]
+    },
+
+    classrooms: {
+      title: 'Classrooms',
+      description: 'Learning Spaces',
+      icon: '🏫',
+      count: '32',
+      overview: 'Linda Secondary School features 32 dedicated, well-equipped classrooms designed to provide a conducive environment for both teaching and learning.',
+      features: [
+        { icon: '📚', title: 'Technology-Enabled', description: 'Equipped with whiteboards, projectors, and internet connectivity' },
+        { icon: '👥', title: 'Optimal Class Size', description: 'Average 35-40 students per class for effective learning' },
+        { icon: '💡', title: 'Well-Lit & Ventilated', description: 'Natural light and proper ventilation for comfortable learning' },
+        { icon: '🎨', title: 'Learning-Centered Design', description: 'Flexible furniture arrangement supporting various teaching methods' },
+      ],
+      statistics: [
+        { label: 'Total Classrooms', value: '32' },
+        { label: 'Student Capacity', value: '1200+' },
+        { label: 'Teacher:Student Ratio', value: '1:35' },
+      ]
+    },
+
+    science_labs: {
+      title: 'Science Laboratories',
+      description: 'Practical Science Learning',
+      icon: '🔬',
+      count: '2',
+      overview: 'Two fully-equipped science laboratories supporting hands-on learning in Physics, Chemistry, and Biology with modern scientific instruments.',
+      features: [
+        { icon: '🧪', title: 'Chemistry Lab', description: 'Complete chemistry apparatus, reagents, and safety equipment' },
+        { icon: '⚛️', title: 'Physics Lab', description: 'Mechanics, electricity, optics, and thermodynamics equipment' },
+        { icon: '🔍', title: 'Biology Lab', description: 'Microscopes, dissection kits, and sample collections' },
+        { icon: '🛡️', title: 'Safety First', description: 'Full safety gear, first aid kits, and safety protocols' },
+      ],
+      statistics: [
+        { label: 'Laboratory Spaces', value: '2' },
+        { label: 'Student Practicals/Term', value: '40+' },
+        { label: 'Safety Compliance', value: '100%' },
+      ]
+    },
+
+    computer_lab: {
+      title: 'Computer Laboratory',
+      description: 'Digital Learning Hub',
+      icon: '💻',
+      count: '1',
+      overview: 'State-of-the-art computer laboratory providing ICT training, coding education, and digital literacy for all students.',
+      features: [
+        { icon: '🖥️', title: '30+ Computers', description: 'Modern workstations with latest processors and components' },
+        { icon: '📡', title: 'High-Speed Internet', description: 'Fiber optic connection ensuring reliable online access' },
+        { icon: '💾', title: 'Software Suite', description: 'Microsoft Office, Adobe Suite, Programming tools, and Learning Management System' },
+        { icon: '👨‍🏫', title: 'Expert Instruction', description: 'ICT specialists guiding students through digital skills' },
+      ],
+      statistics: [
+        { label: 'Computer Workstations', value: '30+' },
+        { label: 'Students/Year', value: '400+' },
+        { label: 'Online Platforms', value: '5+' },
+      ]
+    },
+
+    multipurpose_hall: {
+      title: 'Multipurpose Hall',
+      description: 'Events & Assembly Venue',
+      icon: '🎭',
+      capacity: '800+',
+      overview: 'A spacious multipurpose hall accommodating school assemblies, expressive arts performances, conferences, and community events.',
+      features: [
+        { icon: '🎤', title: 'Sound System', description: 'Professional-grade audio and microphone setup' },
+        { icon: '💡', title: 'Lighting & Projection', description: 'LED lighting, projectors, and screen for multimedia presentations' },
+        { icon: '🪑', title: 'Flexible Seating', description: 'Modular seating arrangement for 800+ people' },
+        { icon: '🎪', title: 'Event-Ready', description: 'Stage, backstage facilities, and green room' },
+      ],
+      statistics: [
+        { label: 'Seating Capacity', value: '800+' },
+        { label: 'Events/Year', value: '50+' },
+        { label: 'Hall Dimension', value: '40m x 30m' },
+      ]
+    },
+
+    practical_rooms: {
+      title: 'Practical Rooms',
+      description: 'Vocational Skills Training',
+      icon: '🛠️',
+      count: '4',
+      overview: 'Four specialized rooms dedicated to vocational and skills training, enabling students to develop hands-on lifelong competencies.',
+      features: [
+        { icon: '🍳', title: 'Food Science Room', description: 'Kitchen facilities for nutrition and hospitality training' },
+        { icon: '🛠️', title: 'D&T Workshop', description: 'Design and technology tools and equipment for practical projects' },
+        { icon: '👗', title: 'Craft Studio', description: 'Textile and design workspace for creative arts' },
+        { icon: '🎯', title: 'Skills Mastery', description: 'Industry-standard equipment and expert coordination' },
+      ],
+      statistics: [
+        { label: 'Practical Rooms', value: '4' },
+        { label: 'Subjects Offered', value: '6+' },
+        { label: 'Students Trained/Year', value: '300+' },
       ]
     },
 
@@ -668,8 +763,17 @@ const SchoolOverview = () => {
                   <button
                     key={idx}
                     onClick={() => {
-                      if (facility.name === 'Sports Grounds') setActiveSection('sports');
-                      else if (facility.name === 'SHN : SCHOOL FEEDING PROGRAM') setActiveSection('shn');
+                      const facilityMap = {
+                        'Sports Grounds': 'sports',
+                        'SHN : SCHOOL FEEDING PROGRAM': 'shn',
+                        'Classrooms': 'classrooms',
+                        'Science Laboratories': 'science_labs',
+                        'Computer Lab': 'computer_lab',
+                        'Multipurpose Hall': 'multipurpose_hall',
+                        'Practical Rooms': 'practical_rooms',
+                      };
+                      const sectionId = facilityMap[facility.name];
+                      if (sectionId) setActiveSection(sectionId);
                       else setSelectedFacility(facility);
                     }}
                     className="bg-white border-2 border-primary-500 rounded-xl p-6 hover:shadow-xl hover:bg-primary-50 transition-all text-left cursor-pointer active:scale-95"
@@ -738,6 +842,226 @@ const SchoolOverview = () => {
               <button className="px-8 py-3 bg-white text-primary-500 rounded-lg font-bold text-lg hover:bg-accent-50 transition-colors">
                 Learn More
               </button>
+            </div>
+          </div>
+        )}
+
+        {/* Classrooms Section */}
+        {activeSection === 'classrooms' && (
+          <div className="space-y-12">
+            <div className="bg-primary-500 text-white rounded-2xl p-8 shadow-xl relative overflow-hidden">
+              <div className="absolute top-0 right-0 p-8 opacity-10">
+                <BookOpen className="w-64 h-64 rotate-12" />
+              </div>
+              <div className="relative z-10">
+                <h2 className="text-4xl font-black mb-4 flex items-center gap-4">
+                  <span className="text-5xl">🏫</span>
+                  {schoolData.classrooms.title}
+                </h2>
+                <p className="text-xl text-accent-50 max-w-2xl leading-relaxed">
+                  {schoolData.classrooms.overview}
+                </p>
+              </div>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-6">
+              {schoolData.classrooms.statistics.map((stat, i) => (
+                <div key={i} className="bg-white border-2 border-primary-500 rounded-xl p-8 text-center shadow-lg">
+                  <div className="text-4xl font-black text-primary-500 mb-2">{stat.value}</div>
+                  <div className="text-gray-700 font-semibold">{stat.label}</div>
+                </div>
+              ))}
+            </div>
+
+            <div>
+              <h3 className="text-3xl font-bold text-primary-500 mb-8">Classroom Features</h3>
+              <div className="grid md:grid-cols-2 gap-6">
+                {schoolData.classrooms.features.map((feature, i) => (
+                  <div key={i} className="bg-white border-2 border-primary-500 rounded-xl p-6 shadow-lg flex gap-4">
+                    <div className="text-4xl">{feature.icon}</div>
+                    <div>
+                      <h4 className="text-xl font-bold text-primary-500 mb-2">{feature.title}</h4>
+                      <p className="text-gray-700">{feature.description}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Science Laboratories Section */}
+        {activeSection === 'science_labs' && (
+          <div className="space-y-12">
+            <div className="bg-primary-500 text-white rounded-2xl p-8 shadow-xl relative overflow-hidden">
+              <div className="absolute top-0 right-0 p-8 opacity-10">
+                <FlaskConical className="w-64 h-64 rotate-12" />
+              </div>
+              <div className="relative z-10">
+                <h2 className="text-4xl font-black mb-4 flex items-center gap-4">
+                  <span className="text-5xl">🔬</span>
+                  {schoolData.science_labs.title}
+                </h2>
+                <p className="text-xl text-accent-50 max-w-2xl leading-relaxed">
+                  {schoolData.science_labs.overview}
+                </p>
+              </div>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-6">
+              {schoolData.science_labs.statistics.map((stat, i) => (
+                <div key={i} className="bg-white border-2 border-primary-500 rounded-xl p-8 text-center shadow-lg">
+                  <div className="text-4xl font-black text-primary-500 mb-2">{stat.value}</div>
+                  <div className="text-gray-700 font-semibold">{stat.label}</div>
+                </div>
+              ))}
+            </div>
+
+            <div>
+              <h3 className="text-3xl font-bold text-primary-500 mb-8">Laboratory Facilities</h3>
+              <div className="grid md:grid-cols-2 gap-6">
+                {schoolData.science_labs.features.map((feature, i) => (
+                  <div key={i} className="bg-white border-2 border-primary-500 rounded-xl p-6 shadow-lg flex gap-4">
+                    <div className="text-4xl">{feature.icon}</div>
+                    <div>
+                      <h4 className="text-xl font-bold text-primary-500 mb-2">{feature.title}</h4>
+                      <p className="text-gray-700">{feature.description}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Computer Lab Section */}
+        {activeSection === 'computer_lab' && (
+          <div className="space-y-12">
+            <div className="bg-primary-500 text-white rounded-2xl p-8 shadow-xl relative overflow-hidden">
+              <div className="absolute top-0 right-0 p-8 opacity-10">
+                <Code className="w-64 h-64 rotate-12" />
+              </div>
+              <div className="relative z-10">
+                <h2 className="text-4xl font-black mb-4 flex items-center gap-4">
+                  <span className="text-5xl">💻</span>
+                  {schoolData.computer_lab.title}
+                </h2>
+                <p className="text-xl text-accent-50 max-w-2xl leading-relaxed">
+                  {schoolData.computer_lab.overview}
+                </p>
+              </div>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-6">
+              {schoolData.computer_lab.statistics.map((stat, i) => (
+                <div key={i} className="bg-white border-2 border-primary-500 rounded-xl p-8 text-center shadow-lg">
+                  <div className="text-4xl font-black text-primary-500 mb-2">{stat.value}</div>
+                  <div className="text-gray-700 font-semibold">{stat.label}</div>
+                </div>
+              ))}
+            </div>
+
+            <div>
+              <h3 className="text-3xl font-bold text-primary-500 mb-8">Digital Learning Hub</h3>
+              <div className="grid md:grid-cols-2 gap-6">
+                {schoolData.computer_lab.features.map((feature, i) => (
+                  <div key={i} className="bg-white border-2 border-primary-500 rounded-xl p-6 shadow-lg flex gap-4">
+                    <div className="text-4xl">{feature.icon}</div>
+                    <div>
+                      <h4 className="text-xl font-bold text-primary-500 mb-2">{feature.title}</h4>
+                      <p className="text-gray-700">{feature.description}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Multipurpose Hall Section */}
+        {activeSection === 'multipurpose_hall' && (
+          <div className="space-y-12">
+            <div className="bg-primary-500 text-white rounded-2xl p-8 shadow-xl relative overflow-hidden">
+              <div className="absolute top-0 right-0 p-8 opacity-10">
+                <Building2 className="w-64 h-64 rotate-12" />
+              </div>
+              <div className="relative z-10">
+                <h2 className="text-4xl font-black mb-4 flex items-center gap-4">
+                  <span className="text-5xl">🎭</span>
+                  {schoolData.multipurpose_hall.title}
+                </h2>
+                <p className="text-xl text-accent-50 max-w-2xl leading-relaxed">
+                  {schoolData.multipurpose_hall.overview}
+                </p>
+              </div>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-6">
+              {schoolData.multipurpose_hall.statistics.map((stat, i) => (
+                <div key={i} className="bg-white border-2 border-primary-500 rounded-xl p-8 text-center shadow-lg">
+                  <div className="text-4xl font-black text-primary-500 mb-2">{stat.value}</div>
+                  <div className="text-gray-700 font-semibold">{stat.label}</div>
+                </div>
+              ))}
+            </div>
+
+            <div>
+              <h3 className="text-3xl font-bold text-primary-500 mb-8">Venue Capabilities</h3>
+              <div className="grid md:grid-cols-2 gap-6">
+                {schoolData.multipurpose_hall.features.map((feature, i) => (
+                  <div key={i} className="bg-white border-2 border-primary-500 rounded-xl p-6 shadow-lg flex gap-4">
+                    <div className="text-4xl">{feature.icon}</div>
+                    <div>
+                      <h4 className="text-xl font-bold text-primary-500 mb-2">{feature.title}</h4>
+                      <p className="text-gray-700">{feature.description}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Practical Rooms Section */}
+        {activeSection === 'practical_rooms' && (
+          <div className="space-y-12">
+            <div className="bg-primary-500 text-white rounded-2xl p-8 shadow-xl relative overflow-hidden">
+              <div className="absolute top-0 right-0 p-8 opacity-10">
+                <Hammer className="w-64 h-64 rotate-12" />
+              </div>
+              <div className="relative z-10">
+                <h2 className="text-4xl font-black mb-4 flex items-center gap-4">
+                  <span className="text-5xl">🛠️</span>
+                  {schoolData.practical_rooms.title}
+                </h2>
+                <p className="text-xl text-accent-50 max-w-2xl leading-relaxed">
+                  {schoolData.practical_rooms.overview}
+                </p>
+              </div>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-6">
+              {schoolData.practical_rooms.statistics.map((stat, i) => (
+                <div key={i} className="bg-white border-2 border-primary-500 rounded-xl p-8 text-center shadow-lg">
+                  <div className="text-4xl font-black text-primary-500 mb-2">{stat.value}</div>
+                  <div className="text-gray-700 font-semibold">{stat.label}</div>
+                </div>
+              ))}
+            </div>
+
+            <div>
+              <h3 className="text-3xl font-bold text-primary-500 mb-8">Vocational Spaces</h3>
+              <div className="grid md:grid-cols-2 gap-6">
+                {schoolData.practical_rooms.features.map((feature, i) => (
+                  <div key={i} className="bg-white border-2 border-primary-500 rounded-xl p-6 shadow-lg flex gap-4">
+                    <div className="text-4xl">{feature.icon}</div>
+                    <div>
+                      <h4 className="text-xl font-bold text-primary-500 mb-2">{feature.title}</h4>
+                      <p className="text-gray-700">{feature.description}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         )}
