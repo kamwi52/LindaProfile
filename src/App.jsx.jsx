@@ -374,8 +374,8 @@ const SchoolOverview = () => {
       ],
       recommendations: [
         { icon: '💡', title: 'Mobile Lab', description: 'Acquire tablets/laptops for classroom-based lessons' },
-        { icon: '💡', title: 'Evening Sessions', description: 'Extend lab hours for additional access opportunities' },
-        { icon: '💡', title: 'Open-Source Alternatives', description: 'Reduce costs with GIMP, LibreOffice alternatives' },
+        { icon: '💡', title: 'Cost Reduction Strategy', description: 'Reduce licensing costs through open-source software and bulk procurement agreements' },
+        { icon: '💡', title: 'Expand ICT Infrastructure', description: 'Build additional 2x computer labs and furnish with modern equipment for increased student access' },
       ]
     },
 
