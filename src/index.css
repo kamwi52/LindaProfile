@@ -2,20 +2,221 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  /* Presentation Mode Spacing System (consistent scale) */
+  --spacing-xs: 0.25rem;  /* 4px */
+  --spacing-sm: 0.5rem;   /* 8px */
+  --spacing-base: 1rem;   /* 16px */
+  --spacing-md: 1.5rem;   /* 24px */
+  --spacing-lg: 2rem;     /* 32px */
+  --spacing-xl: 2.5rem;   /* 40px */
+  --spacing-2xl: 3rem;    /* 48px */
+
+  /* Presentation Colors (preserve brand) */
+  --color-primary: #001f3f;    /* blue-900 */
+  --color-primary-light: #0066cc; /* blue-600 */
+  --color-accent: #ffc107;     /* yellow-500 */
+  --color-text: #1a202c;       /* gray-900 */
+  --color-text-secondary: #4a5568; /* gray-700 */
+}
+
 * {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   margin: 0;
   padding: 0;
   font-family: system-ui, -apple-system, sans-serif;
+  overflow: hidden;
 }
 
 #root {
   width: 100%;
-  height: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Presentation Mode Styles */
+.presentation-root {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.presentation-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+}
+
+.slide-content {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
+  
+  /* Presentation scrollbar styling */
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-primary) rgba(0, 0, 0, 0.1);
+}
+
+.slide-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.slide-content::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.slide-content::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+  border-radius: 3px;
+}
+
+.slide-content::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary-light);
+}
+
+section {
+  scroll-snap-align: center;
+  scroll-snap-stop: always;
+}
+
+/* Presentation Navigation Bar */
+.presentation-nav {
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Consistent padding for sections */
+section {
+  padding: var(--spacing-md);
+}
+
+@media (min-width: 768px) {
+  section {
+    padding: var(--spacing-xl);
+  }
+}
+
+/* Heading consistency */
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+  margin-bottom: var(--spacing-md);
+  letter-spacing: -0.02em;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.75rem;
+}
+
+h3 {
+  font-size: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  h1 { font-size: 2.25rem; }
+  h2 { font-size: 2rem; }
+}
+
+/* Paragraph consistency */
+p {
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* Button consistency */
+button {
+  padding: var(--spacing-sm) var(--spacing-base);
+  border-radius: 0.5rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+/* Border consistency */
+.border-2 {
+  border-width: 2px;
+}
+
+/* Card spacing */
+.card {
+  padding: var(--spacing-base);
+  border-radius: 0.75rem;
+  border: 2px solid var(--color-primary);
+  background: white;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Table styles for data density */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 0.875rem;
+}
+
+thead {
+  background-color: var(--color-primary);
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+th, td {
+  padding: var(--spacing-sm) var(--spacing-base);
+  text-align: left;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+tr:hover {
+  background-color: #f7fafc;
+}
+
+/* Grid consistency */
+.grid {
+  gap: var(--spacing-base);
+}
+
+@media (min-width: 768px) {
+  .grid {
+    gap: var(--spacing-md);
+  }
+}
+
+/* Measurement helper for viewport calculations */
+@supports (height: 100dvh) {
+  html {
+    height: 100dvh;
+  }
 }
 
 /* Org Chart Specific Styles */
