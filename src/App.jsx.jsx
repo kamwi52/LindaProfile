@@ -169,6 +169,7 @@ const SchoolOverview = () => {
       { name: 'Mr. Siamwenya B.', role: 'HOD Member' },
       { name: 'Mr. Kago G.N.', role: 'HOD Member' },
       { name: 'Mr. Chikusi R.', role: 'HOD Member' },
+      { name: 'Mr. Siyauya K.', role: 'School Planner' },
     ],
 
     departments: [
