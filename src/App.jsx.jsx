@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Menu, X, ChevronDown, MapPin, Users, BookOpen, Trophy, Star, Clock, Phone, Mail, Building2, AlertCircle, RefreshCw, ArrowRight, FlaskConical, GraduationCap, Award, Camera, Plus, Trash2, Copy, Download, Upload, Printer, Search, Image as ImageIcon, Code, Hammer } from 'lucide-react';
-import { sportsImages } from './imageConfig';
+import { sportsImages, facilityImages } from './imageConfig';
 
 const PLACEHOLDER_IMG = 'https://placehold.co/90x110/e8e8e8/666666?text=Staff+Photo';
 
@@ -1016,6 +1016,24 @@ const SchoolOverview = () => {
               </div>
             </div>
 
+            {/* Facility Image Gallery - Permanent Photos */}
+            <div className="bg-gradient-to-r from-primary-500 to-primary-600 rounded-2xl p-12 shadow-xl">
+              <div className="text-center mb-8">
+                <h3 className="text-3xl font-black mb-2 text-white">Facility Gallery</h3>
+                <p className="text-xl text-accent-50">Explore our modern learning spaces</p>
+              </div>
+              <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
+                {facilityImages.classrooms.map((img) => (
+                  <div key={img.id} className="group relative aspect-square bg-gray-200 rounded-xl overflow-hidden border-2 border-white shadow-lg hover:shadow-2xl transition-all">
+                    <img src={img.url} className="w-full h-full object-cover" alt={img.caption} />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-3">
+                      <p className="text-white text-[10px] font-medium leading-tight">{img.caption}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
             {/* Facility Photo Gallery */}
             <div className="bg-white border-2 border-primary-200 rounded-2xl p-8 shadow-lg">
               <div className="flex items-center justify-between mb-6">
@@ -1176,6 +1194,24 @@ const SchoolOverview = () => {
                     </div>
                   ))}
                 </div>
+              </div>
+            </div>
+
+            {/* Facility Image Gallery - Permanent Photos */}
+            <div className="bg-gradient-to-r from-primary-500 to-primary-600 rounded-2xl p-12 shadow-xl">
+              <div className="text-center mb-8">
+                <h3 className="text-3xl font-black mb-2 text-white">Facility Gallery</h3>
+                <p className="text-xl text-accent-50">Explore our scientific excellence</p>
+              </div>
+              <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
+                {facilityImages.science_labs.map((img) => (
+                  <div key={img.id} className="group relative aspect-square bg-gray-200 rounded-xl overflow-hidden border-2 border-white shadow-lg hover:shadow-2xl transition-all">
+                    <img src={img.url} className="w-full h-full object-cover" alt={img.caption} />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-3">
+                      <p className="text-white text-[10px] font-medium leading-tight">{img.caption}</p>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
 
@@ -1451,6 +1487,24 @@ const SchoolOverview = () => {
               </div>
             </div>
 
+            {/* Facility Image Gallery - Permanent Photos */}
+            <div className="bg-gradient-to-r from-primary-500 to-primary-600 rounded-2xl p-12 shadow-xl">
+              <div className="text-center mb-8">
+                <h3 className="text-3xl font-black mb-2 text-white">Facility Gallery</h3>
+                <p className="text-xl text-accent-50">Explore our digital innovation hub</p>
+              </div>
+              <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
+                {facilityImages.computer_lab.map((img) => (
+                  <div key={img.id} className="group relative aspect-square bg-gray-200 rounded-xl overflow-hidden border-2 border-white shadow-lg hover:shadow-2xl transition-all">
+                    <img src={img.url} className="w-full h-full object-cover" alt={img.caption} />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-3">
+                      <p className="text-white text-[10px] font-medium leading-tight">{img.caption}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
             {/* Facility Photo Gallery */}
             <div className="bg-white border-2 border-primary-200 rounded-2xl p-8 shadow-lg">
               <div className="flex items-center justify-between mb-6">
@@ -1614,6 +1668,24 @@ const SchoolOverview = () => {
               </div>
             </div>
 
+            {/* Facility Image Gallery - Permanent Photos */}
+            <div className="bg-gradient-to-r from-primary-500 to-primary-600 rounded-2xl p-12 shadow-xl">
+              <div className="text-center mb-8">
+                <h3 className="text-3xl font-black mb-2 text-white">Facility Gallery</h3>
+                <p className="text-xl text-accent-50">Showcase of our premier events venue</p>
+              </div>
+              <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
+                {facilityImages.multipurpose_hall.map((img) => (
+                  <div key={img.id} className="group relative aspect-square bg-gray-200 rounded-xl overflow-hidden border-2 border-white shadow-lg hover:shadow-2xl transition-all">
+                    <img src={img.url} className="w-full h-full object-cover" alt={img.caption} />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-3">
+                      <p className="text-white text-[10px] font-medium leading-tight">{img.caption}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
             {/* Facility Photo Gallery */}
             <div className="bg-white border-2 border-primary-200 rounded-2xl p-8 shadow-lg">
               <div className="flex items-center justify-between mb-6">
@@ -1774,6 +1846,24 @@ const SchoolOverview = () => {
                     </div>
                   ))}
                 </div>
+              </div>
+            </div>
+
+            {/* Facility Image Gallery - Permanent Photos */}
+            <div className="bg-gradient-to-r from-primary-500 to-primary-600 rounded-2xl p-12 shadow-xl">
+              <div className="text-center mb-8">
+                <h3 className="text-3xl font-black mb-2 text-white">Facility Gallery</h3>
+                <p className="text-xl text-accent-50">Showcase of our vocational training spaces</p>
+              </div>
+              <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
+                {facilityImages.practical_rooms.map((img) => (
+                  <div key={img.id} className="group relative aspect-square bg-gray-200 rounded-xl overflow-hidden border-2 border-white shadow-lg hover:shadow-2xl transition-all">
+                    <img src={img.url} className="w-full h-full object-cover" alt={img.caption} />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-3">
+                      <p className="text-white text-[10px] font-medium leading-tight">{img.caption}</p>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
 
