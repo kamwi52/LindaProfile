@@ -99,6 +99,7 @@ const SchoolOverview = () => {
     practical_rooms: []
   });
   const [showFacilityPhotoControls, setShowFacilityPhotoControls] = useState(false);
+  const [showSportsUpload, setShowSportsUpload] = useState(false);
 
   const getDepartmentForSubject = (subject) => {
     const s = subject.toUpperCase();
@@ -2156,18 +2157,29 @@ const SchoolOverview = () => {
                   <ImageIcon className="w-6 h-6" /> Sports Gallery
                 </h3>
                 <button 
-                  onClick={() => {
-                    const input = document.createElement('input');
-                    input.type = 'file';
-                    input.accept = 'image/*';
-                    input.onchange = handleSportsImageUpload;
-                    input.click();
-                  }}
+                  onClick={() => setShowSportsUpload(!showSportsUpload)}
                   className="no-print flex items-center gap-2 px-4 py-2 bg-primary-500 text-white rounded-lg text-sm font-bold hover:bg-primary-600 transition-colors"
                 >
-                  <Plus className="w-4 h-4" /> Add Moment
+                  <ChevronDown className={`w-4 h-4 transition-transform ${showSportsUpload ? 'rotate-180' : ''}`} />
                 </button>
               </div>
+
+              {showSportsUpload && (
+                <div className="pb-6 border-b-2 border-gray-200">
+                  <button 
+                    onClick={() => {
+                      const input = document.createElement('input');
+                      input.type = 'file';
+                      input.accept = 'image/*';
+                      input.onchange = handleSportsImageUpload;
+                      input.click();
+                    }}
+                    className="flex items-center gap-2 px-4 py-2 bg-green-600 text-white rounded-lg text-sm font-bold hover:bg-green-700 transition-colors"
+                  >
+                    <Plus className="w-4 h-4" /> Add Moment
+                  </button>
+                </div>
+              )}
               
               <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
                 {sportsGallery.map((img) => (
