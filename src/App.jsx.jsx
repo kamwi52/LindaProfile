@@ -155,33 +155,33 @@ const SchoolOverview = () => {
   // School data
   const schoolData = {
     name: 'LINDA SECONDARY SCHOOL',
-    location: 'Livingstone, Zambia',
-    founded: '2005',
-    motto: 'Linda for Life Long Education',
+    location: '4km SE of Livingstone CBD, Zambia',
+    founded: '1963',
+    motto: 'Linda, for life long education',
     phone: '0979889122',
     email: 'info@lindasecondary.edu.zm',
     website: 'www.lindasecondary.edu.zm',
     
-    overview: `Linda Secondary School is a leading educational institution in Livingstone, dedicated to providing quality teaching and learning coupled with life long skills and values. As of 2025, we have achieved an exceptional 98.4% pass rate for Grade 12, reflecting our commitment to academic excellence through effective supervision.`,
+    overview: `Founded in 1963 as one of Zambia's oldest pre-independence government institutions, Linda Secondary School serves over 1,600 learners near the Victoria Falls. We offer a comprehensive curriculum from Form 1 to Grade 12, including a thriving Open and Distance Learning (ODL) stream, balancing academic excellence with national-level co-curricular success.`,
     
-    vision: 'To excel in academic, extra-curricular performance and moral conduct for life-long education (Target set for 2020 and maintained).',
+    vision: 'To continue growing as an iconic government secondary school, expanding infrastructure while maintaining our reputation for academic excellence and co-curricular achievement across Southern Province.',
     
     mission: 'To provide quality teaching and learning coupled with life long skills and values to all through effective supervision.',
     
     stats: [
-      { label: 'Teaching Staff', value: '69', icon: Users },
+      { label: 'Teaching Staff', value: '68', icon: Users },
       { label: 'Classrooms', value: '32', icon: Building2 },
-      { label: 'Grade 12 Pass', value: '98.4%', icon: Trophy },
+      { label: 'Student Enrolment', value: '1602+', icon: GraduationCap },
       { label: 'Science Labs', value: '02', icon: FlaskConical },
     ],
     
     highlights: [
-      '98.4% Grade 12 pass rate (2025)',
-      'Seven specialized academic departments',
-      'Comprehensive practical skills training',
-      'Effective management committee supervision',
-      'Excellent sports and recreational grounds',
-      'Strong focus on moral conduct',
+      '78.4% Grade 12 Pass Rate (2025)',
+      '85.5% Grade 9 Pass Rate (2025)',
+      'National Champions: Football, Netball, Rugby, Arts',
+      'Oldest Government Day Secondary in the Region',
+      '13+ Active Student Clubs & Associations',
+      'Sustainable Water Source (School Borehole)',
     ],
 
     management: [
@@ -284,13 +284,13 @@ const SchoolOverview = () => {
       grade12: [
         { year: '2023', sat: '298', passed: '231', rate: '77.5%' },
         { year: '2024', sat: '313', passed: '268', rate: '85.0%' },
-        { year: '2025', sat: '433', passed: '433', rate: '98.4%' },
+        { year: '2025', sat: '433', passed: '339', rate: '78.4%' },
       ],
     },
 
     keyContacts: [
       { name: 'Mr. Kalusa Alex', role: 'Headteacher', phone: '0979889122' },
-      { name: 'Mr. Kamwi Siyauya', role: 'ICT Class Teacher & Data Officer', phone: '0979983682' },
+      { name: 'Mr. Kamwi Siyauya', role: 'ICT Class Teacher & Data Officer', phone: '0974449780' },
       { name: 'Mr. Chikusi Royd', role: 'Staff Member', phone: '0972788191' },
       { name: 'Ms. Chilokota Bless', role: 'Staff Member', phone: '0976045050' },
     ],
@@ -496,6 +496,11 @@ const SchoolOverview = () => {
         title: '5. TECHNOLOGY STUDIES',
         description: 'Integrating technical skills and scientific principles for industrial innovation.',
         subjects: ['Design & Technology', 'Maths', 'English', 'Civic Education', 'I.C.T', 'Chemistry', 'Physics'],
+      },
+      {
+        title: '6. HOSPITALITY, TRAVEL & TOURISM',
+        description: 'Preparing students for the region’s thriving tourism sector near Victoria Falls.',
+        subjects: ['Hospitality Studies', 'Travel & Tourism', 'English', 'Business Studies', 'Maths'],
       },
     ],
   };
@@ -787,10 +792,10 @@ const SchoolOverview = () => {
                 { id: 'about', label: 'About' },
                 { id: 'facilities', label: 'Facilities' },
                 { id: 'programs', label: 'Programs' },
-                { id: 'sports', label: 'Sports' },
+                { id: 'sports', label: 'Sports/Athletics & Creative Arts' },
                 { id: 'shn', label: 'SHN' },
                 { id: 'orgchart', label: 'Staff & Org Chart' },
-                { id: 'classof', label: 'Class Of ...' },
+                { id: 'classof', label: 'Class Of' },
                 { id: 'alumni', label: 'Alumni' },
                 { id: 'contact', label: 'Contact' },
               ].map(item => (
@@ -825,7 +830,7 @@ const SchoolOverview = () => {
                 { id: 'about', label: 'About' },
                 { id: 'facilities', label: 'Facilities' },
                 { id: 'programs', label: 'Programs' },
-                { id: 'sports', label: 'Sports' },
+                { id: 'sports', label: 'Sports/Athletics & Creative Arts' },
                 { id: 'shn', label: 'SHN' },
                 { id: 'orgchart', label: 'Staff & Org Chart' },
                 { id: 'classof', label: 'Class Of ...' },
@@ -855,15 +860,15 @@ const SchoolOverview = () => {
       {/* Hero Section */}
       {activeSection === 'overview' && (
         <div className="relative h-96 bg-gradient-to-r from-primary-500 to-primary-600 overflow-hidden">
-          <div className="absolute inset-0 opacity-10">
+          <div className="absolute inset-0 opacity-20" style={{ backgroundImage: 'url("/images/school-hero.jpg")', backgroundSize: 'cover', backgroundPosition: 'center' }}>
             <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(68,68,68,.2)_25%,rgba(68,68,68,.2)_50%,transparent_50%,transparent_75%,rgba(68,68,68,.2)_75%,rgba(68,68,68,.2))] bg-[length:40px_40px]"></div>
           </div>
           <div className="relative h-full flex items-center justify-center text-center px-4">
             <div>
               <h1 className="text-5xl font-black mb-4 text-white drop-shadow-lg">{schoolData.name}</h1>
               <div className="max-w-2xl mx-auto space-y-4">
-                <div className="bg-black/20 backdrop-blur-md p-4 rounded-xl border border-white/10">
-                  <p className="text-accent-50 text-lg italic">"{dailyQuote.text}"</p>
+                <div className="bg-white/10 backdrop-blur-sm p-4 rounded-xl border border-white/20">
+                  <p className="text-white text-lg italic">"{dailyQuote.text}"</p>
                   <p className="text-accent-300 text-sm font-bold mt-2">— {dailyQuote.author}</p>
                 </div>
                 <p className="text-xl text-accent-50 flex items-center justify-center gap-2 drop-shadow-lg">
@@ -2415,7 +2420,7 @@ const SchoolOverview = () => {
               <div className="relative z-10">
                 <h2 className="text-4xl font-black mb-4 flex items-center gap-4">
                   <Trophy className="w-10 h-10 text-yellow-400" />
-                  Sports & Athletics
+                  Sports/Athletics & Creative Arts
                 </h2>
                 <p className="text-xl text-accent-50 max-w-2xl leading-relaxed">
                   {schoolData.sports.history}
@@ -2477,7 +2482,7 @@ const SchoolOverview = () => {
             <div className="space-y-6">
               <div className="flex items-center justify-between">
                 <h3 className="text-2xl font-bold text-primary-500 flex items-center gap-2">
-                  <ImageIcon className="w-6 h-6" /> Sports Gallery
+                  <ImageIcon className="w-6 h-6" /> Sports/Athletics & Creative Arts Gallery
                 </h3>
                 <button 
                   onClick={() => setShowSportsUpload(!showSportsUpload)}

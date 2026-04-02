@@ -5,68 +5,83 @@ import { sportsImages, alumniImages, alumniProfiles } from './imageConfig';
 const PLACEHOLDER_IMG = 'https://placehold.co/90x110/e8e8e8/666666?text=Staff+Photo';
 
 const INITIAL_STAFF_DATA = {
-  head: [{ fullName: 'KALUSA A.', position: 'HEAD TEACHER', imageUrl: '/images/staff/head.jpg' }],
-  deputy: [{ fullName: 'MUNTANGA B.', position: 'DEPUTY H. TEACHER', imageUrl: '/images/staff/deputy.jpg' }],
+  head: [{ fullName: 'KALUSA ALEX', position: 'HEAD TEACHER', imageUrl: '/images/staff/head.jpg' }],
+  deputy: [{ fullName: 'MUNTANGA', position: 'DEPUTY H. TEACHER', imageUrl: '/images/staff/deputy.jpg' }],
   hods: [
-    { fullName: 'KAGO N. G.', position: 'HOD MATHEMATICS & ICT', imageUrl: '/images/staff/hod-maths.jpg' },
-    { fullName: 'KANGAI B.', position: 'HOD LITERATURE & LANGUAGES', imageUrl: '/images/staff/hod-languages.jpg' },
-    { fullName: 'MUKUBESA D. N.', position: 'HOD NATURAL SCIENCES', imageUrl: '/images/staff/hod-sciences.jpg' },
-    { fullName: 'MULINGA R. O.', position: 'HOD SOCIAL SCIENCES', imageUrl: '/images/staff/hod-social.jpg' },
-    { fullName: 'CHIKUSU R.', position: 'HOD BUSINESS & FINANCE', imageUrl: '/images/staff/hod-business.jpg' },
-    { fullName: 'SYAMWENYA B.', position: 'HOD PRACTICAL', imageUrl: '/images/staff/hod-practical.jpg' },
-    { fullName: 'NJEKWA S. M.', position: 'HOD EXPRESSIVE ARTS', imageUrl: '/images/staff/hod-arts.jpg' }
+    { fullName: 'KAGO NANJA GACHIRI', position: 'HOD MATHEMATICS & ICT', imageUrl: '/images/staff/hod-maths.jpg' },
+    { fullName: 'KANGAI BOYD', position: 'HOD LITERATURE & LANGUAGES', imageUrl: '/images/staff/hod-languages.jpg' },
+    { fullName: 'MUKUBESA DOREEN NDAMBOI', position: 'HOD NATURAL SCIENCES', imageUrl: '/images/staff/hod-sciences.jpg' },
+    { fullName: 'MULINGA REGISTER OHIO', position: 'HOD SOCIAL SCIENCES', imageUrl: '/images/staff/hod-social.jpg' },
+    { fullName: 'CHIKUSI ROYD', position: 'HOD BUSINESS & FINANCE', imageUrl: '/images/staff/hod-business.jpg' },
+    { fullName: 'SYAMWENYA BINGA', position: 'HOD PRACTICAL', imageUrl: '/images/staff/hod-practical.jpg' },
+    { fullName: 'NJEKWA STANLEY MISOZI', position: 'HOD EXPRESSIVE ARTS', imageUrl: '/images/staff/hod-arts.jpg' }
   ],
   teachers: [
-    { fullName: 'BANDA M.', subject: 'DESIGN AND TECHNOLOGY' },
-    { fullName: 'CHIBOMBAMILIMO L. B.', subject: 'BIOLOGY' },
-    { fullName: 'CHIKOSOLA K.', subject: 'ZAMBIAN LANGUAGES' },
-    { fullName: 'CHIKUSU R.', subject: 'ACCOUNTS' },
-    { fullName: 'CHILESHIE E.', subject: 'MATHEMATICS' },
-    { fullName: 'CHILUNDU D. J.', subject: 'ENGLISH' },
-    { fullName: 'CHOCHO T.', subject: 'CHEMISTRY' },
-    { fullName: 'HALUMBA M.', subject: 'HISTORY' },
-    { fullName: 'HAMPEYO C.', subject: 'MATHEMATICS' },
-    { fullName: 'HIMWEETE B.', subject: 'ENGLISH' },
-    { fullName: 'HIMWITA W.', subject: 'GEOGRAPHY' },
-    { fullName: 'KABUDULA M.', subject: 'ENGLISH' },
-    { fullName: 'KAGO N. G.', subject: 'BIOLOGY' },
-    { fullName: 'KALUBA G.', subject: 'CIVIC EDUCATION' },
-    { fullName: 'KAMBUNGA S.', subject: 'ENGLISH' },
-    { fullName: 'LUBINDA M.', subject: 'MUSIC' },
-    { fullName: 'MAINZA M. I.', subject: 'MATHEMATICS' },
-    { fullName: 'MAKAMO D.', subject: 'GEOGRAPHY' },
-    { fullName: 'MAKAYI B.', subject: 'BIOLOGY' },
-    { fullName: 'MAKLICHI S.', subject: 'CIVIC EDUCATION' },
-    { fullName: 'MAYANGWA M.', subject: 'ENGLISH' },
-    { fullName: 'MICHELO K.', subject: 'BIOLOGY' },
-    { fullName: 'MIYOBA T.', subject: 'FOOD SCIENCE/HOSPITALITY' },
-    { fullName: 'MOONO C.', subject: 'BUSINESS STUDIES' },
-    { fullName: 'MOONO K.', subject: 'ART & DESIGN' },
-    { fullName: 'MUCHIMBA B.', subject: 'MATHEMATICS' },
-    { fullName: 'MUCHIMBA L.', subject: 'BIOLOGY' },
-    { fullName: 'MUIMANZOVU H.', subject: 'ART & DESIGN' },
-    { fullName: 'MUKOSHA M.', subject: 'COMMERCE' },
-    { fullName: 'MUKUBESA D. N.', subject: 'BIOLOGY' },
-    { fullName: 'MUTALE I.', subject: 'MATHEMATICS' },
-    { fullName: 'MWANGALA E. M.', subject: 'ICT' },
-    { fullName: 'MWEEMBA M.', subject: 'NUTRITIONAL SCIENCE' },
-    { fullName: 'MWINDWE N.', subject: 'RE' },
-    { fullName: 'NAKUSHOWA A.', subject: 'HISTORY' },
-    { fullName: 'NAWA L.', subject: 'RE' },
-    { fullName: 'NCHIMUNYA C.', subject: 'MATHEMATICS' },
-    { fullName: 'NGOMA S.', subject: 'PHYSICS' },
-    { fullName: 'NJEKWA S. M.', subject: 'MATHEMATICS' },
-    { fullName: 'PHIRI M.', subject: 'MUSIC' },
-    { fullName: 'SAKAPANDA S.', subject: 'MATHEMATICS' },
-    { fullName: 'SAMENDE G. A.', subject: 'HISTORY' },
-    { fullName: 'SIAMALYATA M.', subject: 'MUSIC' },
-    { fullName: 'SIYAUYA K.', subject: 'ICT' },
-    { fullName: 'SOKO D.', subject: 'CIVIC EDUCATION' },
-    { fullName: 'SYAMWENYA B.', subject: 'RE' },
-    { fullName: 'TEMBO S.', subject: 'MUSIC' },
-    { fullName: 'WALUBITA I.', subject: 'FRENCH' },
-    { fullName: 'WAMUNDILA M.', subject: 'DESIGN AND TECHNOLOGY' },
-    { fullName: 'ZULU M.', subject: 'ART & DESIGN' }
+    { fullName: 'BANDA MORGAN', subject: 'GEOGRAPHY' },
+    { fullName: 'CHIBOMBAMILIMO LAMECK BENSON', subject: 'BIOLOGY' },
+    { fullName: 'CHIKOSOLA KELIN', subject: 'ZAMBIAN LANGUAGE' },
+    { fullName: 'CHIKUSI ROYD', subject: 'ACCOUNTS' },
+    { fullName: 'CHILESHE EDNA', subject: 'CIVIC EDUCATION' },
+    { fullName: 'CHILOKOTA BLESS MUNYATI', subject: 'ENGLISH' },
+    { fullName: 'CHILUNDU DINDI JAMES', subject: 'CHEMISTRY' },
+    { fullName: 'CHOCHO THABO', subject: 'ENGLISH' },
+    { fullName: 'HALUMBA MARTIN', subject: 'HISTORY' },
+    { fullName: 'HAMPEYO CAROLINE', subject: 'MATHEMATICS' },
+    { fullName: 'HIMWEETE BEATRICE', subject: 'ENGLISH' },
+    { fullName: 'HIMWIITA WINTER', subject: 'GEOGRAPHY' },
+    { fullName: 'KABBUDULA MELODY', subject: 'ENGLISH' },
+    { fullName: 'KAGO NANJA GACHIRI', subject: 'MATHEMATICS' },
+    { fullName: 'KALUBA GIFT', subject: 'BIOLOGY' },
+    { fullName: 'KAMBUNGA SAVIOURS', subject: 'CIVIC EDUCATION' },
+    { fullName: 'KANGAI BOYD', subject: 'ENGLISH' },
+    { fullName: 'KAPEPE CONSTANCE', subject: 'CHEMISTRY' },
+    { fullName: 'KASWEKA NJAMBA PAUL', subject: 'BIOLOGY' },
+    { fullName: 'LAMBA LEEVAN', subject: 'ENGLISH' },
+    { fullName: 'LUBINDA MANYANDO', subject: 'MUSIC' },
+    { fullName: 'MAINZA MULAMBO IVAN', subject: 'MATHEMATICS' },
+    { fullName: 'MAKAMO DORIS', subject: 'GEOGRAPHY' },
+    { fullName: 'MAKAYI BERNADETTE', subject: 'BIOLOGY' },
+    { fullName: 'MAKLICHI SUSAN', subject: 'CIVIC EDUCATION' },
+    { fullName: 'MAYANGWA MARY', subject: 'ENGLISH' },
+    { fullName: 'MICHELO KELLY', subject: 'BIOLOGY' },
+    { fullName: 'MIYOBA TALENT', subject: 'FOOD SCIENCE/NUTRITION' },
+    { fullName: 'MOONO CHILALA', subject: 'BUSINESS STUDIES' },
+    { fullName: 'MOONO KELVIN', subject: 'ART & DESIGN' },
+    { fullName: 'MUCHIMBA BRENDA', subject: 'MATHEMATICS' },
+    { fullName: 'MUCHIMBA LWEENDO', subject: 'GEOGRAPHY' },
+    { fullName: 'MUJIMANZOVU HUMPHREY', subject: 'ART & DESIGN' },
+    { fullName: 'MUKOSHA MERCY', subject: 'COMMERCE' },
+    { fullName: 'MUKUBESA DOREEN NDAMBOI', subject: 'BIOLOGY' },
+    { fullName: 'MUKUMBWALI MILIMO', subject: 'HISTORY' },
+    { fullName: 'MULENGA CASTRIDAH', subject: 'ENGLISH' },
+    { fullName: 'MULINGA REGISTER OHIO', subject: 'GEOGRAPHY' },
+    { fullName: 'MUMBA KANYUNGE CLAYDON', subject: 'PHYSICS' },
+    { fullName: 'MUTALE INNOCENT', subject: 'MATHEMATICS' },
+    { fullName: 'MUYUNDA ANNIE KUMOYO', subject: 'HOME ECONOMICS' },
+    { fullName: 'MWANGALA EDWARD MUMA', subject: 'ICT' },
+    { fullName: 'MWEEMBA MIRRIAM', subject: 'NUTRITIONAL SCIENCES' },
+    { fullName: 'MWIINDWE NAMUCHEME', subject: 'CIVIC EDUCATION' },
+    { fullName: 'NAKUSHOWA ANGELA', subject: 'MATHEMATICS' },
+    { fullName: 'NAWA LYAYO', subject: 'RE' },
+    { fullName: 'NCHIMUNYA CHILALA', subject: 'HISTORY' },
+    { fullName: 'NGOMA SAM', subject: 'MATHEMATICS' },
+    { fullName: 'NJEKWA STANLEY MISOZI', subject: 'MUSIC' },
+    { fullName: 'PHIRI MEKIWE', subject: 'MATHEMATICS' },
+    { fullName: 'SAKAPANGA SANDRA', subject: 'ENGLISH' },
+    { fullName: 'SAMENDE GODWIN AMOS', subject: 'PHYSICS' },
+    { fullName: 'SIAMALYATA MELODY', subject: 'MATHEMATICS' },
+    { fullName: 'SIBANYAMA VENIA MIYANDA', subject: 'BUSINESS STUDIES' },
+    { fullName: 'SIBWAALU EDITH', subject: 'RE' },
+    { fullName: 'SIKWA MALAMBO SHAFT', subject: 'ENGLISH' },
+    { fullName: 'SINAMWENDA MICHAEL', subject: 'DESIGN AND TECHNOLOGY' },
+    { fullName: 'SIYAUYA KAMWI', subject: 'ICT' },
+    { fullName: 'SOKO DIANA', subject: 'CIVIC EDUCATION' },
+    { fullName: 'SYAMWENYA BINGA', subject: 'DESIGN AND TECHNOLOGY' },
+    { fullName: 'TEMBO STELLA', subject: 'MUSIC' },
+    { fullName: 'WALUBITA INONGE', subject: 'FRENCH' },
+    { fullName: 'WAMUNDILA MULEMBA', subject: 'DESIGN AND TECHNOLOGY' },
+    { fullName: 'ZULU MASAUSO', subject: 'ART & DESIGN' },
+    { fullName: 'PHYDES SAMAZAKA', subject: 'MUSIC & ENGLISH' }
   ]
 };
 
@@ -124,13 +139,13 @@ const SchoolOverview = () => {
 
   const getDepartmentForSubject = (subject) => {
     const s = subject.toUpperCase();
-    if (['MATHEMATICS', 'ICT'].includes(s)) return 'MATHEMATICS & ICT';
-    if (['ENGLISH', 'ZAMBIAN LANGUAGES', 'FRENCH', 'LITERATURE'].includes(s)) return 'LITERATURE & LANGUAGES';
-    if (['BIOLOGY', 'CHEMISTRY', 'PHYSICS'].includes(s)) return 'NATURAL SCIENCES';
-    if (['HISTORY', 'GEOGRAPHY', 'CIVIC EDUCATION', 'RE'].includes(s)) return 'SOCIAL SCIENCES';
-    if (['ACCOUNTS', 'COMMERCE', 'BUSINESS STUDIES'].includes(s)) return 'BUSINESS & FINANCE';
-    if (['DESIGN AND TECHNOLOGY', 'FOOD SCIENCE/HOSPITALITY', 'NUTRITIONAL SCIENCE'].includes(s)) return 'PRACTICAL';
-    if (['MUSIC', 'ART & DESIGN'].includes(s)) return 'EXPRESSIVE ARTS';
+    if (s.includes('MATHEMATICS') || s.includes('ICT')) return 'MATHEMATICS & ICT';
+    if (s.includes('ENGLISH') || s.includes('ZAMBIAN') || s.includes('FRENCH') || s.includes('LITERATURE')) return 'LITERATURE & LANGUAGES';
+    if (s.includes('BIOLOGY') || s.includes('CHEMISTRY') || s.includes('PHYSICS')) return 'NATURAL SCIENCES';
+    if (s.includes('HISTORY') || s.includes('GEOGRAPHY') || s.includes('CIVIC') || s.includes('RE')) return 'SOCIAL SCIENCES';
+    if (s.includes('ACCOUNTS') || s.includes('COMMERCE') || s.includes('BUSINESS')) return 'BUSINESS & FINANCE';
+    if (s.includes('DESIGN AND TECHNOLOGY') || s.includes('FOOD SCIENCE') || s.includes('NUTRITION') || s.includes('HOME ECONOMICS')) return 'PRACTICAL';
+    if (s.includes('MUSIC') || s.includes('ART & DESIGN')) return 'EXPRESSIVE ARTS';
     return 'OTHER';
   };
 
@@ -160,33 +175,45 @@ const SchoolOverview = () => {
   // School data
   const schoolData = {
     name: 'LINDA SECONDARY SCHOOL',
-    location: 'Livingstone, Zambia',
-    founded: '2005',
-    motto: 'Linda for Life Long Education',
+    location: '4km SE of Livingstone CBD, Zambia',
+    founded: '1963',
+    motto: 'Linda, for life long education',
     phone: '0979889122',
     email: 'info@lindasecondary.edu.zm',
     website: 'www.lindasecondary.edu.zm',
     
-    overview: `Linda Secondary School is a leading educational institution in Livingstone, dedicated to providing quality teaching and learning coupled with life long skills and values. As of 2025, we have achieved an exceptional 98.4% pass rate for Grade 12, reflecting our commitment to academic excellence through effective supervision.`,
+    overview: `Founded in 1963 as one of Zambia's oldest pre-independence government institutions, Linda Secondary School serves over 1,600 learners near the Victoria Falls. We offer a comprehensive curriculum from Form 1 to Grade 12, including a thriving Open and Distance Learning (ODL) stream, balancing academic excellence with national-level co-curricular success.`,
     
-    vision: 'To excel in academic, extra-curricular performance and moral conduct for life-long education (Target set for 2020 and maintained).',
+    vision: 'To continue growing as an iconic government secondary school, expanding infrastructure while maintaining our reputation for academic excellence and co-curricular achievement across Southern Province.',
     
     mission: 'To provide quality teaching and learning coupled with life long skills and values to all through effective supervision.',
     
     stats: [
-      { label: 'Teaching Staff', value: '69', icon: Users },
+      { label: 'Teaching Staff', value: '68', icon: Users },
       { label: 'Classrooms', value: '32', icon: Building2 },
-      { label: 'Grade 12 Pass', value: '98.4%', icon: Trophy },
+      { label: 'Student Enrolment', value: '1602+', icon: GraduationCap },
       { label: 'Science Labs', value: '02', icon: FlaskConical },
     ],
-    
+
+    shn: {
+      title: 'SHN : SCHOOL FEEDING PROGRAM',
+      description: 'Nutrition and learner wellbeing support.',
+      overview: 'Our comprehensive School Feeding Program ensures that learners have access to balanced nutrition, directly contributing to improved attendance and academic focus.',
+      benefits: [
+        { icon: '🍛', title: '1400+ Meals Daily', description: 'Providing hot, nutritious meals to over 1400 learners every school day.' },
+        { icon: '📈', title: 'Improved Attendance', description: 'Significant increase in learner presence and reduced drop-out rates.' },
+        { icon: '⚖️', title: 'Balanced Nutrition', description: 'Meals designed to provide essential vitamins and energy for growing minds.' },
+        { icon: '🤝', title: 'Community Support', description: 'Collaborative effort with partners to ensure program sustainability.' },
+      ]
+    },
+
     highlights: [
-      '98.4% Grade 12 pass rate (2025)',
-      'Seven specialized academic departments',
-      'Comprehensive practical skills training',
-      'Effective management committee supervision',
-      'Excellent sports and recreational grounds',
-      'Strong focus on moral conduct',
+      '78.4% Grade 12 Pass Rate (2025)',
+      '85.5% Grade 9 Pass Rate (2025)',
+      'National Champions: Football, Netball, Rugby, Arts',
+      'Oldest Government Day Secondary in the Region',
+      '13+ Active Student Clubs & Associations',
+      'Sustainable Water Source (School Borehole)',
     ],
 
     management: [
@@ -201,72 +228,10 @@ const SchoolOverview = () => {
       { name: 'Mr. Siamwenya B.', role: 'HOD Member' },
       { name: 'Mr. Kago G.N.', role: 'HOD Member' },
       { name: 'Mr. Chikusi R.', role: 'HOD Member' },
+      { name: 'Mr. Siyauya K.', role: 'School Planner' },
     ],
 
-    departments: [
-      { name: 'Mathematics & ICT', hod: 'Mr. Kago G. Nanja', staff: '07' },
-      { name: 'Literature & Languages', hod: 'Mr. Kangai Boyd', staff: '15' },
-      { name: 'Natural Sciences', hod: 'Ms. Doreen Mukubesa', staff: '10' },
-      { name: 'Social Sciences', hod: 'Mr. Mulinga Register', staff: '21' },
-      { name: 'Business & Finance', hod: 'Mr. Chikusi Rhody', staff: '03' },
-      { name: 'Practical', hod: 'Mr. Syamwenya Binga', staff: '07' },
-      { name: 'Expressive Arts', hod: 'Mr. Njekwa Misozi S.', staff: '06' },
-    ],
-
-    staff: [
-      { name: 'KALUSA A.', pos: 'Head Teacher', spec: '—' },
-      { name: 'BORNWELL M.', pos: 'Deputy H. Teacher', spec: '—' },
-      { name: 'BANDA M.', pos: 'Subject Teacher', spec: 'Design and Technology' },
-      { name: 'CHIBOMBAMILIMO L. B.', pos: 'Subject Teacher', spec: 'Biology' },
-      { name: 'CHIKOSOLA K.', pos: 'Subject Teacher', spec: 'Zambian Languages' },
-      { name: 'CHIKUSU R.', pos: 'Subject Teacher', spec: 'Accounts' },
-      { name: 'CHILESHIE E.', pos: 'Subject Teacher', spec: 'Mathematics' },
-      { name: 'CHILUNDU D. J.', pos: 'Subject Teacher', spec: 'English' },
-      { name: 'CHOCHO T.', pos: 'Subject Teacher', spec: 'Chemistry' },
-      { name: 'HALUMBA M.', pos: 'Subject Teacher', spec: 'History' },
-      { name: 'HAMPEYO C.', pos: 'Subject Teacher', spec: 'Mathematics' },
-      { name: 'HIMWEETE B.', pos: 'Subject Teacher', spec: 'English' },
-      { name: 'HIMWITA W.', pos: 'Subject Teacher', spec: 'Geography' },
-      { name: 'KABUDULA M.', pos: 'Subject Teacher', spec: 'English' },
-      { name: 'KAGO N. G.', pos: 'Subject Teacher', spec: 'Biology' },
-      { name: 'KALUBA G.', pos: 'Subject Teacher', spec: 'Civic Education' },
-      { name: 'KAMBUNGA S.', pos: 'Subject Teacher', spec: 'English' },
-      { name: 'LUBINDA M.', pos: 'Subject Teacher', spec: 'Music' },
-      { name: 'MAINZA M. I.', pos: 'Subject Teacher', spec: 'Mathematics' },
-      { name: 'MAKAMO D.', pos: 'Subject Teacher', spec: 'Geography' },
-      { name: 'MAKAYI B.', pos: 'Subject Teacher', spec: 'Biology' },
-      { name: 'MAKLICHI S.', pos: 'Subject Teacher', spec: 'Civic Education' },
-      { name: 'MAYANGWA M.', pos: 'Subject Teacher', spec: 'English' },
-      { name: 'MICHELO K.', pos: 'Subject Teacher', spec: 'Biology' },
-      { name: 'MIYOBA T.', pos: 'Subject Teacher', spec: 'Food Science/Hospitality' },
-      { name: 'MOONO C.', pos: 'Subject Teacher', spec: 'Business Studies' },
-      { name: 'MOONO K.', pos: 'Subject Teacher', spec: 'Art & Design' },
-      { name: 'MUCHIMBA B.', pos: 'Subject Teacher', spec: 'Mathematics' },
-      { name: 'MUCHIMBA L.', pos: 'Subject Teacher', spec: 'Biology' },
-      { name: 'MUIMANZOVU H.', pos: 'Subject Teacher', spec: 'Art & Design' },
-      { name: 'MUKOSHA M.', pos: 'Subject Teacher', spec: 'Commerce' },
-      { name: 'MUKUBESA D. N.', pos: 'Subject Teacher', spec: 'Biology' },
-      { name: 'MUTALE I.', pos: 'Subject Teacher', spec: 'Mathematics' },
-      { name: 'MWANGALA E. M.', pos: 'Subject Teacher', spec: 'ICT' },
-      { name: 'MWEEMBA M.', pos: 'Subject Teacher', spec: 'Nutritional Science' },
-      { name: 'MWINDWE N.', pos: 'Subject Teacher', spec: 'RE' },
-      { name: 'NAKUSHOWA A.', pos: 'Subject Teacher', spec: 'History' },
-      { name: 'NAWA L.', pos: 'Subject Teacher', spec: 'RE' },
-      { name: 'NCHIMUNYA C.', pos: 'Subject Teacher', spec: 'Mathematics' },
-      { name: 'NGOMA S.', pos: 'Subject Teacher', spec: 'Physics' },
-      { name: 'NJEKWA S. M.', pos: 'Subject Teacher', spec: 'Mathematics' },
-      { name: 'PHIRI M.', pos: 'Subject Teacher', spec: 'Music' },
-      { name: 'SAKAPANDA S.', pos: 'Subject Teacher', spec: 'Mathematics' },
-      { name: 'SAMENDE G. A.', pos: 'Subject Teacher', spec: 'History' },
-      { name: 'SIAMALYATA M.', pos: 'Subject Teacher', spec: 'Music' },
-      { name: 'SIYAUYA K.', pos: 'Subject Teacher', spec: 'ICT' },
-      { name: 'SOKO D.', pos: 'Subject Teacher', spec: 'Civic Education' },
-      { name: 'SYAMWENYA B.', pos: 'Subject Teacher', spec: 'RE' },
-      { name: 'TEMBO S.', pos: 'Subject Teacher', spec: 'Music' },
-      { name: 'WALUBITA I.', pos: 'Subject Teacher', spec: 'French' },
-      { name: 'WAMUNDILA M.', pos: 'Subject Teacher', spec: 'Design and Technology' },
-      { name: 'ZULU M.', pos: 'Subject Teacher', spec: 'Art & Design' }
-    ],
+    staff: INITIAL_STAFF_DATA.teachers.map(t => ({ name: t.fullName, pos: 'Teacher', spec: t.subject })),
     
     facilities: [
       { name: 'Classrooms', description: '32 classrooms supporting student learning.', fullDescription: 'The school features 32 dedicated classrooms designed to provide a conducive environment for both teaching and learning.', icon: '🏫', image: 'https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=800' },
@@ -287,13 +252,13 @@ const SchoolOverview = () => {
       grade12: [
         { year: '2023', sat: '298', passed: '231', rate: '77.5%' },
         { year: '2024', sat: '313', passed: '268', rate: '85.0%' },
-        { year: '2025', sat: '433', passed: '433', rate: '98.4%' },
+        { year: '2025', sat: '433', passed: '339', rate: '78.4%' },
       ],
     },
 
     keyContacts: [
       { name: 'Mr. Kalusa Alex', role: 'Headteacher', phone: '0979889122' },
-      { name: 'Mr. Kamwi Siyauya', role: 'ICT Class Teacher & Data Officer', phone: '0979983682' },
+      { name: 'Mr. Kamwi Siyauya', role: 'ICT Class Teacher & Data Officer', phone: '0974449780' },
       { name: 'Mr. Chikusi Royd', role: 'Staff Member', phone: '0972788191' },
       { name: 'Ms. Chilokota Bless', role: 'Staff Member', phone: '0976045050' },
     ],
@@ -337,6 +302,11 @@ const SchoolOverview = () => {
         title: '5. TECHNOLOGY STUDIES',
         description: 'Integrating technical skills and scientific principles for industrial innovation.',
         subjects: ['Design & Technology', 'Maths', 'English', 'Civic Education', 'I.C.T', 'Chemistry', 'Physics'],
+      },
+      {
+        title: '6. HOSPITALITY, TRAVEL & TOURISM',
+        description: 'Preparing students for the region’s thriving tourism sector near Victoria Falls.',
+        subjects: ['Hospitality Studies', 'Travel & Tourism', 'English', 'Business Studies', 'Maths'],
       },
     ],
   };
@@ -623,6 +593,7 @@ const SchoolOverview = () => {
               }`}
               title={
                 section === 'orgchart' ? 'Staff' : 
+                section === 'sports' ? 'Sports/Athletics & Creative Arts' : 
                 section === 'classof' ? 'Class Of ...' : 
                 section.charAt(0).toUpperCase() + section.slice(1)
               }
@@ -689,6 +660,7 @@ const SchoolOverview = () => {
                   >
                     {
                       section === 'orgchart' ? 'Staff' : 
+                      section === 'sports' ? 'Sports/Athletics & Creative Arts' : 
                       section === 'classof' ? 'Class Of ...' : 
                       section.charAt(0).toUpperCase() + section.slice(1)
                     }
@@ -700,7 +672,7 @@ const SchoolOverview = () => {
         </nav>
 
         {/* Slide Content - 100vh minus navbar */}
-        <div className="slide-content h-calc(100vh - 64px) overflow-y-auto presentation-scroll">
+        <div className="slide-content h-[calc(100vh-64px)] overflow-y-auto presentation-scroll">
           {/* Decade Grouping Logic */}
           {(() => {
             if (activeSection !== 'classof') return null;
@@ -723,10 +695,10 @@ const SchoolOverview = () => {
           {/* Overview Section */}
           {activeSection === 'overview' && (
             <section style={{ minHeight: 'calc(100vh - 70px)' }} className="bg-gradient-to-b from-white to-blue-50 flex flex-col justify-center p-6 md:p-12">
-              {/* Hero */}
-              <div className="relative mb-12 bg-gradient-to-r from-blue-900 to-blue-800 rounded-2xl p-8 md:p-12 text-white text-center">
+              <div className="relative mb-12 bg-cover bg-center bg-no-repeat rounded-2xl p-8 md:p-12 text-white text-center shadow-xl overflow-hidden" 
+                   style={{ backgroundImage: 'url("/images/school-hero.jpg")' }}>
                 <h1 className="text-4xl md:text-5xl font-black mb-4 drop-shadow-lg">{schoolData.name}</h1>
-                <p className="text-lg italic opacity-90 mb-4">"{dailyQuote.text}"</p>
+                <p className="text-lg italic opacity-100 mb-4 text-white/90">"{dailyQuote.text}"</p>
                 <p className="text-lg flex items-center justify-center gap-2 drop-shadow-lg">
                   <MapPin className="w-5 h-5" />
                   {schoolData.location}
@@ -851,12 +823,33 @@ const SchoolOverview = () => {
             </section>
           )}
 
+          {/* SHN Section */}
+          {activeSection === 'shn' && (
+            <section style={{ minHeight: 'calc(100vh - 70px)' }} className="bg-gradient-to-b from-white to-blue-50 p-6 md:p-12 flex flex-col justify-center">
+              <h2 className="text-3xl md:text-4xl font-bold text-blue-900 mb-4">{schoolData.shn.title}</h2>
+              <p className="text-gray-700 text-sm mb-8 max-w-2xl">{schoolData.shn.overview}</p>
+              
+              <div className="grid md:grid-cols-2 gap-6">
+                {schoolData.shn.benefits.map((benefit, idx) => (
+                  <div key={idx} className="bg-white border-2 border-blue-900 rounded-xl p-6 shadow-md flex items-start gap-4">
+                    <div className="text-4xl">{benefit.icon}</div>
+                    <div>
+                      <h4 className="font-bold text-blue-900 mb-1">{benefit.title}</h4>
+                      <p className="text-gray-700 text-xs leading-relaxed">{benefit.description}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </section>
+          )}
+
           {/* Sports Section */}
           {activeSection === 'sports' && (
             <section style={{ minHeight: 'calc(100vh - 70px)' }} className="bg-gradient-to-b from-white to-blue-50 p-6 md:p-12 flex flex-col justify-center">
               <div className="flex items-center justify-between mb-6">
                 <h2 className="text-3xl md:text-4xl font-bold text-blue-900 flex items-center gap-3">
-                  <Trophy className="w-8 h-8 text-yellow-500" /> Sports & Athletics
+                  <Trophy className="w-8 h-8 text-yellow-500" /> 
+                  Sports/Athletics & Creative Arts
                 </h2>
                 <button 
                   onClick={() => { if(confirm('Sync gallery with imageConfig.js?')) { setSportsGallery(sportsImages); localStorage.removeItem('linda_sports_gallery'); } }}
@@ -920,7 +913,10 @@ const SchoolOverview = () => {
             <section style={{ minHeight: 'calc(100vh - 70px)' }} className="bg-gradient-to-b from-white to-blue-50 p-6 md:p-12 flex flex-col justify-start pt-8">
               <h2 className="text-3xl md:text-4xl font-bold text-blue-900 mb-4">Administrative Structure</h2>
               
-              <div className="org-capture-area flex-1 border-2 border-blue-900 rounded-lg p-6 overflow-x-auto overflow-y-hidden shadow-md bg-white mb-8">
+              <div className="org-capture-area flex-1 border-2 border-blue-900 rounded-lg p-6 overflow-x-auto overflow-y-hidden shadow-md bg-white mb-8" 
+                   style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                {/* Added explicit centering for the teacher chart alignment */}
+                
                 <div className="space-y-8 min-w-max">
                   {orgData.rows && orgData.rows.map((row, idx) => (
                     <div key={row.id} className="text-center">
@@ -967,7 +963,7 @@ const SchoolOverview = () => {
                   <tbody className="divide-y divide-blue-100 text-xs">
                     {schoolData.staff.filter(m => 
                       m.name.toLowerCase().includes(staffSearchTerm.toLowerCase()) || 
-                      m.spec.toLowerCase().includes(staffSearchTerm.toLowerCase())
+                      (m.spec && m.spec.toLowerCase().includes(staffSearchTerm.toLowerCase()))
                     ).map((member, idx) => (
                       <tr key={idx} className="hover:bg-blue-50">
                         <td className="p-2 font-semibold text-blue-900">{member.name}</td>
