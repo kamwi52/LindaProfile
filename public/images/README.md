@@ -25,6 +25,12 @@
 │       ├── room-1.jpg
 │       ├── room-2.jpg
 │       └── room-3.jpg
+├── alumini/
+│   ├── default.jpg
+│   ├── alumni-1.jpg
+│   └── tony-luo/
+│       ├── img-1.jpeg
+│       └── img-2.jpg
 └── sports/
     ├── sports-1.jpg
     ├── sports-2.jpg

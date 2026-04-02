@@ -1,20 +1,20 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Menu, X, ChevronDown, MapPin, Users, BookOpen, Trophy, Star, Clock, Phone, Mail, Building2, AlertCircle, RefreshCw, ArrowRight, FlaskConical, GraduationCap, Award, Camera, Plus, Trash2, Copy, Download, Upload, Printer, Search, Image as ImageIcon, Code, Hammer } from 'lucide-react';
-import { sportsImages, facilityImages } from './imageConfig';
+import { sportsImages, facilityImages, alumniImages, alumniProfiles } from './imageConfig';
 
 const PLACEHOLDER_IMG = 'https://placehold.co/90x110/e8e8e8/666666?text=Staff+Photo';
 
 const INITIAL_STAFF_DATA = {
-  head: [{ fullName: 'KALUSA A.', position: 'HEAD TEACHER' }],
-  deputy: [{ fullName: 'MUNTANGA B.', position: 'DEPUTY H. TEACHER' }],
+  head: [{ fullName: 'KALUSA A.', position: 'HEAD TEACHER', imageUrl: '/images/staff/head.jpg' }],
+  deputy: [{ fullName: 'MUNTANGA B.', position: 'DEPUTY H. TEACHER', imageUrl: '/images/staff/deputy.jpg' }],
   hods: [
-    { fullName: 'KAGO N. G.', position: 'HOD MATHEMATICS & ICT' },
-    { fullName: 'KANGAI B.', position: 'HOD LITERATURE & LANGUAGES' },
-    { fullName: 'MUKUBESA D. N.', position: 'HOD NATURAL SCIENCES' },
-    { fullName: 'MULINGA R. O.', position: 'HOD SOCIAL SCIENCES' },
-    { fullName: 'CHIKUSU R.', position: 'HOD BUSINESS & FINANCE' },
-    { fullName: 'SYAMWENYA B.', position: 'HOD PRACTICAL' },
-    { fullName: 'NJEKWA S. M.', position: 'HOD EXPRESSIVE ARTS' }
+    { fullName: 'KAGO N. G.', position: 'HOD MATHEMATICS & ICT', imageUrl: '/images/staff/hod-maths.jpg' },
+    { fullName: 'KANGAI B.', position: 'HOD LITERATURE & LANGUAGES', imageUrl: '/images/staff/hod-languages.jpg' },
+    { fullName: 'MUKUBESA D. N.', position: 'HOD NATURAL SCIENCES', imageUrl: '/images/staff/hod-sciences.jpg' },
+    { fullName: 'MULINGA R. O.', position: 'HOD SOCIAL SCIENCES', imageUrl: '/images/staff/hod-social.jpg' },
+    { fullName: 'CHIKUSU R.', position: 'HOD BUSINESS & FINANCE', imageUrl: '/images/staff/hod-business.jpg' },
+    { fullName: 'SYAMWENYA B.', position: 'HOD PRACTICAL', imageUrl: '/images/staff/hod-practical.jpg' },
+    { fullName: 'NJEKWA S. M.', position: 'HOD EXPRESSIVE ARTS', imageUrl: '/images/staff/hod-arts.jpg' }
   ],
   teachers: [
     { fullName: 'BANDA M.', subject: 'DESIGN AND TECHNOLOGY' },
@@ -87,6 +87,7 @@ const SchoolOverview = () => {
   const [activePhotoUpload, setActivePhotoUpload] = useState(null);
   const [showOrgControls, setShowOrgControls] = useState(false);
   const [sportsGallery, setSportsGallery] = useState(sportsImages);
+  const [alumniGallery, setAlumniGallery] = useState(alumniImages);
 
   // Facility Photos State
   const [facilityPhotos, setFacilityPhotos] = useState({
@@ -94,10 +95,27 @@ const SchoolOverview = () => {
     science_labs: [],
     computer_lab: [],
     multipurpose_hall: [],
-    practical_rooms: []
+    practical_rooms: [],
+    shn: []
   });
   const [showFacilityPhotoControls, setShowFacilityPhotoControls] = useState(false);
   const [showSportsUpload, setShowSportsUpload] = useState(false);
+
+  // Image Slideshow State
+  const [imageSlideshow, setImageSlideshow] = useState({
+    isOpen: false,
+    images: [],
+    currentIndex: 0,
+    title: ''
+  });
+
+  // Alumni Profile Modal State
+  const [alumniProfileModal, setAlumniProfileModal] = useState({
+    isOpen: false,
+    profile: null,
+    currentPhotoIndex: 0,
+    showFullStory: false
+  });
 
   const getDepartmentForSubject = (subject) => {
     const s = subject.toUpperCase();
@@ -113,8 +131,8 @@ const SchoolOverview = () => {
 
   const initializeOrgChart = () => {
     const rows = [];
-    rows.push({ id: 1, level: 1, title: 'HEAD TEACHER', cards: INITIAL_STAFF_DATA.head.map(s => ({ id: Math.random(), fullName: s.fullName, position: s.position, image: PLACEHOLDER_IMG })) });
-    rows.push({ id: 2, level: 2, title: 'DEPUTY HEAD TEACHER', cards: INITIAL_STAFF_DATA.deputy.map(s => ({ id: Math.random(), fullName: s.fullName, position: s.position, image: PLACEHOLDER_IMG })) });
+    rows.push({ id: 1, level: 1, title: 'HEAD TEACHER', cards: INITIAL_STAFF_DATA.head.map(s => ({ id: Math.random(), fullName: s.fullName, position: s.position, image: s.imageUrl || PLACEHOLDER_IMG })) });
+    rows.push({ id: 2, level: 2, title: 'DEPUTY HEAD TEACHER', cards: INITIAL_STAFF_DATA.deputy.map(s => ({ id: Math.random(), fullName: s.fullName, position: s.position, image: s.imageUrl || PLACEHOLDER_IMG })) });
     
     const teachersByDept = {};
     INITIAL_STAFF_DATA.teachers.forEach(t => {
@@ -127,7 +145,7 @@ const SchoolOverview = () => {
       id: Math.random(), 
       fullName: s.fullName, 
       position: s.position, 
-      image: PLACEHOLDER_IMG,
+      image: s.imageUrl || PLACEHOLDER_IMG,
       subordinates: teachersByDept[s.position.replace('HOD ', '')] || []
     })) });
     
@@ -272,7 +290,7 @@ const SchoolOverview = () => {
 
     keyContacts: [
       { name: 'Mr. Kalusa Alex', role: 'Headteacher', phone: '0979889122' },
-      { name: 'Mr. Kamwi Siyauya', role: 'Mathematics Teacher', phone: '0979983682' },
+      { name: 'Mr. Kamwi Siyauya', role: 'ICT Class Teacher & Data Officer', phone: '0979983682' },
       { name: 'Mr. Chikusi Royd', role: 'Staff Member', phone: '0972788191' },
       { name: 'Ms. Chilokota Bless', role: 'Staff Member', phone: '0976045050' },
     ],
@@ -501,6 +519,11 @@ const SchoolOverview = () => {
       setSportsGallery(JSON.parse(savedSports));
     }
 
+    const savedAlumni = localStorage.getItem('linda_alumni_gallery');
+    if (savedAlumni) {
+      setAlumniGallery(JSON.parse(savedAlumni));
+    }
+
     const timer = setTimeout(() => {
       setLoading(false);
     }, 1000);
@@ -516,6 +539,10 @@ const SchoolOverview = () => {
   useEffect(() => {
     localStorage.setItem('linda_sports_gallery', JSON.stringify(sportsGallery));
   }, [sportsGallery]);
+
+  useEffect(() => {
+    localStorage.setItem('linda_alumni_gallery', JSON.stringify(alumniGallery));
+  }, [alumniGallery]);
 
   const handleUpdateCard = (rowId, cardId, field, value) => {
     setOrgData(prev => ({
@@ -575,6 +602,18 @@ const SchoolOverview = () => {
     }
   };
 
+  const handleAlumniImageUpload = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        const newImg = { id: Math.random(), url: event.target.result, caption: 'New Alumni Moment' };
+        setAlumniGallery(prev => [...prev, newImg]);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
   const handleFacilityPhotoUpload = (e, facilityName) => {
     const file = e.target.files[0];
     if (file) {
@@ -588,6 +627,109 @@ const SchoolOverview = () => {
       };
       reader.readAsDataURL(file);
     }
+  };
+
+  // Image Slideshow Functions
+  const openImageSlideshow = (images, startIndex = 0, title = 'Gallery') => {
+    setImageSlideshow({
+      isOpen: true,
+      images,
+      currentIndex: startIndex,
+      title
+    });
+  };
+
+  const closeImageSlideshow = () => {
+    setImageSlideshow({
+      isOpen: false,
+      images: [],
+      currentIndex: 0,
+      title: ''
+    });
+  };
+
+  const nextImage = () => {
+    setImageSlideshow(prev => ({
+      ...prev,
+      currentIndex: (prev.currentIndex + 1) % prev.images.length
+    }));
+  };
+
+  const prevImage = () => {
+    setImageSlideshow(prev => ({
+      ...prev,
+      currentIndex: prev.currentIndex === 0 ? prev.images.length - 1 : prev.currentIndex - 1
+    }));
+  };
+
+  // Keyboard navigation for slideshow
+  useEffect(() => {
+    const handleKeyPress = (e) => {
+      if (!imageSlideshow.isOpen) return;
+
+      switch (e.key) {
+        case 'ArrowLeft':
+          e.preventDefault();
+          prevImage();
+          break;
+        case 'ArrowRight':
+          e.preventDefault();
+          nextImage();
+          break;
+        case 'Escape':
+          e.preventDefault();
+          closeImageSlideshow();
+          break;
+      }
+    };
+
+    if (imageSlideshow.isOpen) {
+      document.addEventListener('keydown', handleKeyPress);
+      return () => document.removeEventListener('keydown', handleKeyPress);
+    }
+  }, [imageSlideshow.isOpen]);
+
+  // Alumni Profile Modal Functions
+  const openAlumniProfileModal = (profileId) => {
+    const profile = alumniProfiles.find(p => p.id === profileId);
+    if (profile) {
+      setAlumniProfileModal({
+        isOpen: true,
+        profile: profile,
+        currentPhotoIndex: 0,
+        showFullStory: false
+      });
+    }
+  };
+
+  const closeAlumniProfileModal = () => {
+    setAlumniProfileModal({
+      isOpen: false,
+      profile: null,
+      currentPhotoIndex: 0,
+      showFullStory: false
+    });
+  };
+
+  const nextAlumniPhoto = () => {
+    setAlumniProfileModal(prev => ({
+      ...prev,
+      currentPhotoIndex: (prev.currentPhotoIndex + 1) % prev.profile.photos.length
+    }));
+  };
+
+  const prevAlumniPhoto = () => {
+    setAlumniProfileModal(prev => ({
+      ...prev,
+      currentPhotoIndex: prev.currentPhotoIndex === 0 ? prev.profile.photos.length - 1 : prev.currentPhotoIndex - 1
+    }));
+  };
+
+  const toggleFullStory = () => {
+    setAlumniProfileModal(prev => ({
+      ...prev,
+      showFullStory: !prev.showFullStory
+    }));
   };
 
   const exportOrgData = () => {
@@ -647,8 +789,9 @@ const SchoolOverview = () => {
                 { id: 'programs', label: 'Programs' },
                 { id: 'sports', label: 'Sports' },
                 { id: 'shn', label: 'SHN' },
-                { id: 'staff', label: 'Staff' },
-                { id: 'orgchart', label: 'Org Chart' },
+                { id: 'orgchart', label: 'Staff & Org Chart' },
+                { id: 'classof', label: 'Class Of ...' },
+                { id: 'alumni', label: 'Alumni' },
                 { id: 'contact', label: 'Contact' },
               ].map(item => (
                 <button
@@ -684,8 +827,9 @@ const SchoolOverview = () => {
                 { id: 'programs', label: 'Programs' },
                 { id: 'sports', label: 'Sports' },
                 { id: 'shn', label: 'SHN' },
-                { id: 'staff', label: 'Staff' },
-                { id: 'orgchart', label: 'Org Chart' },
+                { id: 'orgchart', label: 'Staff & Org Chart' },
+                { id: 'classof', label: 'Class Of ...' },
+                { id: 'alumni', label: 'Alumni' },
                 { id: 'contact', label: 'Contact' },
               ].map(item => (
                 <button
@@ -910,6 +1054,82 @@ const SchoolOverview = () => {
               </div>
             </div>
 
+            {/* Facility Image Gallery - Permanent Photos */}
+            <div className="bg-gradient-to-r from-primary-500 to-primary-600 rounded-2xl p-12 shadow-xl">
+              <div className="text-center mb-8">
+                <h3 className="text-3xl font-black mb-2 text-white">Program Gallery</h3>
+                <p className="text-xl text-accent-50">Impact of our Health & Nutrition initiatives</p>
+              </div>
+              <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
+                {facilityImages.shn.map((img) => (
+                  <div
+                    key={img.id}
+                    className="group relative aspect-square bg-gray-200 rounded-xl overflow-hidden border-2 border-white shadow-lg hover:shadow-2xl transition-all cursor-pointer"
+                    onClick={() => openImageSlideshow(facilityImages.shn, facilityImages.shn.indexOf(img), 'SHN Gallery')}
+                  >
+                    <img src={img.url} className="w-full h-full object-cover" alt={img.caption} />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-3">
+                      <p className="text-white text-[10px] font-medium leading-tight">{img.caption}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Facility Photo Gallery */}
+            <div className="bg-white border-2 border-primary-200 rounded-2xl p-8 shadow-lg">
+              <div className="flex items-center justify-between mb-6">
+                <h3 className="text-2xl font-bold text-primary-500 flex items-center gap-2">
+                  <ImageIcon className="w-6 h-6" /> Program Photos
+                </h3>
+                <button 
+                  onClick={() => setShowFacilityPhotoControls(!showFacilityPhotoControls)}
+                  className="px-4 py-2 bg-primary-500 text-white rounded-lg text-sm font-bold hover:bg-primary-600 transition-colors"
+                >
+                  {showFacilityPhotoControls ? 'Hide' : 'Show'} Upload
+                </button>
+              </div>
+
+              {showFacilityPhotoControls && (
+                <div className="mb-6 pb-6 border-b-2 border-gray-200">
+                  <button 
+                    onClick={() => {
+                      const input = document.createElement('input');
+                      input.type = 'file';
+                      input.accept = 'image/*';
+                      input.onchange = (e) => handleFacilityPhotoUpload(e, 'shn');
+                      input.click();
+                    }}
+                    className="flex items-center gap-2 px-4 py-2 bg-green-600 text-white rounded-lg text-sm font-bold hover:bg-green-700 transition-colors"
+                  >
+                    <Plus className="w-4 h-4" /> Add Photo
+                  </button>
+                  <p className="text-sm text-gray-600 mt-2">📸 Photos are stored locally. Google Drive integration coming soon!</p>
+                </div>
+              )}
+
+              <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
+                {facilityPhotos.shn.map((img) => (
+                  <div key={img.id} className="group relative aspect-square bg-gray-100 rounded-xl overflow-hidden border-2 border-primary-100 hover:border-primary-500 transition-all">
+                    <img src={img.url} className="w-full h-full object-cover" alt={img.caption} />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-3">
+                      <p className="text-white text-[10px] font-medium leading-tight">{img.caption}</p>
+                      <button 
+                        onClick={() => setFacilityPhotos(prev => ({ ...prev, shn: prev.shn.filter(i => i.id !== img.id) }))}
+                        className="mt-2 p-1 bg-red-600 text-white rounded self-end"
+                      >
+                        <Trash2 className="w-3 h-3" />
+                      </button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {facilityPhotos.shn.length === 0 && !showFacilityPhotoControls && (
+                <p className="text-center text-gray-500 text-sm py-8">No photos yet. Click "Show Upload" to add photos.</p>
+              )}
+            </div>
+
             {/* Call to Action */}
             <div className="bg-gradient-to-r from-primary-500 to-primary-600 text-white rounded-2xl p-12 text-center shadow-xl">
               <h3 className="text-3xl font-black mb-4">Healthy Students, Bright Futures</h3>
@@ -1024,7 +1244,11 @@ const SchoolOverview = () => {
               </div>
               <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
                 {facilityImages.classrooms.map((img) => (
-                  <div key={img.id} className="group relative aspect-square bg-gray-200 rounded-xl overflow-hidden border-2 border-white shadow-lg hover:shadow-2xl transition-all">
+                  <div
+                    key={img.id}
+                    className="group relative aspect-square bg-gray-200 rounded-xl overflow-hidden border-2 border-white shadow-lg hover:shadow-2xl transition-all cursor-pointer"
+                    onClick={() => openImageSlideshow(facilityImages.classrooms, facilityImages.classrooms.indexOf(img), 'Classrooms')}
+                  >
                     <img src={img.url} className="w-full h-full object-cover" alt={img.caption} />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-3">
                       <p className="text-white text-[10px] font-medium leading-tight">{img.caption}</p>
@@ -1205,7 +1429,11 @@ const SchoolOverview = () => {
               </div>
               <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
                 {facilityImages.science_labs.map((img) => (
-                  <div key={img.id} className="group relative aspect-square bg-gray-200 rounded-xl overflow-hidden border-2 border-white shadow-lg hover:shadow-2xl transition-all">
+                  <div
+                    key={img.id}
+                    className="group relative aspect-square bg-gray-200 rounded-xl overflow-hidden border-2 border-white shadow-lg hover:shadow-2xl transition-all cursor-pointer"
+                    onClick={() => openImageSlideshow(facilityImages.science_labs, facilityImages.science_labs.indexOf(img), 'Science Laboratories')}
+                  >
                     <img src={img.url} className="w-full h-full object-cover" alt={img.caption} />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-3">
                       <p className="text-white text-[10px] font-medium leading-tight">{img.caption}</p>
@@ -1495,7 +1723,11 @@ const SchoolOverview = () => {
               </div>
               <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
                 {facilityImages.computer_lab.map((img) => (
-                  <div key={img.id} className="group relative aspect-square bg-gray-200 rounded-xl overflow-hidden border-2 border-white shadow-lg hover:shadow-2xl transition-all">
+                  <div
+                    key={img.id}
+                    className="group relative aspect-square bg-gray-200 rounded-xl overflow-hidden border-2 border-white shadow-lg hover:shadow-2xl transition-all cursor-pointer"
+                    onClick={() => openImageSlideshow(facilityImages.computer_lab, facilityImages.computer_lab.indexOf(img), 'Computer Lab')}
+                  >
                     <img src={img.url} className="w-full h-full object-cover" alt={img.caption} />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-3">
                       <p className="text-white text-[10px] font-medium leading-tight">{img.caption}</p>
@@ -1676,7 +1908,11 @@ const SchoolOverview = () => {
               </div>
               <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
                 {facilityImages.multipurpose_hall.map((img) => (
-                  <div key={img.id} className="group relative aspect-square bg-gray-200 rounded-xl overflow-hidden border-2 border-white shadow-lg hover:shadow-2xl transition-all">
+                  <div
+                    key={img.id}
+                    className="group relative aspect-square bg-gray-200 rounded-xl overflow-hidden border-2 border-white shadow-lg hover:shadow-2xl transition-all cursor-pointer"
+                    onClick={() => openImageSlideshow(facilityImages.multipurpose_hall, facilityImages.multipurpose_hall.indexOf(img), 'Multipurpose Hall')}
+                  >
                     <img src={img.url} className="w-full h-full object-cover" alt={img.caption} />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-3">
                       <p className="text-white text-[10px] font-medium leading-tight">{img.caption}</p>
@@ -1857,7 +2093,11 @@ const SchoolOverview = () => {
               </div>
               <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
                 {facilityImages.practical_rooms.map((img) => (
-                  <div key={img.id} className="group relative aspect-square bg-gray-200 rounded-xl overflow-hidden border-2 border-white shadow-lg hover:shadow-2xl transition-all">
+                  <div
+                    key={img.id}
+                    className="group relative aspect-square bg-gray-200 rounded-xl overflow-hidden border-2 border-white shadow-lg hover:shadow-2xl transition-all cursor-pointer"
+                    onClick={() => openImageSlideshow(facilityImages.practical_rooms, facilityImages.practical_rooms.indexOf(img), 'Practical Rooms')}
+                  >
                     <img src={img.url} className="w-full h-full object-cover" alt={img.caption} />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-3">
                       <p className="text-white text-[10px] font-medium leading-tight">{img.caption}</p>
@@ -1941,54 +2181,6 @@ const SchoolOverview = () => {
           </div>
         )}
 
-        {/* Staff Section */}
-        {activeSection === 'staff' && (
-          <div className="space-y-8">
-            <div>
-              <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
-                <div>
-                  <h2 className="text-3xl font-bold text-primary-500">Staff Directory</h2>
-                  <p className="text-gray-700">Educators and administrators specializing in diverse fields.</p>
-                </div>
-                <div className="relative">
-                  <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
-                  <input 
-                    type="text"
-                    placeholder="Search by name or subject..."
-                    className="pl-10 pr-4 py-2 border-2 border-primary-100 rounded-xl focus:border-primary-500 outline-none w-full md:w-80"
-                    value={staffSearchTerm}
-                    onChange={(e) => setStaffSearchTerm(e.target.value)}
-                  />
-                </div>
-              </div>
-
-              <div className="overflow-x-auto bg-white border-2 border-primary-500 rounded-xl shadow-lg">
-                <table className="w-full text-left">
-                  <thead className="bg-primary-500 text-white">
-                    <tr>
-                      <th className="p-4">Full Name</th>
-                      <th className="p-4">Substantive Position</th>
-                      <th className="p-4">Subject Specialization</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-primary-100">
-                    {schoolData.staff.filter(m => 
-                      m.name.toLowerCase().includes(staffSearchTerm.toLowerCase()) || 
-                      m.spec.toLowerCase().includes(staffSearchTerm.toLowerCase())
-                    ).map((member, idx) => (
-                      <tr key={idx} className="hover:bg-primary-50 transition-colors">
-                        <td className="p-4 font-bold text-primary-500">{member.name}</td>
-                        <td className="p-4 text-gray-700">{member.pos}</td>
-                        <td className="p-4 text-gray-700">{member.spec}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        )}
-
         {/* Org Chart Section */}
         {activeSection === 'orgchart' && (
           <div className="space-y-8">
@@ -2052,7 +2244,7 @@ const SchoolOverview = () => {
               </div>
             )}
 
-            <div className="org-capture-area shadow-2xl rounded-xl border-primary-500 overflow-x-auto">
+            <div className="org-capture-area shadow-2xl rounded-xl border-primary-500 overflow-x-auto overflow-y-hidden">
               <div className="chart-header mb-8 border-b-2 border-gray-800 pb-4">
                 <div className="absolute top-4 left-4 w-16 h-16 bg-gray-100 border flex items-center justify-center text-[10px] text-gray-400">LOGO</div>
                 <div className="absolute top-4 right-4 w-16 h-16 bg-gray-100 border flex items-center justify-center text-[10px] text-gray-400">ARMS</div>
@@ -2060,7 +2252,7 @@ const SchoolOverview = () => {
                 <h2 className="text-lg font-bold text-gray-700">LINDA SECONDARY SCHOOL</h2>
               </div>
 
-              <div className="space-y-12 py-4">
+              <div className="space-y-12 py-4 min-w-max">
                 {orgData.rows.map((row, idx) => (
                   <div key={row.id} className="relative">
                     {/* Connector line between rows */}
@@ -2068,10 +2260,10 @@ const SchoolOverview = () => {
                       <div className="absolute left-1/2 -bottom-12 w-px h-12 bg-gray-300 -translate-x-1/2 hidden md:block z-0"></div>
                     )}
                     
-                    <div className={`org-row level-${row.level} relative z-10 flex flex-nowrap justify-center gap-2 md:gap-4`}>
-                    <div className="org-row-title">{row.title}</div>
+                    <div className={`org-row level-${row.level} relative z-10 flex flex-nowrap justify-start gap-1 sm:gap-2 md:justify-center md:gap-4`}>
+                    <div className="org-row-title flex-shrink-0 mr-2 sm:mr-4">{row.title}</div>
                     {row.cards.map(card => (
-                      <div key={card.id} className="flex flex-col items-center">
+                      <div key={card.id} className="flex flex-col items-center flex-shrink-0">
                         <div className="org-card group">
                         <div className="bg-white p-2 rounded shadow-sm border border-gray-200">
                           <div className="org-photo-box" onClick={() => { setActivePhotoUpload({ rowId: row.id, cardId: card.id }); fileInputRef.current.click(); }}>
@@ -2115,10 +2307,53 @@ const SchoolOverview = () => {
               </div>
               <div className="mt-8 text-[10px] text-gray-400 italic text-right">Linda Secondary School Administration Chart</div>
             </div>
+
+            {/* Staff Directory */}
+            <div>
+              <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+                <div>
+                  <h2 className="text-3xl font-bold text-primary-500">Staff Directory</h2>
+                  <p className="text-gray-700">Educators and administrators specializing in diverse fields.</p>
+                </div>
+                <div className="relative">
+                  <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+                  <input 
+                    type="text"
+                    placeholder="Search by name or subject..."
+                    className="pl-10 pr-4 py-2 border-2 border-primary-100 rounded-xl focus:border-primary-500 outline-none w-full md:w-80"
+                    value={staffSearchTerm}
+                    onChange={(e) => setStaffSearchTerm(e.target.value)}
+                  />
+                </div>
+              </div>
+
+              <div className="overflow-x-auto bg-white border-2 border-primary-500 rounded-xl shadow-lg">
+                <table className="w-full text-left">
+                  <thead className="bg-primary-500 text-white">
+                    <tr>
+                      <th className="p-4">Full Name</th>
+                      <th className="p-4">Substantive Position</th>
+                      <th className="p-4">Subject Specialization</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-primary-100">
+                    {schoolData.staff.filter(m => 
+                      m.name.toLowerCase().includes(staffSearchTerm.toLowerCase()) || 
+                      m.spec.toLowerCase().includes(staffSearchTerm.toLowerCase())
+                    ).map((member, idx) => (
+                      <tr key={idx} className="hover:bg-primary-50 transition-colors">
+                        <td className="p-4 font-bold text-primary-500">{member.name}</td>
+                        <td className="p-4 text-gray-700">{member.pos}</td>
+                        <td className="p-4 text-gray-700">{member.spec}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
           </div>
         )}
 
-        {/* Hidden inputs and Modals */}
         <input type="file" ref={fileInputRef} className="hidden" accept="image/*" onChange={handleImageUpload} />
         
         {importModalOpen && (
@@ -2253,7 +2488,7 @@ const SchoolOverview = () => {
               </div>
 
               {showSportsUpload && (
-                <div className="pb-6 border-b-2 border-gray-200">
+                <div className="pb-6 border-b-2 border-gray-200 flex flex-wrap gap-2">
                   <button 
                     onClick={() => {
                       const input = document.createElement('input');
@@ -2266,17 +2501,30 @@ const SchoolOverview = () => {
                   >
                     <Plus className="w-4 h-4" /> Add Moment
                   </button>
+                  <button 
+                    onClick={() => { if(confirm('Reset gallery to default photos from config?')) { setSportsGallery(sportsImages); localStorage.removeItem('linda_sports_gallery'); } }}
+                    className="flex items-center gap-2 px-4 py-2 bg-orange-600 text-white rounded-lg text-sm font-bold hover:bg-orange-700 transition-colors"
+                  >
+                    <RefreshCw className="w-4 h-4" /> Reset Gallery
+                  </button>
                 </div>
               )}
               
               <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
                 {sportsGallery.map((img) => (
-                  <div key={img.id} className="group relative aspect-square bg-gray-100 rounded-xl overflow-hidden border-2 border-primary-100 hover:border-primary-500 transition-all">
+                  <div
+                    key={img.id}
+                    className="group relative aspect-square bg-gray-100 rounded-xl overflow-hidden border-2 border-primary-100 hover:border-primary-500 transition-all cursor-pointer"
+                    onClick={() => openImageSlideshow(sportsGallery, sportsGallery.indexOf(img), 'Sports Gallery')}
+                  >
                     <img src={img.url} className="w-full h-full object-cover" alt={img.caption} />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-3">
                       <p className="text-white text-[10px] font-medium leading-tight">{img.caption}</p>
-                      <button 
-                        onClick={() => setSportsGallery(prev => prev.filter(i => i.id !== img.id))}
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setSportsGallery(prev => prev.filter(i => i.id !== img.id));
+                        }}
                         className="mt-2 p-1 bg-red-600 text-white rounded self-end"
                       >
                         <Trash2 className="w-3 h-3" />
@@ -2284,6 +2532,171 @@ const SchoolOverview = () => {
                     </div>
                   </div>
                 ))}
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Alumni Section */}
+        {activeSection === 'alumni' && (
+          <div className="space-y-8">
+            <div>
+              <h2 className="text-3xl font-bold text-primary-500 mb-2">Alumni Testimonials</h2>
+              <p className="text-gray-700 mb-8">Hear from our former students who have gone on to achieve great things in their lives and careers.</p>
+
+              <div className="space-y-8">
+                {/* Tony Luo Testimonial */}
+                <div className="bg-white border-2 border-primary-500 rounded-xl p-8 shadow-lg">
+                  <div className="flex flex-col md:flex-row md:items-start gap-6">
+                    <div className="flex-shrink-0">
+                      <div className="w-32 h-32 bg-primary-100 rounded-lg overflow-hidden border-2 border-primary-200">
+                        <img 
+                          src="/images/alumini/tony-luo/img-1.jpeg" 
+                          alt="Tony Luo - Former Pupil, Class of 1992"
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    </div>
+                    <div className="flex-1">
+                      <div className="flex flex-col sm:flex-row sm:items-center gap-2 mb-4">
+                        <h3 className="text-2xl font-bold text-primary-500">Tony Luo</h3>
+                        <span className="text-gray-600 font-medium">Former Pupil, Class of 1992</span>
+                      </div>
+                      <div className="prose prose-gray max-w-none">
+                        <p className="text-gray-700 mb-4">
+                          Tony Luo attended Linda Secondary School from 1987 to 1992, beginning in Grade 8 Class Z and completing his secondary education in Grade 12 Class C. He credits Linda Secondary School as the foundation of both his character and his career.
+                        </p>
+                        <p className="text-gray-700 mb-4">
+                          During his time at the school, Tony held the position of class captain across both junior and senior secondary levels, and was an active member of the Scripture Union, where he played a key role in establishing branches at neighbouring schools. Academically, he excelled particularly in Mathematics, earning consistent top scores under the mentorship of the late Mr. Shumba, Head of the Mathematics Department. He was also recognised for outstanding academic achievement by the school head at the time, Mr. Alisinda.
+                        </p>
+                        <p className="text-gray-700 mb-4">
+                          Beyond the classroom, Tony distinguished himself in chess, representing Linda at schoolboy international level through the Stone Castles Chess Club of Zambia Railways. In 1992, he was part of the Linda chess team that won the Harry Mwanga Nkumbula Memorial Cup at St. Canisius Secondary School. He also served as Red Cross President that same year, contributing to district-level humanitarian activities and providing first aid support at Batoka Hospital during a period of significant national transition.
+                        </p>
+                        <p className="text-gray-700 mb-4">
+                          Tony went on to build a distinguished career in industry. He currently serves as Regional Customer Experience Manager for Central and East Africa at an international company based in Gothenburg, Sweden, and holds a Level 3 Lubrication Management Consultant certification, with specialist involvement in the mining sector.
+                        </p>
+                        <p className="text-gray-700">
+                          He attributes the discipline, leadership, and values that have guided his professional journey to the education and experiences he gained at Linda Secondary School.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Placeholder for additional testimonials */}
+                <div className="bg-gradient-to-r from-primary-50 to-accent-50 border-2 border-dashed border-primary-200 rounded-xl p-8 text-center">
+                  <Award className="w-16 h-16 text-primary-300 mx-auto mb-4" />
+                  <h3 className="text-xl font-bold text-primary-500 mb-2">Share Your Story</h3>
+                  <p className="text-gray-600 mb-4">
+                    Are you a former student of Linda Secondary School? We'd love to hear your story and achievements.
+                  </p>
+                  <p className="text-sm text-gray-500">
+                    Contact us to share your testimonial and be featured here.
+                  </p>
+                </div>
+              </div>
+
+              {/* Alumni Gallery */}
+              <div className="mt-12">
+                <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+                  <div>
+                    <h3 className="text-2xl font-bold text-primary-500">Alumni Profiles</h3>
+                    <p className="text-gray-700">Success stories and achievements of our former students.</p>
+                  </div>
+                  <div className="flex gap-2">
+                    <input
+                      type="file"
+                      accept="image/*"
+                      onChange={handleAlumniImageUpload}
+                      className="hidden"
+                      id="alumni-upload"
+                    />
+                    <label
+                      htmlFor="alumni-upload"
+                      className="px-4 py-2 bg-primary-500 text-white rounded-lg hover:bg-primary-600 transition-colors flex items-center gap-2 cursor-pointer"
+                    >
+                      <Plus className="w-4 h-4" />
+                      Add Photo
+                    </label>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {alumniProfiles.map((profile) => (
+                    <div key={profile.id} className="bg-white border-2 border-primary-200 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow">
+                      <div
+                        className="aspect-video bg-gray-200 cursor-pointer relative overflow-hidden"
+                        onClick={() => openAlumniProfileModal(profile.id)}
+                      >
+                        <img
+                          src={profile.photos[0]?.url || '/images/alumini/default.jpg'}
+                          alt={profile.name}
+                          className="w-full h-full object-cover"
+                        />
+                        <div className="absolute inset-0 bg-black/0 hover:bg-black/30 transition-colors flex items-center justify-center">
+                          <div className="opacity-0 hover:opacity-100 transition-opacity">
+                            <ImageIcon className="w-12 h-12 text-white" />
+                          </div>
+                        </div>
+                      </div>
+                      <div className="p-4">
+                        <h4 className="text-lg font-bold text-primary-600 mb-1">{profile.name}</h4>
+                        <p className="text-sm text-gray-600 mb-2">
+                          Class of {profile.graduationYear} • {profile.class}
+                        </p>
+                        <p className="text-sm font-medium text-primary-500 mb-2">
+                          {profile.currentPosition}
+                        </p>
+                        <p className="text-sm text-gray-700 mb-3 line-clamp-3">
+                          {profile.shortBio}
+                        </p>
+                        <button
+                          onClick={() => openAlumniProfileModal(profile.id)}
+                          className="text-primary-500 hover:text-primary-600 text-sm font-medium flex items-center gap-1"
+                        >
+                          View Full Story <ChevronRight className="w-4 h-4" />
+                        </button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Additional Alumni Photos Gallery */}
+                {alumniGallery.length > 0 && (
+                  <div className="mt-8">
+                    <h4 className="text-xl font-bold text-primary-500 mb-4">Community Photos</h4>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                      {alumniGallery.map((img) => (
+                        <div key={img.id} className="relative group">
+                          <div
+                            className="aspect-square bg-gray-200 rounded-lg overflow-hidden cursor-pointer hover:shadow-lg transition-shadow"
+                            onClick={() => openImageSlideshow(alumniGallery, alumniGallery.indexOf(img), 'Alumni Community Gallery')}
+                          >
+                            <img
+                              src={img.url}
+                              alt={img.caption}
+                              className="w-full h-full object-cover"
+                            />
+                            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+                              <div className="opacity-0 group-hover:opacity-100 transition-opacity">
+                                <ImageIcon className="w-8 h-8 text-white" />
+                              </div>
+                            </div>
+                          </div>
+                          <div className="mt-2 flex justify-between items-center">
+                            <p className="text-sm text-gray-600 truncate">{img.caption}</p>
+                            <button
+                              onClick={() => setAlumniGallery(prev => prev.filter(i => i.id !== img.id))}
+                              className="text-red-500 hover:text-red-700 p-1 opacity-0 group-hover:opacity-100 transition-opacity"
+                            >
+                              <Trash2 className="w-4 h-4" />
+                            </button>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
           </div>
@@ -2413,6 +2826,229 @@ const SchoolOverview = () => {
         </div>
       )}
 
+      {/* Image Slideshow Modal */}
+      {imageSlideshow.isOpen && (
+        <div
+          className="fixed inset-0 bg-black/95 z-50 flex items-center justify-center p-4 transition-opacity duration-300"
+          onClick={closeImageSlideshow}
+        >
+          <div
+            className="relative max-w-6xl w-full max-h-[95vh] flex flex-col bg-black/20 backdrop-blur-sm rounded-2xl overflow-hidden shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Header */}
+            <div className="flex items-center justify-between p-6 bg-black/30 backdrop-blur-sm">
+              <h3 className="text-white text-2xl font-bold">{imageSlideshow.title}</h3>
+              <button
+                onClick={closeImageSlideshow}
+                className="text-white hover:text-red-400 text-3xl font-bold transition-colors"
+              >
+                ✕
+              </button>
+            </div>
+
+            {/* Main Image */}
+            <div className="flex-1 flex items-center justify-center p-6">
+              <div className="relative">
+                <img
+                  src={imageSlideshow.images[imageSlideshow.currentIndex]?.url}
+                  alt={imageSlideshow.images[imageSlideshow.currentIndex]?.caption}
+                  className="max-w-full max-h-[70vh] object-contain rounded-lg shadow-2xl transition-transform duration-300"
+                />
+                {/* Navigation Arrows Overlay */}
+                {imageSlideshow.images.length > 1 && (
+                  <>
+                    <button
+                      onClick={prevImage}
+                      className="absolute left-4 top-1/2 -translate-y-1/2 text-white hover:text-primary-300 text-4xl font-bold p-4 bg-black/30 hover:bg-black/50 rounded-full transition-all opacity-70 hover:opacity-100"
+                    >
+                      ‹
+                    </button>
+                    <button
+                      onClick={nextImage}
+                      className="absolute right-4 top-1/2 -translate-y-1/2 text-white hover:text-primary-300 text-4xl font-bold p-4 bg-black/30 hover:bg-black/50 rounded-full transition-all opacity-70 hover:opacity-100"
+                    >
+                      ›
+                    </button>
+                  </>
+                )}
+              </div>
+            </div>
+
+            {/* Navigation and Caption */}
+            <div className="flex items-center justify-between p-6 bg-black/30 backdrop-blur-sm">
+              <div className="text-center flex-1">
+                <p className="text-white text-lg font-medium mb-2">
+                  {imageSlideshow.images[imageSlideshow.currentIndex]?.caption}
+                </p>
+                <p className="text-white/70 text-sm">
+                  {imageSlideshow.currentIndex + 1} of {imageSlideshow.images.length}
+                </p>
+              </div>
+            </div>
+
+            {/* Thumbnail Strip */}
+            {imageSlideshow.images.length > 1 && (
+              <div className="p-6 bg-black/20 backdrop-blur-sm">
+                <div className="flex justify-center gap-3 overflow-x-auto max-w-full">
+                  {imageSlideshow.images.map((img, index) => (
+                    <button
+                      key={img.id}
+                      onClick={() => setImageSlideshow(prev => ({ ...prev, currentIndex: index }))}
+                      className={`flex-shrink-0 w-20 h-20 rounded-lg border-4 overflow-hidden transition-all ${
+                        index === imageSlideshow.currentIndex
+                          ? 'border-primary-400 shadow-lg scale-110'
+                          : 'border-white/30 hover:border-white/60 hover:scale-105'
+                      }`}
+                    >
+                      <img
+                        src={img.url}
+                        alt={img.caption}
+                        className="w-full h-full object-cover"
+                      />
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+
+      {/* Alumni Profile Modal */}
+      {alumniProfileModal.isOpen && alumniProfileModal.profile && (
+        <div
+          className="fixed inset-0 bg-black/95 z-50 flex items-center justify-center p-4 transition-opacity duration-300"
+          onClick={closeAlumniProfileModal}
+        >
+          <div
+            className="relative max-w-7xl w-full max-h-[95vh] bg-white rounded-2xl overflow-hidden shadow-2xl flex"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Left Side - Photo Gallery */}
+            <div className="w-1/2 bg-gray-100 flex flex-col">
+              {/* Photo Display */}
+              <div className="flex-1 relative overflow-hidden">
+                <img
+                  src={alumniProfileModal.profile.photos[alumniProfileModal.currentPhotoIndex]?.url}
+                  alt={alumniProfileModal.profile.photos[alumniProfileModal.currentPhotoIndex]?.caption}
+                  className="w-full h-full object-cover"
+                />
+
+                {/* Navigation Arrows */}
+                {alumniProfileModal.profile.photos.length > 1 && (
+                  <>
+                    <button
+                      onClick={prevAlumniPhoto}
+                      className="absolute left-4 top-1/2 -translate-y-1/2 text-white hover:text-primary-300 text-4xl font-bold p-4 bg-black/30 hover:bg-black/50 rounded-full transition-all opacity-70 hover:opacity-100"
+                    >
+                      ‹
+                    </button>
+                    <button
+                      onClick={nextAlumniPhoto}
+                      className="absolute right-4 top-1/2 -translate-y-1/2 text-white hover:text-primary-300 text-4xl font-bold p-4 bg-black/30 hover:bg-black/50 rounded-full transition-all opacity-70 hover:opacity-100"
+                    >
+                      ›
+                    </button>
+                  </>
+                )}
+
+                {/* Photo Counter */}
+                <div className="absolute bottom-4 left-4 bg-black/70 text-white px-3 py-1 rounded-full text-sm">
+                  {alumniProfileModal.currentPhotoIndex + 1} of {alumniProfileModal.profile.photos.length}
+                </div>
+              </div>
+
+              {/* Thumbnail Strip */}
+              {alumniProfileModal.profile.photos.length > 1 && (
+                <div className="p-4 bg-white border-t">
+                  <div className="flex justify-center gap-2 overflow-x-auto max-w-full">
+                    {alumniProfileModal.profile.photos.map((photo, index) => (
+                      <button
+                        key={photo.id}
+                        onClick={() => setAlumniProfileModal(prev => ({ ...prev, currentPhotoIndex: index }))}
+                        className={`flex-shrink-0 w-16 h-16 rounded-lg border-3 overflow-hidden transition-all ${
+                          index === alumniProfileModal.currentPhotoIndex
+                            ? 'border-primary-500 shadow-lg scale-110'
+                            : 'border-gray-300 hover:border-primary-300 hover:scale-105'
+                        }`}
+                      >
+                        <img
+                          src={photo.url}
+                          alt={photo.caption}
+                          className="w-full h-full object-cover"
+                        />
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* Right Side - Profile Information */}
+            <div className="w-1/2 flex flex-col max-h-[95vh]">
+              {/* Header */}
+              <div className="flex items-center justify-between p-6 bg-primary-500 text-white">
+                <div>
+                  <h2 className="text-2xl font-bold">{alumniProfileModal.profile.name}</h2>
+                  <p className="text-primary-100">
+                    Class of {alumniProfileModal.profile.graduationYear} • {alumniProfileModal.profile.class}
+                  </p>
+                </div>
+                <button
+                  onClick={closeAlumniProfileModal}
+                  className="text-white hover:text-red-300 text-3xl font-bold transition-colors"
+                >
+                  ✕
+                </button>
+              </div>
+
+              {/* Profile Content */}
+              <div className="flex-1 overflow-y-auto p-6">
+                {/* Current Position */}
+                <div className="mb-6">
+                  <h3 className="text-lg font-bold text-primary-600 mb-2">Current Position</h3>
+                  <p className="text-gray-800 font-medium">{alumniProfileModal.profile.currentPosition}</p>
+                  <p className="text-gray-600">{alumniProfileModal.profile.company}</p>
+                </div>
+
+                {/* Photo Caption */}
+                <div className="mb-6">
+                  <h3 className="text-lg font-bold text-primary-600 mb-2">Current Photo</h3>
+                  <p className="text-gray-700 italic">
+                    {alumniProfileModal.profile.photos[alumniProfileModal.currentPhotoIndex]?.caption}
+                  </p>
+                </div>
+
+                {/* Story */}
+                <div className="mb-6">
+                  <div className="flex items-center justify-between mb-3">
+                    <h3 className="text-lg font-bold text-primary-600">Story</h3>
+                    <button
+                      onClick={toggleFullStory}
+                      className="text-primary-500 hover:text-primary-600 text-sm font-medium underline"
+                    >
+                      {alumniProfileModal.showFullStory ? 'Show Less' : 'Read More'}
+                    </button>
+                  </div>
+                  <div className="text-gray-700 leading-relaxed">
+                    {alumniProfileModal.showFullStory ? (
+                      <div className="space-y-4">
+                        {alumniProfileModal.profile.fullStory.split('\n\n').map((paragraph, index) => (
+                          <p key={index}>{paragraph}</p>
+                        ))}
+                      </div>
+                    ) : (
+                      <p>{alumniProfileModal.profile.shortBio}</p>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Footer */}
       <footer className="border-t-2 border-primary-500 bg-primary-500 text-white mt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -2427,4 +3063,3 @@ const SchoolOverview = () => {
 };
 
 export default SchoolOverview;
-
