@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Menu, X, ChevronDown, MapPin, Users, BookOpen, Trophy, Star, Clock, Phone, Mail, Building2, AlertCircle, RefreshCw, ArrowRight, FlaskConical, GraduationCap, Award, Camera, Plus, Trash2, Copy, Download, Upload, Printer, Search, Image as ImageIcon, ChevronUp, ChevronLeft, ChevronRight, Zap } from 'lucide-react';
+import { Menu, X, ChevronDown, MapPin, Users, BookOpen, Trophy, Star, Clock, Phone, Mail, Building2, AlertCircle, RefreshCw, ArrowRight, FlaskConical, GraduationCap, Award, Camera, Plus, Trash2, Copy, Download, Upload, Printer, Search, Image as ImageIcon, ChevronUp, ChevronLeft, ChevronRight, Zap, Play, Pause } from 'lucide-react';
 import { sportsImages, alumniImages, alumniProfiles } from './imageConfig';
 
 const PLACEHOLDER_IMG = 'https://placehold.co/90x110/e8e8e8/666666?text=Staff+Photo';
@@ -91,6 +91,7 @@ const SECTIONS = [
   'about',
   'facilities',
   'programs',
+  'shn',
   'sports',
   'orgchart',
   'classof',
@@ -112,6 +113,7 @@ const SchoolOverview = () => {
   const [dailyQuote, setDailyQuote] = useState({ text: 'Linda for Life Long Education', author: 'School Motto' });
   const [alumniSearchTerm, setAlumniSearchTerm] = useState('');
   const [selectedAlumnus, setSelectedAlumnus] = useState(alumniProfiles[0]);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(false);
   const alumniDetailRef = useRef(null);
 
   // Org Chart State
@@ -136,6 +138,17 @@ const SchoolOverview = () => {
     currentIndex: 0,
     title: ''
   });
+
+  // Auto-roll Effect: Cycles slides every 5 seconds when playing
+  useEffect(() => {
+    let interval;
+    if (isAutoPlaying) {
+      interval = setInterval(() => {
+        handleNavigation('down');
+      }, 5000);
+    }
+    return () => clearInterval(interval);
+  }, [isAutoPlaying, currentSectionIndex]);
 
   const getDepartmentForSubject = (subject) => {
     const s = subject.toUpperCase();
@@ -182,7 +195,7 @@ const SchoolOverview = () => {
     email: 'info@lindasecondary.edu.zm',
     website: 'www.lindasecondary.edu.zm',
     
-    overview: `Founded in 1963, Linda Secondary School serves over 1,800 learners. Under Zambia's 2022 Free Education Policy, which abolished tuition and PTA fees, we have seen a significant enrollment surge, supported by the national hiring of over 30,000 teachers to maintain quality standards.`,
+    overview: `Founded in 1963 as one of Zambia's oldest pre-independence government institutions, Linda Secondary School serves over 1,800 learners near the Victoria Falls. We offer a comprehensive curriculum from Form 1 to Grade 12, including a thriving Open and Distance Learning (ODL) stream, balancing academic excellence with national-level co-curricular success.`,
     
     vision: 'To continue growing as an iconic government secondary school, expanding infrastructure while maintaining our reputation for academic excellence and co-curricular achievement across Southern Province.',
     
@@ -580,6 +593,14 @@ const SchoolOverview = () => {
           <ChevronUp className="w-5 h-5 text-blue-900 group-hover:scale-110 transition-transform" />
         </button>
         
+        <button
+          onClick={(e) => { e.stopPropagation(); setIsAutoPlaying(!isAutoPlaying); }}
+          className={`p-2 rounded-lg transition-all ${isAutoPlaying ? 'bg-blue-900 text-white' : 'hover:bg-blue-50 text-blue-900'}`}
+          title={isAutoPlaying ? "Pause Presentation" : "Start Auto-roll"}
+        >
+          {isAutoPlaying ? <Pause className="w-5 h-5" /> : <Play className="w-5 h-5" />}
+        </button>
+
         <div className="flex items-center gap-1">
           {SECTIONS.map((section, idx) => (
             <button
@@ -615,7 +636,14 @@ const SchoolOverview = () => {
       </div>
 
       {/* Slide Container */}
-      <div className="presentation-container h-screen overflow-hidden relative">
+      <div 
+        className="presentation-container h-screen overflow-hidden relative cursor-pointer"
+        onClick={(e) => {
+          if (e.target.tagName !== 'BUTTON' && e.target.tagName !== 'A' && !e.target.closest('button')) {
+            setIsAutoPlaying(!isAutoPlaying);
+          }
+        }}
+      >
         {/* Navbar */}
         <nav className="border-b-2 border-blue-900 backdrop-blur-sm z-50 bg-white">
           <div className="max-w-full px-6 py-3">
@@ -695,18 +723,48 @@ const SchoolOverview = () => {
           {/* Overview Section */}
           {activeSection === 'overview' && (
             <section style={{ minHeight: 'calc(100vh - 70px)' }} className="bg-gradient-to-b from-white to-blue-50 flex flex-col justify-center p-6 md:p-12">
-              <div className="relative mb-12 bg-cover bg-center bg-no-repeat rounded-2xl p-8 md:p-12 text-white text-center shadow-xl overflow-hidden" 
+              <div className="relative mb-8 bg-cover bg-center bg-no-repeat rounded-2xl p-8 md:p-12 text-white text-center shadow-xl overflow-hidden" 
                    style={{ backgroundImage: 'url("/images/school-hero.jpg")' }}>
-                <h1 className="text-4xl md:text-5xl font-black mb-4 drop-shadow-lg">{schoolData.name}</h1>
-                <p className="text-lg italic opacity-100 mb-4 text-white/90">"{dailyQuote.text}"</p>
+                <h1 className="text-4xl md:text-5xl font-black mb-2 drop-shadow-lg">{schoolData.name}</h1>
                 <p className="text-lg flex items-center justify-center gap-2 drop-shadow-lg">
                   <MapPin className="w-5 h-5" />
                   {schoolData.location}
                 </p>
               </div>
 
+              {/* Welcome/Interactive Card */}
+              <div className="bg-white border-2 border-blue-900 rounded-xl p-8 shadow-lg mb-8">
+                <h2 className="text-3xl font-bold text-blue-900 mb-2">Welcome to Linda Secondary School</h2>
+                <p className="text-blue-700 font-bold italic mb-4">"{schoolData.motto}"</p>
+                <p className="text-gray-700 text-lg leading-relaxed mb-6">
+                  {schoolData.overview}
+                </p>
+                <div className="flex gap-4">
+                  <button 
+                    onClick={() => {
+                      const idx = SECTIONS.indexOf('about');
+                      setCurrentSectionIndex(idx);
+                      setActiveSection('about');
+                    }}
+                    className="px-6 py-2 bg-blue-900 hover:bg-blue-800 text-white rounded-lg font-medium transition-colors flex items-center gap-2"
+                  >
+                    Learn More <ArrowRight className="w-4 h-4" />
+                  </button>
+                  <button 
+                    onClick={() => {
+                      const idx = SECTIONS.indexOf('contact');
+                      setCurrentSectionIndex(idx);
+                      setActiveSection('contact');
+                    }}
+                    className="px-6 py-2 bg-blue-100 hover:bg-blue-200 text-blue-900 rounded-lg font-medium transition-colors"
+                  >
+                    Contact Us
+                  </button>
+                </div>
+              </div>
+
               {/* Quick Stats Grid */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
                 {schoolData.stats.map((stat, idx) => {
                   const Icon = stat.icon;
                   return (
