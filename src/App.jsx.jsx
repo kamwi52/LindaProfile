@@ -162,7 +162,7 @@ const SchoolOverview = () => {
     email: 'info@lindasecondary.edu.zm',
     website: 'www.lindasecondary.edu.zm',
     
-    overview: `Founded in 1963 as one of Zambia's oldest pre-independence government institutions, Linda Secondary School serves over 1,800 learners near the Victoria Falls. We offer a comprehensive curriculum from Form 1 to Grade 12, including a thriving Open and Distance Learning (ODL) stream, balancing academic excellence with national-level co-curricular success.`,
+    overview: `Founded in 1963, Linda Secondary School serves over 1,800 learners. Following the 2022 Free Education Policy, which eliminated tuition and PTA fees, we've welcomed a surge in enrollment, supported by the government's recruitment of 30,000+ teachers.`,
     
     vision: 'To continue growing as an iconic government secondary school, expanding infrastructure while maintaining our reputation for academic excellence and co-curricular achievement across Southern Province.',
     
@@ -456,17 +456,17 @@ const SchoolOverview = () => {
 
     shn: {
       title: 'SHN : SCHOOL FEEDING PROGRAM',
-      description: 'School Health and Nutrition Program',
-      overview: 'Linda Secondary School\'s comprehensive School Health and Nutrition (SHN) program ensures every student receives proper nutrition and health support to enable optimal learning and development.',
+      description: "Zambia's Home-Grown School Meals (HGSM) Initiative",
+      overview: "Operating under the Ministry of Education's SHN Unit, our feeding program supports 1800+ students. It leverages the 'Home-Grown' model, sourcing food from local farmers to provide maize, beans, and oil, directly addressing hunger and educational outcomes in the wake of the 2022 Free Education Policy.",
       benefits: [
-        { icon: '🥗', title: 'Balanced Meals', description: 'Nutritionally balanced meals meeting dietary requirements for growing students' },
-        { icon: '💪', title: 'Health Screenings', description: 'Regular health checks and vaccinations for all students' },
-        { icon: '📚', title: 'Nutrition Education', description: 'Health and nutrition literacy integrated into curriculum' },
-        { icon: '❤️', title: 'Wellness Support', description: 'Mental and physical health support services' },
+        { icon: '🍛', title: 'Social Protection', description: 'Feeding over 2 million learners nationwide to enhance attendance, retention, and nutrition.' },
+        { icon: '🚜', title: 'Smallholder Support', description: 'Collaborating with WFP to source food locally, boosting community economies.' },
+        { icon: '🆓', title: 'Fee Abolition Sync', description: 'Mitigating infrastructure strain from fee removal by ensuring every child is fed and ready to learn.' },
+        { icon: '📋', title: 'Expansion Goals', description: 'Aiding the national goal to reach 116 districts by 2026, including plans for school milk.' },
       ],
       statistics: [
-        { label: 'Daily Meals Served', value: '450+' },
-        { label: 'Nutrition Programs', value: '5' },
+        { label: 'Daily Meals Served', value: '1800+' },
+        { label: 'National Schools', value: '5,200+' },
         { label: 'Student Coverage', value: '100%' },
       ]
     },

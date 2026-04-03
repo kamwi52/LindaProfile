@@ -182,7 +182,7 @@ const SchoolOverview = () => {
     email: 'info@lindasecondary.edu.zm',
     website: 'www.lindasecondary.edu.zm',
     
-    overview: `Founded in 1963 as one of Zambia's oldest pre-independence government institutions, Linda Secondary School serves over 1,800 learners near the Victoria Falls. We offer a comprehensive curriculum from Form 1 to Grade 12, including a thriving Open and Distance Learning (ODL) stream, balancing academic excellence with national-level co-curricular success.`,
+    overview: `Founded in 1963, Linda Secondary School serves over 1,800 learners. Under Zambia's 2022 Free Education Policy, which abolished tuition and PTA fees, we have seen a significant enrollment surge, supported by the national hiring of over 30,000 teachers to maintain quality standards.`,
     
     vision: 'To continue growing as an iconic government secondary school, expanding infrastructure while maintaining our reputation for academic excellence and co-curricular achievement across Southern Province.',
     
@@ -197,13 +197,13 @@ const SchoolOverview = () => {
 
     shn: {
       title: 'SHN : SCHOOL FEEDING PROGRAM',
-      description: 'Nutrition and learner wellbeing support.',
-      overview: 'Our comprehensive School Feeding Program ensures that learners have access to balanced nutrition, directly contributing to improved attendance and academic focus.',
+      description: "Zambia's Home-Grown School Meals (HGSM) Initiative",
+      overview: "Linda Secondary School participates in the HGSM program, a major social protection initiative feeding over 2 million learners nationwide. Managed by the MoE SHN Unit, the program sources food from local smallholder farmers to boost community economies while reducing hunger and improving retention.",
       benefits: [
-        { icon: '🍛', title: '1400+ Meals Daily', description: 'Providing hot, nutritious meals to over 1400 learners every school day.' },
-        { icon: '📈', title: 'Improved Attendance', description: 'Significant increase in learner presence and reduced drop-out rates.' },
-        { icon: '⚖️', title: 'Balanced Nutrition', description: 'Meals designed to provide essential vitamins and energy for growing minds.' },
-        { icon: '🤝', title: 'Community Support', description: 'Collaborative effort with partners to ensure program sustainability.' },
+        { icon: '🥗', title: 'Nutritious Menu', description: 'Locally sourced maize, beans, and oil provide familiar, high-energy meals for our students.' },
+        { icon: '📈', title: 'National Impact', description: 'Part of a network feeding 2M+ pupils across 5,200 schools, increasing enrollment post-Free Education Policy.' },
+        { icon: '🚜', title: 'Local Sourcing', description: 'Home-Grown model supports local smallholder farmers in partnership with the WFP and World Vision.' },
+        { icon: '🎓', title: 'Policy Success', description: 'Complements the 2022 Free Education Policy by removing the barrier of hunger for vulnerable households.' },
       ]
     },
 
