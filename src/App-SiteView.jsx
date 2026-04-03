@@ -178,7 +178,7 @@ const SchoolOverview = () => {
     email: 'info@lindasecondary.edu.zm',
     website: 'www.lindasecondary.edu.zm',
     
-    overview: `Founded in 1963 as one of Zambia's oldest pre-independence government institutions, Linda Secondary School serves over 1,600 learners near the Victoria Falls. We offer a comprehensive curriculum from Form 1 to Grade 12, including a thriving Open and Distance Learning (ODL) stream, balancing academic excellence with national-level co-curricular success.`,
+    overview: `Founded in 1963 as one of Zambia's oldest pre-independence government institutions, Linda Secondary School serves over 1,800 learners near the Victoria Falls. We offer a comprehensive curriculum from Form 1 to Grade 12, including a thriving Open and Distance Learning (ODL) stream, balancing academic excellence with national-level co-curricular success.`,
     
     vision: 'To continue growing as an iconic government secondary school, expanding infrastructure while maintaining our reputation for academic excellence and co-curricular achievement across Southern Province.',
     
@@ -187,12 +187,12 @@ const SchoolOverview = () => {
     stats: [
       { label: 'Teaching Staff', value: '68', icon: Users },
       { label: 'Classrooms', value: '32', icon: Building2 },
-      { label: 'Student Enrolment', value: '1602+', icon: GraduationCap },
+      { label: 'Student Enrolment', value: '1800+', icon: GraduationCap },
       { label: 'Science Labs', value: '02', icon: FlaskConical },
     ],
     
     highlights: [
-      '78.4% Grade 12 Pass Rate (2025)',
+      '82% Grade 12 Pass Rate (2025)',
       '85.5% Grade 9 Pass Rate (2025)',
       'National Champions: Football, Netball, Rugby, Arts',
       'Oldest Government Day Secondary in the Region',
@@ -246,7 +246,7 @@ const SchoolOverview = () => {
       grade12: [
         { year: '2023', sat: '298', passed: '231', rate: '77.5%' },
         { year: '2024', sat: '313', passed: '268', rate: '85.0%' },
-        { year: '2025', sat: '433', passed: '339', rate: '78.4%' },
+        { year: '2025', sat: '433', passed: '355', rate: '82.0%' },
       ],
     },
 
